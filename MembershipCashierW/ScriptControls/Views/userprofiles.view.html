@@ -1,0 +1,16 @@
+﻿<table>
+    <thead>
+        <tr>
+            <th ng-translate="Aj. Caramba!"></th>
+            <th ng-translate="Hello World!"></th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="profile in $ctrl.blob.UserProfiles" ng-click="$ctrl.loadProfile(profile.UserName)">
+            <td>{{profile.FirstName}}</td>
+            <td>{{profile.LastName}}</td>
+            <td>{{profile.EmailId}}</td>
+        </tr>
+    </tbody>
+</table>

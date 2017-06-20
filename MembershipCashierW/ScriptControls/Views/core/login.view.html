@@ -1,0 +1,111 @@
+﻿<form name="loginForm" ng-submit="$ctrl.locations.length == 0? loginForm.$valid && $ctrl.login() : loginForm.$valid && $ctrl.locationSelected()" autocomplete="off" novalidate>
+    <div class="container-fluid" ng-if="$ctrl.locations.length == 0">
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <h4 class="text-uppercase text-primary" ng-translate="Login"></h4>
+            </div>
+        </div>
+        <div class="row space" ng-if="$ctrl.error">
+            <div class="col-xs-12 bg-danger">
+                <p class="text-center" style="padding: 10px;">
+                    {{$ctrl.error | translate}}
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 form-group">
+                <div>
+                    <label class="control-label" ng-translate="Login Domain"></label>
+                    <select id="loginType" name="loginType" class="form-control input-lg" ng-options="type.Type as type.Description for type in $ctrl.model.LoginTypes" ng-model="$ctrl.selectedLoginType"></select>
+                </div>
+            </div>
+        </div>
+        <div ng-if="$ctrl.selectedLoginType == $ctrl.model.LoginType.MainStation">
+            <div class="row">
+                <div class="col-xs-12 form-group" ng-class="{invalid: loginForm.$submitted && loginForm.userName.$invalid}">
+                    <div>
+                        <label class="control-label" ng-translate="User Name"></label>
+                        <input id="loginFormUserName" name="userName" class="form-control input-lg" type="text" ng-model="$ctrl.userName" ng-required="$ctrl.selectedLoginType == $ctrl.model.LoginType.MainStation" />
+                        <p ng-show="loginForm.$submitted && loginForm.userName.$invalid" ng-translate="Please enter a valid user name."></p>
+                    </div>
+                </div>
+                <div class="col-xs-12 form-group" ng-class="{invalid: loginForm.$submitted && loginForm.userPassword.$invalid}">
+                    <div>
+                        <label class="control-label" ng-translate="Password"></label>
+                        <input id="loginFormUserPassword" name="userPassword" class="form-control input-lg" type="password" ng-model="$ctrl.password" ng-required="$ctrl.selectedLoginType == $ctrl.model.LoginType.MainStation" />
+                        <p ng-show="loginForm.$submitted && loginForm.userPassword.$invalid" ng-translate="Please enter a valid password."></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-if="$ctrl.selectedLoginType == $ctrl.model.LoginType.Device">
+            <div class="row">
+                <div class="col-xs-12 form-group" ng-class="{invalid: loginForm.$submitted && loginForm.deviceId.$invalid}">
+                    <div>
+                        <label class="control-label" ng-translate="Device Number"></label>
+                        <input id="loginFormDeviceID" name="deviceId" class="form-control input-lg" type="text" ng-model="$ctrl.deviceId" ng-required="$ctrl.selectedLoginType == $ctrl.model.LoginType.Device" />
+                        <p ng-show="loginForm.$submitted && loginForm.deviceId.$invalid" ng-translate="Please enter a valid device ID."></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-if="$ctrl.captchaRequired">
+            <div class="row space">
+                <div class="col-xs-12">
+                    <img style="width: 100%;" ng-src="{{$ctrl.captchaImage}}" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 form-group" ng-show="$ctrl.captchaRequired" ng-class="{invalid: loginForm.$submitted && loginForm.captcha.$invalid}">
+                    <div>
+                        <label class="control-label" ng-translate="Enter the Text Above"></label>
+                        <input id="loginFormCaptcha" name="captcha" class="form-control input-lg" type="text" ng-model="$ctrl.captcha" ng-required="$ctrl.captchaRequired" />
+                        <p ng-show="loginForm.$submitted && loginForm.captcha.$invalid" ng-translate="Please enter the captcha text from the image above."></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row space">
+            <div class="col-xs-12 text-center">
+                <button id="loginFormLoginButton" type="submit" class="btn btn-primary" ng-translate="Login"></button>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid" ng-if="$ctrl.locations.length > 1">
+        <div class="row space" ng-if="$ctrl.error">
+            <div class="col-xs-12 bg-danger">
+                <p class="text-center" style="padding: 10px;">
+                    {{$ctrl.error | translate}}
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h4 class="text-uppercase text-primary" ng-translate="Please select a Location"></h4>
+            </div>
+            <div class="col-xs-12 form-group" ng-class="{invalid: loginForm.$submitted && loginForm.userLocation.$invalid}">
+                <div>
+                    <label class="control-label" ng-translate="User Locations"></label>
+                    <select id="loginFormUserLocation" name="userLocation" class="form-control input-lg" ng-model="$ctrl.selectedLocation" ng-options="userLocation as userLocation.StoreId for userLocation in $ctrl.locations" ng-required="$ctrl.locations.length > 1"></select>
+                    <p ng-show="loginForm.$submitted && loginForm.userLocation.$invalid" ng-translate="Please Select Your Location"></p>
+                </div>
+            </div>
+            <div class="col-xs-12 form-group-static" ng-show="$ctrl.selectedLocation">
+                <div>
+                    <label class="control-label" ng-translate="Address"></label>
+                    <p class="form-control-static" style="height: auto;">
+                        {{$ctrl.selectedLocation.Address.Address1}}<br />
+                        {{$ctrl.selectedLocation.Address.City}}<br />
+                        {{$ctrl.selectedLocation.Address.Province}} {{$ctrl.selectedLocation.Address.PostalCode}}<br />
+                        {{$ctrl.selectedLocation.Address.Country}}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row space">
+            <div class="col-xs-12 text-center">
+                <button id="loginFormLocationSelectButton" type="submit" class="btn btn-primary" ng-translate="Continue"></button>
+            </div>
+        </div>
+    </div>
+</form>

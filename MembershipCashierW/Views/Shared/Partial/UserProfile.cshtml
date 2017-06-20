@@ -1,0 +1,51 @@
+﻿@model SecurityUnified.Interfaces.IHasUserIdAndUserName
+@{
+    string tagId=string.Concat("UserProfile", Model.UserId);
+}
+<div class="userProfile" name="UserProfile" id="@tagId"></div>
+@Scripts.Render("~/scriptControls/userProfile")
+<script>
+    function renderUserProfileForUserName(userName) {
+        restoreBlob();
+
+        // Send an AJAX request
+        $.getJSON('/api/UserProfile/' + userName).done(function (data) {
+            restoreBlob();
+
+            $.each(data, function (index, value) {
+                document.blob.UserProfile.push(value);
+            });
+
+            $.event.trigger({
+                type: "userProfileChanged",
+                UserProfile: data
+            });
+        }).error(function (e) {
+            if (e.responseText.length > 0) {
+                document.open();
+                document.write(e.responseText);
+                document.close();
+            }
+        });
+    }
+
+    $(document).on("userProfileUpdated", function (data) {
+        replaceMessages(data.fieldSet, [{ message: "Updating profile ...", type: "warning" }])
+        $.ajax({
+            url: "/api/UserProfile",
+            type: "POST",
+            data: JSON.stringify([data.UserProfile]),
+            contentType: "application/json",
+            success: replaceMessages(data.fieldSet, [{ message: "Profile updated", type: "sucess" }]),
+            error: function (xhr, ajaxOptions, thrownError) { xhr.fieldSet = data.fieldSet; handleJqueryAjaxError(xhr, ajaxOptions, thrownError) },
+            timeout: 1000,
+            headers: {
+                'RequestVerificationToken': requestVerificationToken
+            }
+        });
+    });
+
+$(document).ready(function () {
+    renderUserProfileForUserName("@Model.UserName");
+});
+</script>

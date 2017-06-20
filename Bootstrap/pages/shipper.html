@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>FedEx</title>
+	<link href="../css/bootstrap.css" rel="stylesheet" />
+	<link href="../css/bootstrap.fedex.css" rel="stylesheet" />
+    <link href="../css/bootstrap.fedex.controls.css" rel="stylesheet" />
+	<script type="text/javascript" src="../js/jquery-2.2.1.js"></script>
+	<script type="text/javascript" src="../js/bootstrap.js"></script>
+</head>
+<body style="margin-top: 70px;">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img src="../img/fedex-logo.svg" style="height: 20px;" /></a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">Ship</a></li>
+                    <li><a href="#">Track</a></li>
+                    <li><a href="#">Location</a></li>
+                    <li><a href="#">Manage</a></li>
+                    <li><a href="#">Learn</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-2 step">
+                <div class="progress">
+                    <div class="progress-bar" aria-valuemax="1" aria-valuemin="0" style="width: 100%;"></div>
+                </div>
+            </div>
+            <div class="col-xs-2 step">
+                <div class="progress">
+                    <div class="progress-bar" aria-valuemax="1" aria-valuemin="0" style="width: 100%;"></div>
+                </div>
+            </div>
+            <div class="col-xs-2 step active">
+                <div class="progress">
+                    <div class="progress-bar" aria-valuemax="1" aria-valuemin="0" style="width: 100%;"></div>
+                </div>
+            </div>
+            <div class="col-xs-2 step">
+                <div class="progress">
+                    <div class="progress-bar" aria-valuemax="1" aria-valuemin="0"></div>
+                </div>
+            </div>
+            <div class="col-xs-2 step">
+                <div class="progress">
+                    <div class="progress-bar" aria-valuemax="1" aria-valuemin="0"></div>
+                </div>
+            </div>
+            <div class="col-xs-2 step">
+                <div class="progress">
+                    <div class="progress-bar" aria-valuemax="1" aria-valuemin="0"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-2"><a href="#"><small>To</small></a></div>
+            <div class="col-xs-2"><a href="#"><small>Package</small></a></div>
+            <div class="col-xs-2"><a href="#"><small>Rate</small></a></div>
+            <div class="col-xs-2"><small class="text-muted">Customs</small></div>
+            <div class="col-xs-2"><small class="text-muted">Services</small></div>
+            <div class="col-xs-2"><small class="text-muted">Review</small></div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <h4 class="text-uppercase text-primary">Shipper Address Information</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 form-group">
+                <div>
+                    <label class="control-label">Telephone Number</label>
+                    <input class="form-control input-lg" type="tel" />
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 form-group">
+                <div>
+                    <label class="control-label">Full Name</label>
+                    <input class="form-control input-lg" type="text" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 form-group">
+                <div>
+                    <label class="control-label">Address</label>
+                    <input class="form-control input-lg" type="text" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 form-group">
+                <div>
+                    <label class="control-label">City</label>
+                    <input class="form-control input-lg" type="text" />
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 form-group">
+                <div>
+                    <label class="control-label">State/Province</label>
+                    <select class="form-control input-lg"></select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 form-group">
+                <div>
+                    <label class="control-label">Postal/Zip Code</label>
+                    <input class="form-control input-lg" type="text" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+                <div class="row bg-muted group">
+                    <div class="col-xs-12 col-sm-6 vcenter form-group">
+                        <div>
+                            <label class="control-label">Shipper Email Address</label>
+                            <input class="form-control input-lg" type="email" />
+                        </div>
+                    </div><div class="col-xs-12 col-sm-6 vcenter">
+                        <div class="bg-muted">
+                            <div class="text-uppercase">Language</div>
+                            <div class="btn-group" role="group">
+                                <button class="btn btn-default">English</button>
+                                <div class="separator"></div>
+                                <button class="btn btn-default">Francais</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 24px; margin-bottom: 24px;">
+            <div class="col-xs-12 text-center">
+                <a href="recipient.html" data-role="button" class="btn btn-muted text-left"><span class="glyphicon glyphicon-chevron-left"></span> Back</a>
+                <a href="payment.html" data-role="button" class="btn btn-info text-right" style="width: 200px;">Next <span class="glyphicon glyphicon-chevron-right"></span></a>
+            </div>
+        </div>
+    </div>
+	<script type="text/javascript">
+        $("input, select, textarea").on("focus", function (e) { $(e.target).parent().addClass("focused") });
+        $("input, select, textarea").on("blur", function (e) { $(e.target).parent().removeClass("focused") });
+	</script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+﻿<div ng-show="$ctrl.results.length > 0">
+    <div class="row">
+        <div class="col-xs-12 table-responsive">
+            <table class="table" ng-class="{ 'table-hover': $ctrl.ngSelectable}">
+                <thead>
+                    <tr>
+                        <th ng-repeat="header in $ctrl.ngColumnHeaders" class="{{header.headerClass}}"
+                            style="{{header.style}}"
+                            ng-show="header.visible">{{header.text}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="row in $ctrl.results" ng-click="$ctrl.ngSelectable? $ctrl.selectRow(row, $index) : angular.noop()" ng-class="{'bg-primary': $index == $ctrl.selectedIndex}">
+                        <td ng-repeat="cell in row" class="{{cell.cellClass}}" ng-show="cell.visible"><span ng-if="cell.format">{{cell.value | cellFormatter: cell.format}}</span><span ng-if="!cell.format">{{cell.value}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row-separator"></div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="form-inline" ng-hide="$ctrl.total < 25">
+                        <label class="control-label" ng-translate="Page Size"></label>
+                        <select class="form-control" ng-options="size for size in $ctrl.ngPageSizes" ng-model="$ctrl.size"></select>
+                    </div>
+                    <p style="margin-top: 10px; margin-left: 5px;"><span ng-translate="Showing results"></span> {{$ctrl.results.length}} <span ng-translate="of"></span> {{$ctrl.total}}</p>
+                </div>
+                <div class="col-xs-6 text-right" ng-hide="$ctrl.currentPage == 1 && $ctrl.results.length == $ctrl.total">
+                    <nav style="display: inline-block;">
+                        <ul class="pagination" style="margin-top: 0; margin-bottom: 0">
+                            <li ng-class="{disabled: $ctrl.currentPage == 1}">
+                                <a aria-label="First" ng-click="$ctrl.currentPage != 1 && $ctrl.firstPage();">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li ng-class="{disabled: $ctrl.currentPage == 1}">
+                                <a aria-label="Previous" ng-click="$ctrl.currentPage != 1 && $ctrl.previousPage();">
+                                    <span aria-hidden="true">&lsaquo;</span>
+                                </a>
+                            </li>
+                            <li ng-show="$ctrl.currentPage>=$ctrl.limitPerPage || $ctrl.lowerLimit() > 1">
+                                <a aria-label="Next" ng-click="$ctrl.previousPage();">
+                                    <span aria-hidden="true">...</span>
+                                </a>
+                            </li>
+                            <li ng-repeat="page in [] | forLoop:$ctrl.lowerLimit():$ctrl.pageCount() | limitTo : $ctrl.limitPerPage" ng-class="{active: page == $ctrl.currentPage}">
+                                <a ng-click="$ctrl.gotoPage(page);">{{page}}</a>
+                            </li>
+                            <li ng-show="$ctrl.currentPage<= ($ctrl.pages.length - $ctrl.limitPerPage) || ($ctrl.lowerLimit()+$ctrl.limitPerPage-1 < $ctrl.pages.length)">
+                                <a aria-label="Previous" ng-click="$ctrl.nextPage();">
+                                    <span aria-hidden="true">...</span>
+                                </a>
+                            </li>
+                            <li ng-class="{disabled: $ctrl.currentPage == $ctrl.pages.length}">
+                                <a aria-label="Next" ng-click="$ctrl.currentPage != $ctrl.pages.length && $ctrl.nextPage();">
+                                    <span aria-hidden="true">&rsaquo;</span>
+                                </a>
+                            </li>
+                            <li ng-class="{disabled: $ctrl.currentPage == $ctrl.pages.length}">
+                                <a aria-label="Last" ng-click="$ctrl.currentPage != $ctrl.pages.length && $ctrl.lastPage();">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row space" ng-show="$ctrl.results.length == 0">
+    <div class="col-xs-12">
+        <p class="text-lg text-center text-strong" ng-translate="No results where found."></p>
+    </div>
+</div>

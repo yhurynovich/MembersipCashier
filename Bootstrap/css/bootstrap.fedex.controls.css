@@ -1,0 +1,15 @@
+table.rate-picker td{
+    width: 64px;
+    background-color: #F2F2F2;
+    text-align: center;
+}
+
+table.rate-picker td:hover{
+    cursor: pointer;
+    background-color: #4D148C;
+    color: white;
+}
+    table.rate-picker td.active {
+        background-color: #4D148C !important;
+        color: white;
+    }

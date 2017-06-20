@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>FedEx</title>
+	<link href="css/bootstrap.css" rel="stylesheet" />
+	<link href="css/bootstrap.fedex.css" rel="stylesheet" />
+    <link href="css/bootstrap.fedex.controls.css" rel="stylesheet" />
+	<script type="text/javascript" src="js/jquery-2.2.1.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+</head>
+<body style="margin-top: 70px;">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img src="img/fedex-logo.svg" style="height: 20px;" /></a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">Ship</a></li>
+                    <li><a href="#">Track</a></li>
+                    <li><a href="#">Location</a></li>
+                    <li><a href="#">Manage</a></li>
+                    <li><a href="#">Learn</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-2 step">
+                <div class="progress">
+                    <div class="progress-bar" aria-valuemax="1" aria-valuemin="0" style="width: 100%;"></div>
+                </div>
+            </div>
+            <div class="col-xs-2 step">
+                <div class="progress">
+                    <div class="progress-bar" aria-valuemax="1" aria-valuemin="0" style="width: 100%;"></div>
+                </div>
+            </div>
+            <div class="col-xs-2 step active">
+                <div class="progress">
+                    <div class="progress-bar" aria-valuemax="1" aria-valuemin="0" style="width: 100%;"></div>
+                </div>
+            </div>
+            <div class="col-xs-2 step">
+                <div class="progress">
+                    <div class="progress-bar" aria-valuemax="1" aria-valuemin="0"></div>
+                </div>
+            </div>
+            <div class="col-xs-2 step">
+                <div class="progress">
+                    <div class="progress-bar" aria-valuemax="1" aria-valuemin="0"></div>
+                </div>
+            </div>
+            <div class="col-xs-2 step">
+                <div class="progress">
+                    <div class="progress-bar" aria-valuemax="1" aria-valuemin="0"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-2"><a href="#"><small>To</small></a></div>
+            <div class="col-xs-2"><a href="#"><small>Package</small></a></div>
+            <div class="col-xs-2"><a href="#"><small>Rate</small></a></div>
+            <div class="col-xs-2"><small class="text-muted">Customs</small></div>
+            <div class="col-xs-2"><small class="text-muted">Services</small></div>
+            <div class="col-xs-2"><small class="text-muted">Review</small></div>
+        </div>
+    </div>
+	<div class="container-fluid" style="margin-top: 12px;">
+		<div class="row">
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 form-group">
+                <div>
+                    <label class="control-label">Delivery Address</label>
+                    <input id="address" class="form-control input-lg" type="text" placeholder="Search Address..." />
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 drop">
+                <div id="not-found" class="list-group">
+                    <a href="#" class="list-group-item"><span class="glyphicon glyphicon-map-marker"></span> 19 Test St., City Region</a>
+                    <a href="#" class="list-group-item"><span class="glyphicon glyphicon-map-marker"></span> 19 Test Ave., City Region</a>
+                    <a href="#" class="list-group-item"><span class="glyphicon glyphicon-map-marker"></span> 19 Test Rd., City Region</a>
+                    <a id="new-location" href="#" class="list-group-item">
+                        <span class="glyphicon glyphicon-plus"></span> Add Location
+                    </a>
+                </div>
+            </div>
+		</div>
+		<div class="row">
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+                <div class="text-uppercase">
+                    <span style="display: inline-block; vertical-align: middle">Is this a residential address?</span>
+                    <div class="btn-group" role="group">
+                        <button class="btn btn-default">Yes</button>
+                        <div class="separator"></div>
+                        <button class="btn btn-default">No</button>
+                    </div>
+                </div>
+            </div>
+		</div>
+		<div class="row" style="margin-top: 24px;">
+            <div class="col-xs-12 col-sm-offset-2 col-sm-4 col-md-offset-3 col-md-3 vcenter form-group">
+                <div>
+                    <label class="control-label" style="font-family: 'Roboto Condensed'">Please Enter the Total Number of Packages</label>
+                    <input class="form-control input-lg input-lg" type="number"  value="1234567890" style="font-family: 'Roboto'" />
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-3 vcenter">
+                <div class="text-uppercase">
+                    <span style="display: inline-block; vertical-align: middle">Are the packages identical?</span>
+                    <div class="btn-group" role="group">
+                        <button class="btn btn-default">Yes</button>
+                        <div class="separator"></div>
+                        <button class="btn btn-default">No</button>
+                    </div>
+                </div>
+            </div>
+		</div>
+        <div class="row" style="margin-top: 24px;">
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6  form-group">
+                <div>
+                    <label class="control-label" style="font-family: 'Archivo Narrow'">total weight of packages</label>
+                    <input class="form-control input-lg" type="number" value="1234567890" style="font-family: 'Questrial'" />
+                </div>
+            </div>
+        </div>
+		<div class="row" style="margin-top: 24px;">
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+                <h5 class="text-uppercase">select from available packaging</h5>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-lg-3">
+                        <div class="image-list-item selected">
+                            <span class="glyphicon glyphicon-ok selected"></span>
+                            <img src="img/04_Packaging_Your_Package.jpg" />
+                            <p style="font-family: 'Questrial'">Your Packaging</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-3">
+                        <div class="image-list-item">
+                            <img src="img/00_Packaging_FedEx_Envelope.jpg" />
+                            <p style="font-family: 'Lato'">FedEx Envelope</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-3">
+                        <div class="image-list-item">
+                            <img src="img/01_Packaging_FedEx_Box.jpg" />
+                            <p style="font-family: 'Roboto'">FedEx Box</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-3">
+                        <div class="image-list-item">
+                            <img src="img/02_Packaging_FedEx_Tube.jpg" />
+                            <p style="font-family: 'Roboto Condensed'">FedEx Tube</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+		</div>
+        <div class="row" style="margin-top: 24px;">
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+                <table style="width: 100%;">
+                    <tr>
+                        <td>
+                            <img src="img/00_Packaging_Measurements.jpg" style="width: 100%; max-width: 131px;" />
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <div>
+                                    <label class="control-label" style="font-family: 'Roboto Condensed'">Length</label>
+                                    <input class="form-control input-lg" type="number" value="12345676890" style="font-family: 'Lato'" />
+                                </div>
+                            </div>
+                        </td>
+                        <td class="text-center" style="padding: 5px;">x</td>
+                        <td>
+                            <div class="form-group">
+                                <div>
+                                    <label class="control-label" style="font-family: 'Roboto Condensed'">Width</label>
+                                    <input class="form-control input-lg" type="number" value="12345676890" style="font-family: 'Questrial'" />
+                                </div>
+                            </div>
+                        </td>
+                        <td class="text-center" style="padding: 5px;">x</td>
+                        <td>
+                            <div class="form-group">
+                                <div>
+                                    <label class="control-label" style="font-family: 'Archivo Narrow'">Height</label>
+                                    <input class="form-control input-lg" type="number" value="12345676890" style="font-family: 'Lato'" />
+                                </div>
+                            </div>
+                        </td></tr>
+                </table>
+            </div>
+        </div>
+		<div class="row" style="margin-top: 24px;">
+			<div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+				<h5 class="text-uppercase" style="font-family: 'Questrial'">please enter information for each package</h5>
+				<div class="table-responsive">
+					<table class="table">
+						<thead>
+							<tr>
+								<th class="text-left text-uppercase">Quantity</th>
+								<th class="text-left text-uppercase">Weight</th>
+								<th class="text-left text-uppercase" colspan="5">Dimensions</th>
+                                <th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<input class="form-control" type="number" />
+								</td>
+								<td>
+									<input class="form-control" type="number" placeholder="Enter Weight" />
+								</td>
+								<td><input class="form-control" type="number" placeholder="Enter Length" /></td>
+                                <td class="text-center">x</td>
+                                <td><input class="form-control" type="number" placeholder="Enter Width" /></td>
+                                <td class="text-center">x</td>
+                                <td><input class="form-control" type="number" placeholder="Enter Height" /></td>
+                                <td>
+                                    <img src="img/00_Packaging_Measurements.jpg" style="width: 100%; max-width: 131px;" />
+                                </td>
+							</tr>
+                            <tr>
+                                <td>
+                                    <input class="form-control" type="number" />
+                                </td>
+                                <td>
+                                    <input class="form-control" type="number" placeholder="Enter Weight" />
+                                </td>
+                                <td><input class="form-control" type="number" placeholder="Enter Length" /></td>
+                                <td class="text-center">x</td>
+                                <td><input class="form-control" type="number" placeholder="Enter Width" /></td>
+                                <td class="text-center">x</td>
+                                <td><input class="form-control" type="number" placeholder="Enter Height" /></td>
+                                <td>
+                                    <img src="img/00_Packaging_Measurements.jpg" style="width: 100%; max-width: 131px;" />
+                                </td>
+                            </tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+        <div class="row" style="margin-top: 24px;">
+            <div class="col-xs-offset-6 col-xs-6 col-sm-offset-6 col-sm-4 col-md-offset-6 col-md-3 text-right">
+                <button class="btn btn-info text-right">Next <span class="glyphicon glyphicon-chevron-right"></span></button>
+            </div>
+        </div>
+	</div>
+    <div class="container-fluid">
+        <div style="height: 5px; background-color: #58595B; margin: 50px 0;"></div>
+    </div>
+    <div class="container-fluid">
+        <div class="row" style="margin-top: 24px;">
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6  form-group">
+                <div>
+                    <label class="control-label">What is the ship date?</label>
+                    <input class="form-control input-lg" type="date" />
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 24px;">
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+                <div class="row">
+                    <div class="col-xs-1 text-center">
+                        <button class="btn btn-primary" style="width: 100%; padding: 3px;" disabled><span class="glyphicon glyphicon-chevron-left"></span></button>
+                    </div>
+                    <div class="col-xs-10">
+                        <div class="table-responsive">
+                            <table class="table rate-picker" style="margin-bottom: 0;">
+                                <thead>
+                                    <tr>
+                                        <th colspan="1">Tomorrow</th>
+                                        <th colspan="2" style="border-left: 1px solid white;">March 22nd, 2016</th>
+                                        <th colspan="1" style="border-left: 1px solid white;">March 23rd, 2016</th>
+                                        <th colspan="1" style="border-left: 1px solid white;">March 24th, 2016</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="active">
+                                            <p>12:00 PM</p>
+                                            <p>FedEx Priority Overnight&reg;</p>
+                                            <p>$61.59</p>
+                                        </td>
+                                        <td>
+                                            <p>10:00AM</p>
+                                            <p>FedEx First Overnight&reg;</p>
+                                            <p>$52.53</p>
+                                        </td>
+                                        <td>
+                                            <p>12:00PM</p>
+                                            <p>FedEx Standard Overnight&reg;</p>
+                                            <p>$31.43</p>
+                                        </td>
+                                        <td>
+                                            <p>5:00PM</p>
+                                            <p>FedEx 2Day&reg;</p>
+                                            <p>$32.08</p>
+                                        </td>
+                                        <td>
+                                            <p>5:00PM</p>
+                                            <p>FedEx 2Day&reg;</p>
+                                            <p>$32.08</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-xs-1 text-center">
+                        <button class="btn btn-primary" style="width: 100%; padding: 3px;"><span class="glyphicon glyphicon-chevron-right"></span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 24px;">
+            <div class="col-xs-12 col-sm-offset-2 col-sm-4 col-md-offset-3 col-md-3">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="text-uppercase" colspan="2">Rate Quote Summary</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><b>Shipping:</b></td>
+                                <td class="text-right">$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Surcharge</td>
+                                <td class="text-right">$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Taxes</td>
+                                <td class="text-right">$0.00</td>
+                            </tr>
+                            <tr>
+                                <td><b>Total:</b></td>
+                                <td class="text-right">$0.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-3">
+                <div class="form-group">
+                    <div>
+                        <label class="control-label">Promo code</label>
+                        <input class="form-control input-lg" type="text" />
+                    </div>
+                </div>
+                <div class="text-right" style="margin-top: 5px;">
+                    <button class="btn btn-success">Apply Promo Code</button>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 24px;">
+            <div class="col-xs-6 col-sm-offset-2 col-sm-4 col-md-offset-3 col-md-3 text-left">
+                <button class="btn btn-info text-left"><span class="glyphicon glyphicon-chevron-left"></span> Back</button>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-3 text-right">
+                <button class="btn btn-info text-right">Next <span class="glyphicon glyphicon-chevron-right"></span></button>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div style="height: 5px; background-color: #58595B; margin: 50px 0;"></div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+                <h5 class="text-uppercase">please describe the contents of your shipment for customs</h5>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 12px;">
+            <div class="col-xs-12 col-sm-offset-2 col-sm-4 col-md-offset-3 col-md-3">
+                <div class="bg-muted" style="border: 1px solid #4D148C; position: relative; margin: 1px; height: 92px;">
+                    <span class="glyphicon glyphicon-ok" style="position: absolute; top: 5px; right: 5px; color: #4D148C;"></span>
+                    <table style="width: 100%; height: 92px;">
+                        <tr>
+                            <td style="vertical-align: middle">
+                                <img src="img/icon_products.png" style="padding: 5px; width: 64px;" />
+                            </td>
+                            <td style="vertical-align: middle; padding-left: 10px;">
+                                <p>
+                                    <b>Products</b><br/>
+                                    Goods or commodities for personal or commercial use.
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-3">
+                <div class="bg-muted" style=" position: relative; border: 1px solid transparent; margin: 1px; height: 92px;">
+                    <table style="width: 100%; height: 92px;">
+                        <tr>
+                            <td style="vertical-align: middle">
+                                <img src="img/icon_docs.png" style="padding: 5px; width: 64px;" />
+                            </td>
+                            <td style="vertical-align: middle; padding-left: 10px;">
+                                <p>
+                                    <b>Documents</b><br />
+                                    Letters, statements or correspondence that are not for resale.
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 form-group">
+                <div>
+                    <label class="control-label">To be used for</label>
+                    <select class="form-control input-lg">
+                        <option>Commercial</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Commented out for logical reasons -->
+            <!--<div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 form-group">
+                <div>
+                    <label class="control-label">what type of document are you shipping?</label>
+                    <select class="form-control input-lg">
+                        <option>Correspondence (No Customs Value)</option>
+                    </select>
+                </div>
+            </div>-->
+        </div>
+        <div class="row" style="margin-top: 24px;">
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 form-group">
+                <h5 class="text-uppercase">Are you shipping one of the following items?</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-offset-2 col-sm-4 col-md-offset-3 col-md-3">
+                <div class="list-group">
+                    <a href="#" class="list-group-item">Apparel <span class="glyphicon glyphicon-chevron-right pull-right"></span></a>
+                    <a href="#" class="list-group-item">Electronics <span class="glyphicon glyphicon-chevron-right pull-right"></span></a>
+                    <a href="#" class="list-group-item">Food <span class="glyphicon glyphicon-chevron-right pull-right"></span></a>
+                    <a href="#" class="list-group-item">Beauty Supplies <span class="glyphicon glyphicon-chevron-right pull-right"></span></a>
+                    <a href="#" class="list-group-item">Other <span class="glyphicon glyphicon-chevron-right pull-right"></span></a>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-3">
+                <div class="list-group">
+                    <a href="#" class="list-group-item">Cell Phone <span class="glyphicon glyphicon-chevron-right pull-right"></span></a>
+                    <a href="#" class="list-group-item">Computer <span class="glyphicon glyphicon-chevron-right pull-right"></span></a>
+                    <a href="#" class="list-group-item">Tablet <span class="glyphicon glyphicon-chevron-right pull-right"></span></a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 form-group">
+                <div>
+                    <label class="control-label">I am shipping</label>
+                    <textarea class="form-control input-lg" placeholder="Enter description..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6  vcenter form-group">
+                        <div>
+                            <label class="control-label">Quantity</label>
+                            <input class="form-control input-lg" type="number" />
+                        </div>
+                    </div><div class="col-xs-12 col-sm-6 vcenter">
+                        <div class="text-uppercase">
+                            <span style="display: inline-block; vertical-align: middle">Unit of Measure</span>
+                            <div class="btn-group" role="group">
+                                <button class="btn btn-default">Each</button>
+                                <div class="separator"></div>
+                                <button class="btn btn-default">Lbs.</button>
+                                <div class="separator"></div>
+                                <div class="btn-group" role="group">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria->More <span class="caret"></span></button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="#">Pieces</a></li>
+                                        <li><a href="#">Ounces</a></li>
+                                        <li><a href="#">Kilograms</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 form-group">
+                <div>
+                    <label class="control-label">The item was made where?</label>
+                    <select class="form-control input-lg"></select>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 form-group">
+                <div>
+                    <label class="control-label">How much does the item weigh?</label>
+                    <input class="form-control input-lg" type="number" />
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6  vcenter form-group">
+                        <div>
+                            <label class="control-label">How much is the item worth?</label>
+                            <input class="form-control input-lg" type="number" />
+                        </div>
+                    </div><div class="col-xs-12 col-sm-6 vcenter">
+                        <div class="text-uppercase">
+                            <span style="display: inline-block; vertical-align: middle">Currency</span>
+                            <div class="btn-group" role="group">
+                                <button class="btn btn-default">CAD</button>
+                                <div class="separator"></div>
+                                <button class="btn btn-default">USD</button>
+                                <div class="separator"></div>
+                                <div class="btn-group" role="group">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria->More <span class="caret"></span></button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="#">EUR</a></li>
+                                        <li><a href="#">GBP</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 24px;">
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 text-right">
+                <button class="btn btn-danger"><span class="glyphicon glyphicon-ban-circle"></span> Cancel</button>
+                <button class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add Item</button>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 24px;">
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+                <h4 class="text-uppercase text-primary">Commodities Added</h4>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Description</th>
+                                <th>Unit</th>
+                                <th>Quantity</th>
+                                <th>Weight</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="vertical-align: middle;">
+                                    <button class="btn btn-primary btn-xs" style="padding: 3px 6px;"><span class="glyphicon glyphicon-pencil"></span></button>
+                                    <button class="btn btn-danger btn-xs" style="padding: 3px 6px;"><span class="glyphicon glyphicon-remove"></span></button>
+                                </td>
+                                <td style ="vertical-align: middle;">
+                                    <p>Item description goes here</p>
+                                    <p>
+                                        <i>(Country of Manufacture China)</i>
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 24px;">
+            <div class="col-xs-6 col-sm-offset-2 col-sm-4 col-md-offset-3 col-md-3 text-left">
+                <button class="btn btn-info text-left"><span class="glyphicon glyphicon-chevron-left"></span> Back</button>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-3 text-right">
+                <button class="btn btn-info text-right">Next <span class="glyphicon glyphicon-chevron-right"></span></button>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div style="height: 5px; background-color: #58595B; margin: 50px 0;"></div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <h4 class="text-uppercase text-primary">Sepecial Services</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <h5 class="text-uppercase">Additional Coverage</h5>
+                                <p>
+                                    FedEx covers liability up to $100.
+                                    Would you like to increase your coverage?
+                                </p>
+                            </div>
+                            <div class="col-xs-6">
+                                <h5 class="text-right text-uppercase">Surchage</h5>
+                                <p class="text-right">$0.00</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6 form-group">
+                                <div>
+                                    <label class="control-label">Additional Amount</label>
+                                    <input class="form-control input-lg" type="number" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+                <div style="height: 2px; background-color: #58595B; margin: 12px 0;"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <h5 class="text-uppercase">Additional Coverage</h5>
+                                <p>
+                                    FedEx covers liability up to $100.
+                                    Would you like to increase your coverage?<br/>
+                                    <div class="btn-group" role="group">
+                                        <button class="btn btn-default">Yes</button>
+                                        <div class="separator"></div>
+                                        <button class="btn btn-default">No</button>
+                                    </div>
+                                </p>
+                                <p>
+                                    Does each package require the same coverage amount?<br />
+                                    <div class="btn-group" role="group">
+                                        <button class="btn btn-default">Yes</button>
+                                        <div class="separator"></div>
+                                        <button class="btn btn-default">No</button>
+                                    </div>
+                                </p>
+                            </div>
+                            <div class="col-xs-6">
+                                <h5 class="text-right text-uppercase">Surchage</h5>
+                                <p class="text-right">$0.00</p>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 24px;">
+                            <div class="col-xs-6 form-group">
+                                <div>
+                                    <label class="control-label">Additional Amount per Package</label>
+                                    <input class="form-control input-lg" type="number" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 12px;">
+                            <div class="col-xs-12">
+                                <!--<div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        Declared Values
+                                        <span id="collapse" class="pull-right glyphicon glyphicon-triangle-top" style="cursor: pointer;"></span>
+                                    </div>
+                                    <div id="collapse-body" class="panel-body"
+                                        <div class="panel panel-default"-->
+                                            <div class="table-responsive">
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Package</td>
+                                                            <td>Dimensions</td>
+                                                            <td class="text-center">Declared Value</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                Package #1
+                                                            </td>
+                                                            <td>
+                                                                L x W x H
+                                                            </td>
+                                                            <td style="width: 100px;">
+                                                                <input class="form-control input-sm" value="0.00" />
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                Package #2
+                                                            </td>
+                                                            <td>
+                                                                L x W x H
+                                                            </td>
+                                                            <td style="width: 100px;">
+                                                                <input class="form-control input-sm" value="0.00" />
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                    <tfoot>
+                                                        <tr>
+                                                            <td class="text-right" colspan="2"><b>Total Declared Value:</b></td>
+                                                            <td class="text-right" style="width: 100px;">$0.00</td>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+                                <!--/div>
+                                    </div>
+                                </div-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+                <div style="height: 2px; background-color: #58595B; margin: 12px 0;"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <h5 class="text-uppercase">Obtain Signature</h5>
+                                <p>
+                                    Is a signature reuired upon delivery?
+                                </p>
+                            </div>
+                            <div class="col-xs-6">
+                                <h5 class="text-right text-uppercase">Surchage</h5>
+                                <p class="text-right">$0.00</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6 form-group">
+                                <div>
+                                    <label class="control-label">Delivery Signature Option</label>
+                                    <select class="form-control input-lg">
+                                        <option>No signature required</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 24px;">
+            <div class="col-xs-6 col-sm-offset-2 col-sm-4 col-md-offset-3 col-md-3 text-left">
+                <button class="btn btn-info text-left"><span class="glyphicon glyphicon-chevron-left"></span> Back</button>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-3 text-right">
+                <button class="btn btn-info text-right">Next <span class="glyphicon glyphicon-chevron-right"></span></button>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div style="height: 5px; background-color: #58595B; margin: 50px 0;"></div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <h4 class="text-uppercase text-primary">Confirm Recipient</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 form-group">
+                <div>
+                    <label class="control-label">Full Name</label>
+                    <input class="form-control input-lg" type="text" />
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 form-group">
+                <div>
+                    <label class="control-label">Company Name</label>
+                    <input class="form-control input-lg" type="text" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 form-group-static">
+                <div>
+                    <label class="control-label">Address</label>
+                    <p>
+                        Address Street etc. <br />
+                        City, Province/State<br />
+                        Postal Code/Zip Code Country
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 form-group">
+                <div>
+                    <label class="control-label">Recipient Phone Number</label>
+                    <input class="form-control input-lg" type="tel" />
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 vcenter form-group">
+                        <div>
+                            <label class="control-label">Recipient Email Address</label>
+                            <input class="form-control input-lg" type="email" />
+                        </div>
+                    </div><div class="col-xs-12 col-sm-6 vcenter">
+                        <div class="text-uppercase">
+                            <span style="display: inline-block; vertical-align: middle">Language</span>
+                            <div class="btn-group" role="group">
+                                <button class="btn btn-default">English</button>
+                                <div class="separator"></div>
+                                <button class="btn btn-default">French</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 col-sm-offset-4 text-center" style="margin-top: 24px;">
+                <button class="btn btn-primary">Hold at a FedEx Location</button>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 24px;">
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Locations</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 24px;">
+            <div class="col-xs-6 col-sm-offset-2 col-sm-4 col-md-offset-3 col-md-3 text-left">
+                <button class="btn btn-info text-left"><span class="glyphicon glyphicon-chevron-left"></span> Back</button>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-3 text-right">
+                <button class="btn btn-info text-right">Next <span class="glyphicon glyphicon-chevron-right"></span></button>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div style="height: 5px; background-color: #58595B; margin: 50px 0;"></div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <h4 class="text-uppercase text-primary">Shipper Address Information</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 form-group">
+                <div>
+                    <label class="control-label">Telephone Number</label>
+                    <input class="form-control input-lg" type="tel" />
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 form-group">
+                <div>
+                    <label class="control-label">Full Name</label>
+                    <input class="form-control input-lg" type="text" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 form-group">
+                <div>
+                    <label class="control-label">Address</label>
+                    <input class="form-control input-lg" type="text" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 form-group">
+                <div>
+                    <label class="control-label">City</label>
+                    <input class="form-control input-lg" type="text" />
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 form-group">
+                <div>
+                    <label class="control-label">State/Province</label>
+                    <select class="form-control input-lg"></select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 form-group">
+                <div>
+                    <label class="control-label">Postal/Zip Code</label>
+                    <input class="form-control input-lg" type="text" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 form-group">
+                <div>
+                    <label class="control-label">Email</label>
+                    <input class="form-control input-lg" type="email" placeholder="Enter shipper email in order to receive notifications..." />
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 24px;">
+            <div class="col-xs-6 col-sm-offset-2 col-sm-4 col-md-offset-3 col-md-3 text-left">
+                <button class="btn btn-info text-left"><span class="glyphicon glyphicon-chevron-left"></span> Back</button>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-3 text-right">
+                <button class="btn btn-info text-right">Next <span class="glyphicon glyphicon-chevron-right"></span></button>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div style="height: 5px; background-color: #58595B; margin: 50px 0;"></div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <h4 class="text-uppercase text-primary">Charges Breakdown / Payment Information</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+                <div class="table-responsive">
+                    <table style="font-size: larger;">
+                        <tr>
+                            <td style="padding: 10px;"><b>Service</b></td>
+                            <td style="padding: 10px;">$0.00</td>
+                            <td style="padding: 10px;">(<a href="#">Modify</a>)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px;"><b>Surcharges</b></td>
+                            <td style="padding: 10px;">$0.00</td>
+                            <td style="padding: 10px;">(<a href="#">Modify</a>)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px;"><b>Taxes</b></td>
+                            <td style="padding: 10px;">$0.00</td>
+                            <td style="padding: 10px;"></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px;"><b>Total</b></td>
+                            <td style="padding: 10px;">$0.00</td>
+                            <td style="padding: 10px;"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3" style="margin-top: 24px;">
+                <h5 class="text-uppercase">Payment Method</h5>
+                <div class="list-group">
+                    <a href="#" class="list-group-item"><span class="glyphicon glyphicon-unchecked"></span> Credit Card</a>
+                    <a href="#" class="list-group-item"><span class="glyphicon glyphicon-unchecked"></span> Debit Card</a>
+                    <a href="#" class="list-group-item"><span class="glyphicon glyphicon-unchecked"></span> Cash</a>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 24px;">
+            <div class="col-xs-6 col-sm-offset-2 col-sm-4 col-md-offset-3 col-md-3 text-left">
+                <button class="btn btn-info text-left"><span class="glyphicon glyphicon-chevron-left"></span> Back</button>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-3 text-right">
+                <button class="btn btn-info text-right">Next <span class="glyphicon glyphicon-chevron-right"></span></button>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div style="height: 5px; background-color: #58595B; margin: 50px 0;"></div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <h4 class="text-uppercase text-primary">Summary / Review</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-4">
+                <h4 class="text-uppercase">Shipping Information</h4>
+                <a href="#">Edit</a>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <h5 class="text-uppercase"><b>Shipper Details</b></h5>
+                <p>
+                    Name/Company<br />
+                    Addresss...<br />
+                    City...Region<br />
+                    Code...etc.<br />
+                </p>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <h5 class="text-uppercase"><b>Recipient Details</b></h5>
+                <p>
+                    Name/Company<br />
+                    Addresss...<br/>
+                    City...Region<br />
+                    Code...etc.<br />
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+                <h5 class="text-uppercase"><b>Shipment Date</b></h5>
+                <p>Date...</p>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <h5 class="text-uppercase"><b>Delivery Date</b></h5>
+                <p>Date...</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-4">
+                <h4 class="text-uppercase"><b>Payment Information</b></h4>
+                <a href="#">Edit</a>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <h5 class="text-uppercase"><b>Shipping</b></h5>
+                <p>text description? etc.</p>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <h5 class="text-uppercase"><b>Total</b></h5>
+                <p>$0.00</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+                <h5 class="text-uppercase"><b>Payment Method</b></h5>
+                <p>Credit/Debit/Cash</p>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 24px;">
+            <div class="col-xs-12 col-sm-4 col-sm-offset-8">
+                <div class="list-group">
+                    <a href="#" class="list-group-item"><span class="glyphicon glyphicon-unchecked"></span> Print Label</a>
+                    <a href="#" class="list-group-item"><span class="glyphicon glyphicon-unchecked"></span> Print Receipt</a>
+                    <a href="#" class="list-group-item active"><span class="glyphicon glyphicon-check"></span> Email Receipt</a>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 24px;">
+            <div class="col-xs-6 col-sm-4 col-sm-offset-8">
+                <button class="btn btn-info" style="width: 100%;">Confirm</button>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div style="height: 5px; background-color: #58595B; margin: 50px 0;"></div>
+    </div>
+    <div id="account-modal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <h4 class="text-uppercase text-primary">do you want to bill this to a  fedex account?</h4>
+                            <div class="btn-group" role="group">
+                                <button class="btn btn-default">Yes</button>
+                                <button class="btn btn-default" data-dismiss="modal">No</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 12px;">
+                        <div class="col-xs-12 form-group">
+                            <div>
+                                <label class="control-label">FedEx Account</label>
+                                <select class="form-control input-lg">
+                                    <option>My Account</option>
+                                    <option>Recipient</option>
+                                    <option>Third Party</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 form-group">
+                            <div>
+                                <label class="control-label">Account Number</label>
+                                <input class="form-control input-lg" type="text" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="text-center">
+                        <button type="button" class="btn btn-info">Continue</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	<div id="new-location-modal" class="modal fade" tabindex="-1" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-xs-12 text-center">
+							<h4 class="text-uppercase text-primary">New Location</h4>
+						</div>
+					</div>
+                    <div class="row" style="margin-top: 12px;">
+                        <div class="col-xs-12 form-group">
+                            <div>
+                                <label class="control-label"><b>Address</b></label>
+                                <input class="form-control input-lg input-lg" type="text" />
+                            </div>
+                        </div>
+                        <div class="col-xs-12 form-group">
+                            <div>
+                                <label class="control-label"><b>City</b></label>
+                                <input class="form-control input-lg input-lg" type="text" />
+                            </div>
+                        </div>
+                        <div class="col-xs-12 form-group">
+                            <div>
+                                <label class="control-label"><b>Country</b></label>
+                                <input class="form-control input-lg input-lg" type="text" />
+                            </div>
+                        </div>
+                        <div class="col-xs-12 form-group">
+                            <div>
+                                <label class="control-label"><b>State/Province</b></label>
+                                <input class="form-control input-lg input-lg" type="text" />
+                            </div>
+                        </div>
+                        <div class="col-xs-12 form-group">
+                            <div>
+                                <label class="control-label"><b>Zip/Postal Code</b></label>
+                                <input class="form-control input-lg input-lg" type="text" />
+                            </div>
+                        </div>
+                    </div>
+				</div>
+				<div class="modal-footer">
+                    <div class="text-right">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-plus"></span> Add New Location</button>
+                    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+        $("#address").keyup(function (e) {
+            if (!e.target.value){
+                $("#not-found").slideUp();
+                return;
+            }
+
+            $("#not-found").slideDown();
+        });
+
+        $("#address").blur(function () {
+            $("#not-found").slideUp();
+        });
+
+        $("#new-location").click(function () {
+            $("#new-location-modal").modal("show");
+        });
+
+        var collapsed = false;
+
+        $("#collapse").click(function () {
+            if (!collapsed){
+                $("#collapse-body").slideUp();
+                $(this).removeClass("glyphicon-triangle-top");
+                $(this).addClass("glyphicon-triangle-bottom");
+            }
+            else {
+                $("#collapse-body").slideDown();
+                $(this).removeClass("glyphicon-triangle-bottom");
+                $(this).addClass("glyphicon-triangle-top");
+            }
+
+            collapsed = !collapsed;
+        });
+
+        //$("#account-modal").modal("show");
+        $("input, select, textarea").on("focus", function (e) { $(e.target).parent().addClass("focused") });
+        $("input, select, textarea").on("blur", function (e) { $(e.target).parent().removeClass("focused") });
+	</script>
+</body>
+</html>

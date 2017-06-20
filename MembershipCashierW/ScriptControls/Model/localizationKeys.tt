@@ -1,0 +1,43 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="$(SolutionDir)FedExIScanWeb\bin\FedExIScanWeb.dll" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Globalization" #>
+<#@ import namespace="System.Resources" #>
+<#@ import namespace="FedExIScanWeb" #> 
+<#@ output extension=".js" #>
+(function(){"use strict";if(!fedex.app)return;fedex.app.resource=[<#
+	ResourceManager[] concatinatedResources = new ResourceManager[] {
+                        ErrorMessages.ResourceManager
+                        , FieldNames.ResourceManager
+                        , OtherStrings.ResourceManager
+                        , RetailShip.ResourceManager 
+    };
+
+	List<string> keys = new List<string>();
+
+	foreach (ResourceManager manager in concatinatedResources)
+	{
+		ResourceSet resourceEng = manager.GetResourceSet(CultureInfo.CurrentUICulture, true, true);
+
+		foreach (DictionaryEntry entry in resourceEng)
+		{
+			string resourceKey = entry.Key.ToString();
+
+			if (keys.Contains(resourceKey)) continue;
+			else keys.Add(resourceKey);
+		
+			object resource = entry.Value;
+
+			if (!(resource is string)) continue;
+
+			string eng = entry.Value.ToString();
+			string french = manager.GetString(resourceKey, new CultureInfo("fr"));
+
+#>{"key":"<#=resourceKey#>","en":"<#=eng.Replace("\"","\\\"").Replace("\r\n","")#>","fr":"<#=french.Replace("\"","\\\"").Replace("\r\n","")#>"},<#
+		}
+	}
+#>];})();

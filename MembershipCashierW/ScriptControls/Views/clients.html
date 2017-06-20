@@ -1,0 +1,71 @@
+﻿<div ng-controller="ClientsCtrl as ctrl">
+	<div class="page-header">
+		<h2>Clients</h2>
+	</div>
+	<div fade-in="clients">
+		<div class="row">
+			<div class="col-sm-2">
+				<div class="btn btn-group">
+					<a class="btn btn-primary" href="#/Client/new"><i class="icon-plus-sign"></i>Add New</a>
+				</div>
+			</div>
+			<div class="col-sm-offset-6 col-sm-4">
+				<div class="input-group pull-right">
+					<input type="text" class="form-control" placeholder="Search" ng-model="ctrl.searchString" ng-change="ctrl.doSearch()" ng-model-options="{debounce: 200}">
+					<span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+				</div>
+			</div>
+		</div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Email</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat-start="client in ctrl.clients" ng-animate="{enter: 'fade'}">
+                    <td>
+                        <input type="hidden" ng-model="isExpanded">
+                        <a href="" ng-click="ctrl.loadProducts(client.UserId);isExpanded=true;">
+                            {{client.FirstName}} {{client.LastName}}
+                        </a>
+                    </td>
+					<td>{{client.EmailAddress}}</td>
+				</tr>
+				<tr ng-repeat-end ng-show="isExpanded" >
+                    <td colspan="2">
+                        <table>
+                            <tbody>
+                                <tr ng-repeat="product in client.Products" ng-animate="{enter: 'fade'}">
+                                    
+                                    <td>{{product.Product.Description}}</td>
+                                    <td><button class="btn btn-default" type="submit" ng-click="ctrl.updateBalance(product, -1)">-</button></td>
+                                    <td>
+                                        <input type="text" class="form-control" id="balance" ng-model="product.ProfileCredit.Ballance">
+                                    </td>
+                                    <td><button class="btn btn-default" type="submit" ng-click="ctrl.updateBalance(product, 1)">+</button></td>
+                                </tr>
+                                <tr ng-show="client.Products && client.Products.length == 0" ng-animate="{enter: 'fade'}">
+                                    <td colspan="2">No product history</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+				</tr>
+				<tr ng-show="ctrl.loading == false && ctrl.clients.length==0">
+					<td colspan="4">
+						No clients found.
+					</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="5" proximity-watch="ctrl.clients" proximity-action="ctrl.getMore()" style="text-align:center;">
+						<span ng-show="ctrl.loading" style="width: 40px"></span> <span ng-show="ctrl.loading">Loading...</span>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+</div>

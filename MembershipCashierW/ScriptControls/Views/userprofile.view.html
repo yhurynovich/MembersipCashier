@@ -1,0 +1,23 @@
+﻿<style type="text/css">
+    .input-error{
+        background-color: #fccece;
+    }
+    .error {
+        color: #F00;
+    }
+</style>
+<div ng-form name="userProfileForm" ng-show="activeProfile" style="margin: 10px; padding: 10px;">
+    <div style="margin: 5px;" ng-class="userProfileForm.firstName.$invalid? 'input-error' : ''">
+        <label>First Name:</label><input type="text" name="firstName" ng-model="model.firstName" ng-model-options="{ updateOn: 'blur' }" required ng-minlength="3" ng-maxlength="6" />
+        <p class="error" ng-show="userProfileForm.firstName.$touched && userProfileForm.firstName.$invalid">Please enter a first name between 3-6 characters.</p>
+        <p class="error" ng-show="userProfileForm.firstName.$error.minlength">First Name must be at least 3 characters long.</p>
+        <p class="error" ng-show="userProfileForm.firstName.$error.maxlength">First Name cannot be longer than 6 characters.</p>
+    </div>
+    <div style="margin: 5px;">
+        <label>Last Name:</label><input type="text" ng-model="model.lastName" />
+    </div>
+    <div style="margin: 5px;">
+        <input type="button" value="Cancel" ng-click="cancel()" />
+        <input type="submit" value="Save" ng-click="save()" />
+    </div>
+</div>

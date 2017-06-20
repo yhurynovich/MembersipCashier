@@ -1,0 +1,28 @@
+div.page-header{
+	margin-top: 0;
+}
+div.page-header h3{
+	margin-top: 0;
+}
+
+div.tab-pane.active {
+	border-right: 1px solid #CCC;
+	border-left: 1px solid #CCC;
+	border-bottom: 1px solid #CCC;
+}
+
+div.row.space{
+	margin-top: 20px;
+}
+
+div.table-responsive{
+	border: none !important;
+}
+
+.btn-xs{
+	padding: 6px;
+}
+
+.text-sm{
+	font-size: 12px;
+}

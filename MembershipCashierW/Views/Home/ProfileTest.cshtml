@@ -1,0 +1,104 @@
+﻿@using SecurityUnified.Contracts
+@{
+    ViewBag.Title = "Test Profile";
+}
+
+<h2>@ViewBag.Title</h2>
+@Scripts.Render("~/scriptControls/userProfile")
+
+<h3>Profile Filter (rendering from script)</h3>
+<div id="UserProfileFilterShell"></div>
+<script>
+    $("#UserProfileFilterShell").empty().append( renderUserProfileFilter() );
+</script>
+@{
+    ViewBag.UserProfileListLambda = "x=>x.UserId>0";
+}
+<h3>ProfileList (rendering from MVC partial)</h3>
+@Html.Partial("Partial/UserProfileList")
+
+<h3>Profile (rendering from MVC partial)</h3>
+@Html.Partial("Partial/UserProfile", new UserProfileImplementor() { UserId = 1, UserName = "first" })
+
+<h3>Snapshot (rendering from script)</h3>
+<div class="userSnapshot"></div>
+
+<script>
+$(document).ready(function () {
+    restoreBlob();
+
+    // Send an AJAX request
+    $.getJSON('/api/UserSnapshot/first').done(function (data) {
+        document.blob.UserSnapshot = data;
+            $.event.trigger({
+                type: "blobChanged",
+                blob: document.blob
+            });
+    }).error(function (e) {
+        if (e.responseText.length > 0) {
+            document.open();
+            document.write(e.responseText);
+            document.close();
+        }
+    });
+});
+
+$(document).on("userProfileUpdated", function (data) {
+    replaceMessages(data.fieldSet, [{ message: "Updating profile ...", type: "warning" }])
+    $.ajax({
+        url: "/api/UserProfile",
+        type: "POST",
+        data: JSON.stringify([data.UserProfile]),
+        contentType: "application/json",
+        success: replaceMessages(data.fieldSet, [{ message: "Profile updated", type: "sucess" }]),
+        error: function (xhr, ajaxOptions, thrownError) { xhr.fieldSet = data.fieldSet; handleJqueryAjaxError(xhr, ajaxOptions, thrownError) },
+        timeout: 1000,
+        headers: {
+            'RequestVerificationToken': requestVerificationToken
+        }
+    });
+});
+
+$(document).on("profileCreditUpdated", function (data) {
+    replaceMessages(data.fieldSet, [{ message: "Updating ballance ...", type: "warning" }])
+    $.ajax({
+        url: "/api/ProfileCredit",
+        type: "POST",
+        data: JSON.stringify([data.profileCredit]),
+        contentType: "application/json",
+        success: replaceMessages(data.fieldSet, [{ message: "Ballance updated", type: "sucess" }]),
+        error: function (xhr, ajaxOptions, thrownError) { xhr.fieldSet = data.fieldSet; handleJqueryAjaxError(xhr, ajaxOptions, thrownError) },
+        timeout: 1000,
+        headers: {
+            'RequestVerificationToken': requestVerificationToken
+        }
+    });
+});
+@functions{
+    public string TokenHeaderValue()
+    {
+        string cookieToken, formToken;
+        AntiForgery.GetTokens(null, out cookieToken, out formToken);
+        return cookieToken + ":" + formToken;
+    }
+}
+</script>
+
+@section scripts{
+    <script src="~/ScriptControls/UserProfileFilter_render.js"></script>
+    <script src="~/ScriptControls/ProfileCredit_render.js"></script>
+    <script src="~/ScriptControls/ProfileCredit.js"></script>
+    <script src="~/ScriptControls/UserSnapshot_render.js"></script>
+    <script src="~/ScriptControls/UserSnapshot.js"></script>
+    <script src="~/Scripts/jquery-barcode.min.js"></script>
+}
+@section PageStyle
+{
+<style>
+    .userProfile fieldset {
+        border: 1px solid;
+        width: 260px;
+        padding-bottom: 4px;
+    }
+</style>
+}

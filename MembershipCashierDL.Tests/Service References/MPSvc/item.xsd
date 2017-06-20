@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:9812/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/MembershipCashierUnified.Contracts" />
+  <xs:element name="FindCreditTransaction">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/MembershipCashierUnified.Contracts" minOccurs="0" name="d" nillable="true" type="q1:CreditTransactionDiscriminator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindCreditTransactionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/MembershipCashierUnified.Contracts" minOccurs="0" name="FindCreditTransactionResult" nillable="true" type="q2:ArrayOfCreditTransactionContract" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindLocation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/MembershipCashierUnified.Contracts" minOccurs="0" name="d" nillable="true" type="q3:LocationDiscriminator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindLocationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/MembershipCashierUnified.Contracts" minOccurs="0" name="FindLocationResult" nillable="true" type="q4:ArrayOfLocationContract" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindOwner">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/MembershipCashierUnified.Contracts" minOccurs="0" name="d" nillable="true" type="q5:OwnerDiscriminator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindOwnerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/MembershipCashierUnified.Contracts" minOccurs="0" name="FindOwnerResult" nillable="true" type="q6:ArrayOfOwnerContract" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindProfileCredit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/MembershipCashierUnified.Contracts" minOccurs="0" name="d" nillable="true" type="q7:ProfileCreditDiscriminator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindProfileCreditResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/MembershipCashierUnified.Contracts" minOccurs="0" name="FindProfileCreditResult" nillable="true" type="q8:ArrayOfProfileCreditContract" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateProfileCredit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/MembershipCashierUnified.Contracts" minOccurs="0" name="d" nillable="true" type="q9:ArrayOfProfileCreditContract" />
+        <xs:element minOccurs="0" name="allowDefaultValues" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateProfileCreditResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

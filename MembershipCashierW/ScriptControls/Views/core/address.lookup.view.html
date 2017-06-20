@@ -1,0 +1,85 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-8 form-group vcenter">
+            <label class="control-label" ng-translate="Delivery Address"></label>
+            <input class="form-control input-lg" type="text" id="autocomplete" ng-disabled="$ctrl.ngLocked" />
+        </div><div class="hidden-xs hidden-sm col-md-3 col-lg-4 vcenter">
+            <a id="addressLookupFindLink" href="#" data-toggle="modal" data-target="#new-location-modal" ng-show="!$ctrl.ngLocked" ng-translate="Can't find the address?"></a>
+        </div>
+        <div class="col-xs-12 hidden-md hidden-lg text-right">
+            <p style="padding: 5px;">
+                <a id="addressLookupFindLink" href="#" data-toggle="modal" data-target="#new-location-modal" ng-show="!$ctrl.ngLocked" ng-translate="Can't find the address?"></a>
+            </p>
+        </div>
+    </div>
+    <div class="row" ng-show="$ctrl.classification === 'UNKNOWN'">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 form-group-static">
+            <label class="control-label" ng-translate="Is this a residential address?"></label>
+            <p class="form-control-static">
+                <ng-toggle-button ng-name="residentialAddress" ng-model="$ctrl.residentialClassification" ng-on-text="{{'Yes' | translate}}" ng-off-text="{{'No' | translate}}"></ng-toggle-button>
+            </p>
+        </div>
+    </div>
+    <div class="row" ng-show="$ctrl.proposedAddress.length > 0">
+        <div class="col-xs-12">
+            <h5 class="text-uppercase text-primary" style="margin: 12px 1px 0;" ng-translate="Suggested Locations"></h5>
+            <ul class="list-group">
+                <li class="list-group-item"><a href="#"><span class="glyphicon glyphicon-map-marker"></span> <span ng-translate="Location Suggestion 1"></span></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="new-location-modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form name="addressForm" autocomplete="off" ng-submit="addressForm.$valid && $ctrl.saveAddress(false)" novalidate>
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="$ctrl.cancelAddress()"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <h4 class="text-uppercase text-primary" ng-translate="Confirm Location"></h4>
+                        </div>
+                    </div>
+                    <div class="row" ng-show="$ctrl.addressError">
+                        <div class="col-xs-12 text-danger text-center">
+                            <p>{{'100: Address information is invalid' | translate}}<br/>{{$ctrl.addressError | translate}}</p>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 12px;">
+                        <div class="col-xs-12 form-group" ng-class="{invalid : $ctrl.submitted && addressForm.country.$invalid}">
+                            <label class="control-label" ng-translate="Country"></label>
+                            <select id="addressLookupCountry" name="country" class="form-control input-lg" ng-options="country.CountryCode as country.CountryName for country in $ctrl.countries  | orderBy:'CountryName'" ng-model="$ctrl.address.Country" ng-required="true"></select>
+                            <p data-error="101" ng-show="$ctrl.submitted && addressForm.country.$invalid" ng-translate="101: Please select a valid Country"></p>
+                        </div>
+                        <div class="col-xs-12 form-group" ng-class="{invalid: $ctrl.submitted && addressForm.postalCode.$invalid}">
+                            <label class="control-label"><span ng-translate="Zip/Postal Code"></span> <b ng-show="$ctrl.selectedCountry && $ctrl.selectedCountry.RequiresPostalCode">(Required)</b></label>
+                            <input id="addressLookupPostalCode" name="postalCode" class="form-control input-lg" type="text" ng-model="$ctrl.address.PostalCode" ng-required="$ctrl.selectedCountry && $ctrl.selectedCountry.RequiresPostalCode" maxlength="35" />
+                            <p data-error="103" ng-show="$ctrl.submitted && addressForm.postalCode.$invalid" ng-translate="103: Please enter a valid Postal/Zip Code."></p>
+                        </div>
+                        <div class="col-xs-12 form-group" ng-class="{invalid: $ctrl.submitted && addressForm.city.$invalid}">
+                            <label class="control-label"><span ng-translate="City"></span> <b ng-show="$ctrl.selectedCountry && $ctrl.selectedCountry.RequiresCity" ng-translate="(Required)"></b></label>
+                            <input id="addressLookupCity" name="city" class="form-control input-lg" ng-model="$ctrl.address.City" ng-required="$ctrl.selectedCountry && $ctrl.selectedCountry.RequiresCity" maxlength="35" />
+                            <p data-error="102" ng-show="$ctrl.submitted && addressForm.city.$invalid" ng-translate="102: Please enter a valid City."></p>
+                        </div>
+                        <div class="col-xs-12 form-group" ng-show="$ctrl.provinces.length > 0">
+                            <label class="control-label" ng-translate="State/Province"></label>
+                            <select id="addressLookupProvince" class="form-control input-lg" ng-options="province.ProvinceCode as province.ProvinceName for province in $ctrl.provinces  | orderBy:'ProvinceName'" ng-model="$ctrl.address.Province"></select>
+                        </div>
+                        <div class="col-xs-12 form-group">
+                            <label class="control-label" ng-translate="Address"></label>
+                            <input id="addressLookupStreet" class="form-control input-lg" type="text" ng-model="$ctrl.address.Address1" maxlength="35" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="text-right">
+                        <button id="addressLookupCancelButton" type="button" class="btn btn-muted" data-dismiss="modal" ng-click="$ctrl.cancelAddress()" ng-translate="Cancel"></button>
+                        <button id="addressLookupConfirmButton" type="submit" class="btn btn-primary" ng-click="$ctrl.submitted = true"><span class="glyphicon glyphicon-ok"></span> <span ng-translate="Confirm"></span></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

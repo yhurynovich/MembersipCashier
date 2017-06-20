@@ -1,0 +1,34 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/.nuget
+/MembershipCashierDB/bin/Debug
+/MembershipCashierDB/Import Schema Logs
+/MembershipCashierDB/obj/Debug
+/MembershipCashierDB/MembershipCashierDB.sqlproj.user
+/MembershipCashierDL/bin/Debug
+/MembershipCashierDL/obj/Debug
+/MembershipCashierDL/MembershipCashierDL.csproj.user
+/MembershipCashierDL.Tests/bin/Debug
+/MembershipCashierDL.Tests/obj/Debug
+/MembershipCashierUnified/bin/Debug
+/MembershipCashierUnified/obj/Debug
+/MembershipCashierUnified/MembershipCashierUnified.csproj.user
+/MembershipCashierW/bin
+/MembershipCashierW/obj/Debug
+/MembershipCashierW.Tests/bin/Debug
+/MembershipCashierW.Tests/obj/Debug
+/packages
+/SecurityDL/bin/Debug
+/SecurityDL/obj/Debug
+/SecurityDL/SecurityDL.csproj.user
+/SecurityDL.Test/bin/Debug
+/SecurityDL.Test/obj/Debug
+/SecurityUnified/bin/Debug
+/SecurityUnified/obj/Debug
+/MembershipCashierUnified.v12.suo
+*.bak
+*.orig
+MembershipCashierW/Web.config.orig

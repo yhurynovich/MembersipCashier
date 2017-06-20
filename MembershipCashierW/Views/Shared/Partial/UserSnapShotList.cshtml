@@ -1,0 +1,91 @@
+﻿<div class="userSnapShotList" name="UserSnapShotList" id="UserSnapShotList"></div>
+
+@Scripts.Render("~/scriptControls/userProfile")
+<script>
+    function renderUserProfileForExpression(lamda) {
+        lamda = htmlDecode(lamda);
+        restoreBlob();
+
+        $.ajax({
+            url: '/api/UserSnapshot?lamda=' + lamda,
+            type: "GET",
+            success: function (data) {
+                restoreBlob();
+
+                restoreBlob();
+
+                var shell = $(".userSnapShotList");
+                shell.empty();
+                $.each(data, function (index, value) {
+                    var tagId = "UserSnapshot" + value.UserProfile.UserId;
+                    shell.append($('<div class="userSnapshot" name="UserSnapshot" id="' + tagId + '"></div>'));
+                    //$.each(value, function (index, value) {
+
+                    //});
+                    document.blob.UserSnapshot.push(value);
+                });
+
+                $.event.trigger({
+                    type: "userSnapShotChanged",
+                    UserSnapshot: data
+                });
+            },
+            complete: function(resp){
+                requestVerificationToken = resp.getResponseHeader("antiforgery");
+            },
+            error: function (xhr, ajaxOptions, thrownError) { xhr.fieldSet = data.fieldSet; handleJqueryAjaxError(xhr, ajaxOptions, thrownError) },
+            timeout: 1000,
+        });
+
+        //$.getJSON('/api/UserSnapshot?lamda=' + escape(lamda)).done(function (data) {
+        //    restoreBlob();
+
+        //    var shell = $(".userSnapShotList");
+        //    shell.empty();
+        //    $.each(data, function (index, value) {
+        //        var tagId = "UserSnapshot" + value.UserProfile.UserId;
+        //        shell.append($('<div class="userSnapshot" name="UserSnapshot" id="' + tagId + '"></div>'));
+        //        //$.each(value, function (index, value) {
+
+        //        //});
+        //        document.blob.UserSnapshot.push(value);
+        //    });
+
+        //    $.event.trigger({
+        //        type: "userSnapShotChanged",
+        //        UserSnapshot: data
+        //    });
+        //}).error(function (e) {
+        //    if (e.responseText.length > 0) {
+        //        document.open();
+        //        document.write(e.responseText);
+        //        document.close();
+        //    }
+        //});
+    }
+
+    $(document).on("userProfileUpdated", function (data) {
+        replaceMessages(data.fieldSet, [{ message: "Updating profile ...", type: "warning" }])
+        $.ajax({
+            url: "/api/UserProfile",
+            type: "POST",
+            data: JSON.stringify([data.UserProfile]),
+            contentType: "application/json",
+            success: replaceMessages(data.fieldSet, [{ message: "Profile updated", type: "sucess" }]),
+            error: function (xhr, ajaxOptions, thrownError) { xhr.fieldSet = data.fieldSet; handleJqueryAjaxError(xhr, ajaxOptions, thrownError) },
+            timeout: 1000,
+            headers: {
+                'RequestVerificationToken': requestVerificationToken
+            }
+        });
+    });
+
+@{
+    string initialLambda = string.IsNullOrEmpty(ViewBag.UserProfileListLambda) ? "x=>" : ViewBag.UserProfileListLambda;
+}
+    $(document).ready(function () {
+        renderUserProfileForExpression("@initialLambda");
+    });
+</script>
+
+

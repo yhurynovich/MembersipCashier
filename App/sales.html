@@ -1,0 +1,169 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 page-header">
+			<h3 class="text-uppercase">Sales</h3>
+			<h5 class="text-muted">Invoice and track balances for customers.</h5>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 col-md-6 col-lg-4 form-group">
+			<div class="input-group">
+				<input type="text" class="form-control" placeholder="Search customer...">
+				<span class="input-group-btn">
+					<button class="btn btn-primary" type="button">Scan Customer Code</button>
+				</span>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="panel panel-primary">
+				<div class="panel-heading">Existing Customers</div>
+				<div class="panel-body">
+					<div ng-show="!$ctrl.viewCustomer">
+						<p class="text-muted text-center" ng-show="!$ctrl.customers || $ctrl.customers.length == 0"><span class="glyphicon glyphicon-warning-sign text-info"></span> There are no customers currently in the system. <a href="admin">Click here</a> to add new Customers.</p>
+						<div class="table-responsive" ng-show="$ctrl.customers.length > 0">
+							<table class="table table-hover text-sm">
+								<thead>
+									<tr>
+										<th>Email</th>
+										<th>First Name</th>
+										<th>Last Name</th>
+										<th>Phone</th>
+										<th>Customer Since</th>
+										<th class="text-right">Outstanding Balance</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="customer in $ctrl.customers" style="cursor: pointer;" ng-click="$ctrl.viewCustomer = true; $ctrl.selectedCustomer = customer;">
+										<td>{{customer.Email}}</td>
+										<td>{{customer.FirstName}}</td>
+										<td>{{customer.LastName}}</td>
+										<td>{{customer.Phone}}</td>
+										<td>{{customer.CustomerSince | date: 'MMMM d, yyyy'}}</td>
+										<td class="text-right">{{customer.Balance | currency}}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div ng-show="$ctrl.viewCustomer">
+						<div class="row">
+							<div class="col-xs-6">
+								<button type="button" class="btn btn-default" ng-click="$ctrl.viewCustomer = false;"><span class="glyphicon glyphicon-triangle-left"></span> Back</button>
+							</div>
+							<div class="col-xs-6 text-right">
+								<div ng-show="!$ctrl.newSale">
+									<button type="button" class="btn btn-info" ng-click="$ctrl.newSale = true; $ctrl.createNewSale();"><span class="glyphicon glyphicon-plus"></span> New Sale</button>
+									<button type="button" class="btn btn-success"><span class="glyphicon glyphicon-credit-card"></span> Process Payment</button>
+								</div>
+								<div ng-show="$ctrl.newSale">
+									<button type="button" class="btn btn-success" ng-click="$ctrl.newSale = false; ctrl.saveNewSale();"><span class="glyphicon glyphicon-ok"></span> Save</button>
+									<button type="button" class="btn btn-default" ng-click="$ctrl.newSale = false; $ctrl.cancelNewSale();"><span class="glyphicon glyphicon-ban-circle"></span> Cancel</button>
+								</div>
+							</div>
+						</div>
+						<div class="row space">
+							<div class="col-xs-12">
+								<h4 class="text-uppercase">{{$ctrl.selectedCustomer.FirstName}} {{$ctrl.selectedCustomer.LastName}}</h4>
+							</div>
+						</div>
+						<div class="row" ng-show="!$ctrl.newSale">
+							<div class="col-xs-12">
+								<p class="text-muted text-center" ng-show="!$ctrl.selectedCustomer.Sales || $ctrl.selectedCustomer.Sales.length == 0"><span class="glyphicon glyphicon-warning-sign text-info"></span> There are no sales for this customer. <a href="" ng-click="$ctrl.newSale = true; $ctrl.createNewSale();">Click here</a> to create a new Sale.</p>
+                                <div class="table-responsive" ng-show="$ctrl.selectedCustomer.Sales.length > 0">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>Invoice No.</th>
+                                                <th>Date</th>
+                                                <th class="text-right">Total Amount</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="sale in $ctrl.selectedCustomer.Sales">
+                                                <td>
+                                                    <button type="button" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></button>
+                                                </td>
+                                                <td>{{sale.Number}}</td>
+                                                <td>{{sale.Date | date: 'MMMM dd, yyyy'}}</td>
+                                                <td class="text-right">{{sale.Total() | currency}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+							</div>
+						</div>
+						<div class="row" ng-show="$ctrl.newSale">
+							<div class="col-xs-12">
+								<div class="panel panel-primary">
+									<div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col-xs-6">
+                                                <button type="button" class="btn btn-default btn-sm" ng-click="$ctrl.addSaleItems()"><span class="glyphicon glyphicon-plus"></span> Add New Item</button>
+                                            </div>
+                                            <div class="col-xs-6 text-right">
+                                                <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-barcode"></span> Scan Items</button>
+                                            </div>
+                                        </div>
+									</div>
+									<div class="panel-body">
+										<div class="table-responsive">
+											<table class="table text-sm table-condensed">
+												<thead>
+                                                    <tr>
+                                                        <th>Product</th>
+                                                        <th>Description</th>
+                                                        <th class="text-right">Quantity</th>
+                                                        <th class="text-right">Price</th>
+                                                        <th class="text-right">Total</th>
+                                                    </tr>
+												</thead>
+												<tbody>
+													<tr ng-show="$ctrl.currentSale.Items.length == 0">
+														<td colspan="5">
+															<p class="text-muted text-center"><a href="" ng-click="$ctrl.addSaleItems()">Add Items</a> to this sale.</p>
+														</td>
+													</tr>
+													<tr ng-repeat="item in $ctrl.currentSale.Items" ng-show="$ctrl.currentSale.Items.length > 0">
+														<td style="width: 200px;">
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control input-sm" ng-model="item.Code" ng-model-options="{updateOn: 'blur'}" />
+                                                                <span class="input-group-btn">
+                                                                    <button type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-barcode"></span> Scan</button>
+                                                                </span>
+                                                            </div>
+														</td>
+														<td>
+															<p class="form-control-static">{{ item.Product.Description }}</p>
+														</td>
+														<td class="text-right" style="width: 100px;">
+															<input type="number" class="form-control input-sm" ng-model="item.Quantity" />
+														</td>
+														<td class="text-right">
+															<p class="form-control-static">{{item.Product.Price | currency}}</p>
+														</td>
+														<td class="text-right">
+															<p class="form-control-static input-sm">{{item.Product.Price * item.Quantity | currency}}</p>
+														</td>
+													</tr>
+												</tbody>
+												<tfoot ng-show="$ctrl.currentSale.Items.length > 0">
+													<tr>
+														<td colspan="4" class="text-right"><b>Total</b></td>
+                                                        <td class="text-right"><b>{{$ctrl.currentSale.Total() | currency}}</b></td>
+													</tr>
+												</tfoot>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

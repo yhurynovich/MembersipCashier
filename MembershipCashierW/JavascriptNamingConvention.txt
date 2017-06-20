@@ -1,0 +1,23 @@
+﻿NAMING CONVENTION
+
+JSON property/field names must be UPPERCASE
+INPUT/TEXTAREA tag names must be UPPERCASE
+INPUT/TEXTAREA tag id must be UPPERCASE
+CSS CLASS names must be lowercase
+
+JSON
+All fields in JSON must be of collection type
+
+CUSTOM EVENTS
+Event for loaded/refreshed data xxxxxChanged
+Event for updated (changed by user) (saving needed) data xxxxxUpdated
+
+ADDRESSING INPUT/TEXTAREA TAGS
+Avoid adressing INPUT/TEXTAREA tags by class name. Use unique keys in name id fields instead
+
+FIELDSETS
+Generate scriptcontrols inside a fieldset tag as following:
+<fieldset id="xxx1" class="profileCreditPart ', $class, '">'
+
+ASSUMPTIONS
+Asume that there is only one fieldset (scriptcontrol) for a primary key per page

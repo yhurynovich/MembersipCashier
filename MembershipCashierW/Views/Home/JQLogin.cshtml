@@ -1,0 +1,63 @@
+﻿@functions{
+    public string TokenHeaderValue()
+    {
+        string cookieToken, formToken;
+        AntiForgery.GetTokens(null, out cookieToken, out formToken);
+        return formToken;
+    }
+}
+<script src="~/ScriptControls/WebApiUtils.js"></script>
+<script src="~/ScriptControls/Login_render.js"></script>
+
+<span class="denotereqfield" id="loginFormContainer">
+    <script>
+        $("#loginFormContainer").append(renderLogin({ userName: '' }));
+        var fs = $("#loginFormContainer").find("fieldset");
+        fs.find("input").addClass("edit");
+        if (fs.find("input[type=button]").length < 1)
+            $("<span style='display:  table-cell;' /><input type='button' value='Log in' onclick='triggerLoginRequested(this)' style='display:table-cell; vertical-align:middle;'/>").appendTo(fs);
+        fs.find("input[name=userName]").focus();
+    </script>
+</span>
+
+<script>
+    function authenticate(data) {
+        replaceMessages(data.fieldSet, [{ message: "Sending log-in request ...", type: "warning" }])
+        $.ajax({
+            url: "/api/Authentication/authenticate",
+            type: "POST",
+            data: JSON.stringify(data.identity),
+            contentType: "application/json",
+            success: replaceMessages(data.fieldSet, [{ message: "User authenticated", type: "sucess" }]),
+            error: function (xhr, ajaxOptions, thrownError) {
+                xhr.fieldSet = data.fieldSet;
+                handleJqueryAjaxError(xhr, ajaxOptions, thrownError)
+            },
+            complete: function (resp) {
+                requestVerificationToken = resp.getResponseHeader("antiforgery");
+            },
+            timeout: 1000,
+            headers: {
+                'RequestVerificationToken': requestVerificationToken
+            }
+        });
+    }
+
+    function triggerLoginRequested(c) {
+        var fs = c.parentElement.parentElement;
+
+        var data = new Object();
+        eval('data.retryCount="' + @Convert.ToInt32(Session["RetryCount"]) + '"');
+        $.each(fs.getElementsByTagName('input'), function (index, value) {
+            if (value.name !== undefined && value.name.length > 0)
+                eval('data.' + value.name + '="' + value.value + '"');
+        });
+        if (data.rememberMe == "on" || data.rememberMe == "true" || data.rememberMe == "1")
+            data.rememberMe = "true";
+        else
+            data.rememberMe = "false";
+        authenticate({ identity: data });
+    }
+
+    requestVerificationToken = '@TokenHeaderValue()';
+</script>

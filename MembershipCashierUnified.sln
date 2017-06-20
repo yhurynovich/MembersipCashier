@@ -1,0 +1,107 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MembershipCashierUnified", "MembershipCashierUnified\MembershipCashierUnified.csproj", "{03BAB8CB-038E-4035-8097-D03BED919CF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MembershipCashierDL", "MembershipCashierDL\MembershipCashierDL.csproj", "{EABCE1BE-6607-43F9-91E6-DF7901705B6F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MembershipCashierW", "MembershipCashierW\MembershipCashierW.csproj", "{8938FBA1-4774-4920-A148-59DFD0299DF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MembershipCashierW.Tests", "MembershipCashierW.Tests\MembershipCashierW.Tests.csproj", "{09ACB11F-ED5A-48ED-8D3E-3857DF47726F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MembershipCashierDL.Tests", "MembershipCashierDL.Tests\MembershipCashierDL.Tests.csproj", "{B71682C1-51EB-4824-A5A9-1F586C59FD3B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8938FBA1-4774-4920-A148-59DFD0299DF7} = {8938FBA1-4774-4920-A148-59DFD0299DF7}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecurityUnified", "SecurityUnified\SecurityUnified.csproj", "{EE12F372-DF5D-4F8E-A180-FF8175971A64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecurityDL", "SecurityDL\SecurityDL.csproj", "{8D7CFD25-158A-4E15-A07C-AB78234BC5F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecurityDL.Test", "SecurityDL.Test\SecurityDL.Test.csproj", "{07FDA748-881A-4E9B-9FF9-40BC0DE8A102}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{A6E1E4CD-DB3C-45FE-822D-784FE2B33714}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "App", "http://localhost:53784", "{BBA4CBAB-6E93-4ECC-A0F0-F119D2B5AE2F}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "true"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_53784"
+		Debug.AspNetCompiler.PhysicalPath = "App\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_53784\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_53784"
+		Release.AspNetCompiler.PhysicalPath = "App\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_53784\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "App\"
+	EndProjectSection
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "MembershipCashierDB", "MembershipCashierDB\MembershipCashierDB.sqlproj", "{007C3377-78E3-4422-9497-DC2CAA8AA69E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{03BAB8CB-038E-4035-8097-D03BED919CF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03BAB8CB-038E-4035-8097-D03BED919CF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03BAB8CB-038E-4035-8097-D03BED919CF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03BAB8CB-038E-4035-8097-D03BED919CF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EABCE1BE-6607-43F9-91E6-DF7901705B6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EABCE1BE-6607-43F9-91E6-DF7901705B6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EABCE1BE-6607-43F9-91E6-DF7901705B6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EABCE1BE-6607-43F9-91E6-DF7901705B6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8938FBA1-4774-4920-A148-59DFD0299DF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8938FBA1-4774-4920-A148-59DFD0299DF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8938FBA1-4774-4920-A148-59DFD0299DF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8938FBA1-4774-4920-A148-59DFD0299DF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09ACB11F-ED5A-48ED-8D3E-3857DF47726F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09ACB11F-ED5A-48ED-8D3E-3857DF47726F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09ACB11F-ED5A-48ED-8D3E-3857DF47726F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09ACB11F-ED5A-48ED-8D3E-3857DF47726F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B71682C1-51EB-4824-A5A9-1F586C59FD3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B71682C1-51EB-4824-A5A9-1F586C59FD3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B71682C1-51EB-4824-A5A9-1F586C59FD3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B71682C1-51EB-4824-A5A9-1F586C59FD3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE12F372-DF5D-4F8E-A180-FF8175971A64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE12F372-DF5D-4F8E-A180-FF8175971A64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE12F372-DF5D-4F8E-A180-FF8175971A64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE12F372-DF5D-4F8E-A180-FF8175971A64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D7CFD25-158A-4E15-A07C-AB78234BC5F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D7CFD25-158A-4E15-A07C-AB78234BC5F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D7CFD25-158A-4E15-A07C-AB78234BC5F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D7CFD25-158A-4E15-A07C-AB78234BC5F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07FDA748-881A-4E9B-9FF9-40BC0DE8A102}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07FDA748-881A-4E9B-9FF9-40BC0DE8A102}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07FDA748-881A-4E9B-9FF9-40BC0DE8A102}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07FDA748-881A-4E9B-9FF9-40BC0DE8A102}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBA4CBAB-6E93-4ECC-A0F0-F119D2B5AE2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBA4CBAB-6E93-4ECC-A0F0-F119D2B5AE2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBA4CBAB-6E93-4ECC-A0F0-F119D2B5AE2F}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBA4CBAB-6E93-4ECC-A0F0-F119D2B5AE2F}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{007C3377-78E3-4422-9497-DC2CAA8AA69E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{007C3377-78E3-4422-9497-DC2CAA8AA69E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{007C3377-78E3-4422-9497-DC2CAA8AA69E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{007C3377-78E3-4422-9497-DC2CAA8AA69E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{007C3377-78E3-4422-9497-DC2CAA8AA69E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{007C3377-78E3-4422-9497-DC2CAA8AA69E}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

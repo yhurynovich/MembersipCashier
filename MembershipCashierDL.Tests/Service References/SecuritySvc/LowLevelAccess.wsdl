@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="LowLevelAccess" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:9811/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:9811/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:9811/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SecurityUnified.Contracts" />
+      <xsd:import schemaLocation="http://localhost:9811/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Serialize.Linq.Nodes" />
+      <xsd:import schemaLocation="http://localhost:9811/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System.Linq.Expressions" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="LowLevelForSecurityDL_GetUserRoles_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserRoles" />
+  </wsdl:message>
+  <wsdl:message name="LowLevelForSecurityDL_GetUserRoles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserRolesResponse" />
+  </wsdl:message>
+  <wsdl:message name="LowLevelForSecurityDL_AddRoleToUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddRoleToUser" />
+  </wsdl:message>
+  <wsdl:message name="LowLevelForSecurityDL_AddRoleToUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddRoleToUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="LowLevelForSecurityDL_GetUsersInRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersInRole" />
+  </wsdl:message>
+  <wsdl:message name="LowLevelForSecurityDL_GetUsersInRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersInRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="LowLevelForSecurityDL_GetRolesForUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRolesForUser" />
+  </wsdl:message>
+  <wsdl:message name="LowLevelForSecurityDL_GetRolesForUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRolesForUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="LowLevelForSecurityDL_FindUserProfile_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindUserProfile" />
+  </wsdl:message>
+  <wsdl:message name="LowLevelForSecurityDL_FindUserProfile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindUserProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="LowLevelForSecurityDL_FindExtendedUserProfile_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindExtendedUserProfile" />
+  </wsdl:message>
+  <wsdl:message name="LowLevelForSecurityDL_FindExtendedUserProfile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindExtendedUserProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="LowLevelForSecurityDL_FindRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindRole" />
+  </wsdl:message>
+  <wsdl:message name="LowLevelForSecurityDL_FindRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="LowLevelForSecurityDL_UpdateUserProfile_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserProfile" />
+  </wsdl:message>
+  <wsdl:message name="LowLevelForSecurityDL_UpdateUserProfile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="LowLevelForSecurityDL_InsertUserProfile_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertUserProfile" />
+  </wsdl:message>
+  <wsdl:message name="LowLevelForSecurityDL_InsertUserProfile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertUserProfileResponse" />
+  </wsdl:message>
+  <wsdl:portType name="LowLevelForSecurityDL">
+    <wsdl:operation name="GetUserRoles">
+      <wsdl:input wsam:Action="http://tempuri.org/ILowLevelAccess/GetUserRoles" message="tns:LowLevelForSecurityDL_GetUserRoles_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/ILowLevelAccess/GetUserRolesResponse" message="tns:LowLevelForSecurityDL_GetUserRoles_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddRoleToUser">
+      <wsdl:input wsam:Action="http://tempuri.org/ILowLevelAccess/AddRoleToUser" message="tns:LowLevelForSecurityDL_AddRoleToUser_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/ILowLevelAccess/AddRoleToUserResponse" message="tns:LowLevelForSecurityDL_AddRoleToUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersInRole">
+      <wsdl:input wsam:Action="http://tempuri.org/ILowLevelAccess/GetUsersInRole" message="tns:LowLevelForSecurityDL_GetUsersInRole_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/ILowLevelAccess/GetUsersInRoleResponse" message="tns:LowLevelForSecurityDL_GetUsersInRole_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRolesForUser">
+      <wsdl:input wsam:Action="http://tempuri.org/ILowLevelAccess/GetRolesForUser" message="tns:LowLevelForSecurityDL_GetRolesForUser_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/ILowLevelAccess/GetRolesForUserResponse" message="tns:LowLevelForSecurityDL_GetRolesForUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindUserProfile">
+      <wsdl:input wsam:Action="http://tempuri.org/ILowLevelAccess/FindUserProfile" message="tns:LowLevelForSecurityDL_FindUserProfile_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/ILowLevelAccess/FindUserProfileResponse" message="tns:LowLevelForSecurityDL_FindUserProfile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindExtendedUserProfile">
+      <wsdl:input wsam:Action="http://tempuri.org/ILowLevelAccess/FindExtendedUserProfile" message="tns:LowLevelForSecurityDL_FindExtendedUserProfile_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/ILowLevelAccess/FindExtendedUserProfileResponse" message="tns:LowLevelForSecurityDL_FindExtendedUserProfile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindRole">
+      <wsdl:input wsam:Action="http://tempuri.org/ILowLevelAccess/FindRole" message="tns:LowLevelForSecurityDL_FindRole_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/ILowLevelAccess/FindRoleResponse" message="tns:LowLevelForSecurityDL_FindRole_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserProfile">
+      <wsdl:input wsam:Action="http://tempuri.org/ILowLevelAccess/UpdateUserProfile" message="tns:LowLevelForSecurityDL_UpdateUserProfile_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/ILowLevelAccess/UpdateUserProfileResponse" message="tns:LowLevelForSecurityDL_UpdateUserProfile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertUserProfile">
+      <wsdl:input wsam:Action="http://tempuri.org/ILowLevelAccess/InsertUserProfile" message="tns:LowLevelForSecurityDL_InsertUserProfile_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/ILowLevelAccess/InsertUserProfileResponse" message="tns:LowLevelForSecurityDL_InsertUserProfile_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LowLevelForSecurityDL" type="tns:LowLevelForSecurityDL">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetUserRoles">
+      <soap:operation soapAction="http://tempuri.org/ILowLevelAccess/GetUserRoles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddRoleToUser">
+      <soap:operation soapAction="http://tempuri.org/ILowLevelAccess/AddRoleToUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersInRole">
+      <soap:operation soapAction="http://tempuri.org/ILowLevelAccess/GetUsersInRole" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRolesForUser">
+      <soap:operation soapAction="http://tempuri.org/ILowLevelAccess/GetRolesForUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindUserProfile">
+      <soap:operation soapAction="http://tempuri.org/ILowLevelAccess/FindUserProfile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindExtendedUserProfile">
+      <soap:operation soapAction="http://tempuri.org/ILowLevelAccess/FindExtendedUserProfile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindRole">
+      <soap:operation soapAction="http://tempuri.org/ILowLevelAccess/FindRole" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserProfile">
+      <soap:operation soapAction="http://tempuri.org/ILowLevelAccess/UpdateUserProfile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertUserProfile">
+      <soap:operation soapAction="http://tempuri.org/ILowLevelAccess/InsertUserProfile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LowLevelAccess">
+    <wsdl:port name="LowLevelForSecurityDL" binding="tns:LowLevelForSecurityDL">
+      <soap:address location="http://localhost:9811/SecurityLowLevelAccess" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

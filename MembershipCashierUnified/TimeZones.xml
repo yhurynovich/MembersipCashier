@@ -1,0 +1,531 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<timezones>
+  <timezone name="A001">
+    <value>Afghanistan Standard Time</value>
+    <comment>(UTC+04:30)</comment>
+  </timezone>
+  <timezone name="A002">
+    <value>Alaskan Standard Time</value>
+    <comment>(UTC-09:00)</comment>
+  </timezone>
+  <timezone name="A003">
+    <value>Aleutian Standard Time</value>
+    <comment>(UTC-10:00)</comment>
+  </timezone>
+  <timezone name="A004">
+    <value>Altai Standard Time</value>
+    <comment>(UTC+07:00)</comment>
+  </timezone>
+  <timezone name="A005">
+    <value>Arab Standard Time</value>
+    <comment>(UTC+03:00)</comment>
+  </timezone>
+  <timezone name="A006">
+    <value>Arabian Standard Time</value>
+    <comment>(UTC+04:00)</comment>
+  </timezone>
+  <timezone name="A007">
+    <value>Arabic Standard Time</value>
+    <comment>(UTC+03:00)</comment>
+  </timezone>
+  <timezone name="A008">
+    <value>Argentina Standard Time</value>
+    <comment>(UTC-03:00)</comment>
+  </timezone>
+  <timezone name="A009">
+    <value>Astrakhan Standard Time</value>
+    <comment>(UTC+04:00)</comment>
+  </timezone>
+  <timezone name="A010">
+    <value>Atlantic Standard Time</value>
+    <comment>(UTC-04:00)</comment>
+  </timezone>
+  <timezone name="A011">
+    <value>AUS Central Standard Time</value>
+    <comment>(UTC+09:30)</comment>
+  </timezone>
+  <timezone name="A012">
+    <value>Aus Central W. Standard Time</value>
+    <comment>(UTC+08:45)</comment>
+  </timezone>
+  <timezone name="A013">
+    <value>AUS Eastern Standard Time</value>
+    <comment>(UTC+10:00)</comment>
+  </timezone>
+  <timezone name="A014">
+    <value>Azerbaijan Standard Time</value>
+    <comment>(UTC+04:00)</comment>
+  </timezone>
+  <timezone name="A015">
+    <value>Azores Standard Time</value>
+    <comment>(UTC-01:00)</comment>
+  </timezone>
+  <timezone name="A016">
+    <value>Bahia Standard Time</value>
+    <comment>(UTC-03:00)</comment>
+  </timezone>
+  <timezone name="A017">
+    <value>Bangladesh Standard Time</value>
+    <comment>(UTC+06:00)</comment>
+  </timezone>
+  <timezone name="A018">
+    <value>Belarus Standard Time</value>
+    <comment>(UTC+03:00)</comment>
+  </timezone>
+  <timezone name="A019">
+    <value>Bougainville Standard Time</value>
+    <comment>(UTC+11:00)</comment>
+  </timezone>
+  <timezone name="A020">
+    <value>Canada Central Standard Time</value>
+    <comment>(UTC-06:00)</comment>
+  </timezone>
+  <timezone name="A021">
+    <value>Cape Verde Standard Time</value>
+    <comment>(UTC-01:00)</comment>
+  </timezone>
+  <timezone name="A022">
+    <value>Caucasus Standard Time</value>
+    <comment>(UTC+04:00)</comment>
+  </timezone>
+  <timezone name="A023">
+    <value>Cen. Australia Standard Time</value>
+    <comment>(UTC+09:30)</comment>
+  </timezone>
+  <timezone name="A024">
+    <value>Central America Standard Time</value>
+    <comment>(UTC-06:00)</comment>
+  </timezone>
+  <timezone name="A025">
+    <value>Central Asia Standard Time</value>
+    <comment>(UTC+06:00)</comment>
+  </timezone>
+  <timezone name="A026">
+    <value>Central Brazilian Standard Time</value>
+    <comment>(UTC-04:00)</comment>
+  </timezone>
+  <timezone name="A027">
+    <value>Central Europe Standard Time</value>
+    <comment>(UTC+01:00)</comment>
+  </timezone>
+  <timezone name="A028">
+    <value>Central European Standard Time</value>
+    <comment>(UTC+01:00)</comment>
+  </timezone>
+  <timezone name="A029">
+    <value>Central Pacific Standard Time</value>
+    <comment>(UTC+11:00)</comment>
+  </timezone>
+  <timezone name="A030">
+    <value>Central Standard Time</value>
+    <comment>(UTC-06:00)</comment>
+  </timezone>
+  <timezone name="A031">
+    <value>Central Standard Time (Mexico)</value>
+    <comment>(UTC-06:00)</comment>
+  </timezone>
+  <timezone name="A032">
+    <value>Chatham Islands Standard Time</value>
+    <comment>(UTC+12:45)</comment>
+  </timezone>
+  <timezone name="A033">
+    <value>China Standard Time</value>
+    <comment>(UTC+08:00)</comment>
+  </timezone>
+  <timezone name="A034">
+    <value>Cuba Standard Time</value>
+    <comment>(UTC-05:00)</comment>
+  </timezone>
+  <timezone name="A035">
+    <value>Dateline Standard Time</value>
+    <comment>(UTC-12:00)</comment>
+  </timezone>
+  <timezone name="A036">
+    <value>E. Africa Standard Time</value>
+    <comment>(UTC+03:00)</comment>
+  </timezone>
+  <timezone name="A037">
+    <value>E. Australia Standard Time</value>
+    <comment>(UTC+10:00)</comment>
+  </timezone>
+  <timezone name="A038">
+    <value>E. Europe Standard Time</value>
+    <comment>(UTC+02:00)</comment>
+  </timezone>
+  <timezone name="A039">
+    <value>E. South America Standard Time</value>
+    <comment>(UTC-03:00)</comment>
+  </timezone>
+  <timezone name="A040">
+    <value>Easter Island Standard Time</value>
+    <comment>(UTC-06:00)</comment>
+  </timezone>
+  <timezone name="A041">
+    <value>Eastern Standard Time</value>
+    <comment>(UTC-05:00)</comment>
+  </timezone>
+  <timezone name="A042">
+    <value>Eastern Standard Time (Mexico)</value>
+    <comment>(UTC-05:00)</comment>
+  </timezone>
+  <timezone name="A043">
+    <value>Egypt Standard Time</value>
+    <comment>(UTC+02:00)</comment>
+  </timezone>
+  <timezone name="A044">
+    <value>Ekaterinburg Standard Time</value>
+    <comment>(UTC+05:00)</comment>
+  </timezone>
+  <timezone name="A045">
+    <value>Fiji Standard Time</value>
+    <comment>(UTC+12:00)</comment>
+  </timezone>
+  <timezone name="A046">
+    <value>FLE Standard Time</value>
+    <comment>(UTC+02:00)</comment>
+  </timezone>
+  <timezone name="A047">
+    <value>Georgian Standard Time</value>
+    <comment>(UTC+04:00)</comment>
+  </timezone>
+  <timezone name="A048">
+    <value>GMT Standard Time</value>
+    <comment>(UTC+00:00)</comment>
+  </timezone>
+  <timezone name="A049">
+    <value>Greenland Standard Time</value>
+    <comment>(UTC-03:00)</comment>
+  </timezone>
+  <timezone name="A050">
+    <value>Greenwich Standard Time</value>
+    <comment>(UTC+00:00)</comment>
+  </timezone>
+  <timezone name="A051">
+    <value>GTB Standard Time</value>
+    <comment>(UTC+02:00)</comment>
+  </timezone>
+  <timezone name="A052">
+    <value>Haiti Standard Time</value>
+    <comment>(UTC-05:00)</comment>
+  </timezone>
+  <timezone name="A053">
+    <value>Hawaiian Standard Time</value>
+    <comment>(UTC-10:00)</comment>
+  </timezone>
+  <timezone name="A054">
+    <value>India Standard Time</value>
+    <comment>(UTC+05:30)</comment>
+  </timezone>
+  <timezone name="A055">
+    <value>Iran Standard Time</value>
+    <comment>(UTC+03:30)</comment>
+  </timezone>
+  <timezone name="A056">
+    <value>Israel Standard Time</value>
+    <comment>(UTC+02:00)</comment>
+  </timezone>
+  <timezone name="A057">
+    <value>Jordan Standard Time</value>
+    <comment>(UTC+02:00)</comment>
+  </timezone>
+  <timezone name="A058">
+    <value>Kaliningrad Standard Time</value>
+    <comment>(UTC+02:00)</comment>
+  </timezone>
+  <timezone name="A059">
+    <value>Kamchatka Standard Time</value>
+    <comment>(UTC+12:00)</comment>
+  </timezone>
+  <timezone name="A060">
+    <value>Korea Standard Time</value>
+    <comment>(UTC+09:00)</comment>
+  </timezone>
+  <timezone name="A061">
+    <value>Libya Standard Time</value>
+    <comment>(UTC+02:00)</comment>
+  </timezone>
+  <timezone name="A062">
+    <value>Line Islands Standard Time</value>
+    <comment>(UTC+14:00)</comment>
+  </timezone>
+  <timezone name="A063">
+    <value>Lord Howe Standard Time</value>
+    <comment>(UTC+10:30)</comment>
+  </timezone>
+  <timezone name="A064">
+    <value>Magadan Standard Time</value>
+    <comment>(UTC+11:00)</comment>
+  </timezone>
+  <timezone name="A065">
+    <value>Marquesas Standard Time</value>
+    <comment>(UTC-09:30)</comment>
+  </timezone>
+  <timezone name="A066">
+    <value>Mauritius Standard Time</value>
+    <comment>(UTC+04:00)</comment>
+  </timezone>
+  <timezone name="A067">
+    <value>Mid-Atlantic Standard Time</value>
+    <comment>(UTC-02:00)</comment>
+  </timezone>
+  <timezone name="A068">
+    <value>Middle East Standard Time</value>
+    <comment>(UTC+02:00)</comment>
+  </timezone>
+  <timezone name="A069">
+    <value>Montevideo Standard Time</value>
+    <comment>(UTC-03:00)</comment>
+  </timezone>
+  <timezone name="A070">
+    <value>Morocco Standard Time</value>
+    <comment>(UTC+00:00)</comment>
+  </timezone>
+  <timezone name="A071">
+    <value>Mountain Standard Time</value>
+    <comment>(UTC-07:00)</comment>
+  </timezone>
+  <timezone name="A072">
+    <value>Mountain Standard Time (Mexico)</value>
+    <comment>(UTC-07:00)</comment>
+  </timezone>
+  <timezone name="A073">
+    <value>Myanmar Standard Time</value>
+    <comment>(UTC+06:30)</comment>
+  </timezone>
+  <timezone name="A074">
+    <value>N. Central Asia Standard Time</value>
+    <comment>(UTC+07:00)</comment>
+  </timezone>
+  <timezone name="A075">
+    <value>Namibia Standard Time</value>
+    <comment>(UTC+01:00)</comment>
+  </timezone>
+  <timezone name="A076">
+    <value>Nepal Standard Time</value>
+    <comment>(UTC+05:45)</comment>
+  </timezone>
+  <timezone name="A077">
+    <value>New Zealand Standard Time</value>
+    <comment>(UTC+12:00)</comment>
+  </timezone>
+  <timezone name="A078">
+    <value>Newfoundland Standard Time</value>
+    <comment>(UTC-03:30)</comment>
+  </timezone>
+  <timezone name="A079">
+    <value>Norfolk Standard Time</value>
+    <comment>(UTC+11:00)</comment>
+  </timezone>
+  <timezone name="A080">
+    <value>North Asia East Standard Time</value>
+    <comment>(UTC+08:00)</comment>
+  </timezone>
+  <timezone name="A081">
+    <value>North Asia Standard Time</value>
+    <comment>(UTC+07:00)</comment>
+  </timezone>
+  <timezone name="A082">
+    <value>North Korea Standard Time</value>
+    <comment>(UTC+08:30)</comment>
+  </timezone>
+  <timezone name="A083">
+    <value>Omsk Standard Time</value>
+    <comment>(UTC+06:00)</comment>
+  </timezone>
+  <timezone name="A084">
+    <value>Pacific SA Standard Time</value>
+    <comment>(UTC-04:00)</comment>
+  </timezone>
+  <timezone name="A085">
+    <value>Pacific Standard Time</value>
+    <comment>(UTC-08:00)</comment>
+  </timezone>
+  <timezone name="A086">
+    <value>Pacific Standard Time (Mexico)</value>
+    <comment>(UTC-08:00)</comment>
+  </timezone>
+  <timezone name="A087">
+    <value>Pakistan Standard Time</value>
+    <comment>(UTC+05:00)</comment>
+  </timezone>
+  <timezone name="A088">
+    <value>Paraguay Standard Time</value>
+    <comment>(UTC-04:00)</comment>
+  </timezone>
+  <timezone name="A089">
+    <value>Romance Standard Time</value>
+    <comment>(UTC+01:00)</comment>
+  </timezone>
+  <timezone name="A090">
+    <value>Russia Time Zone 10</value>
+    <comment>(UTC+11:00)</comment>
+  </timezone>
+  <timezone name="A091">
+    <value>Russia Time Zone 11</value>
+    <comment>(UTC+12:00)</comment>
+  </timezone>
+  <timezone name="A092">
+    <value>Russia Time Zone 3</value>
+    <comment>(UTC+04:00)</comment>
+  </timezone>
+  <timezone name="A093">
+    <value>Russian Standard Time</value>
+    <comment>(UTC+03:00)</comment>
+  </timezone>
+  <timezone name="A094">
+    <value>SA Eastern Standard Time</value>
+    <comment>(UTC-03:00)</comment>
+  </timezone>
+  <timezone name="A095">
+    <value>SA Pacific Standard Time</value>
+    <comment>(UTC-05:00)</comment>
+  </timezone>
+  <timezone name="A096">
+    <value>SA Western Standard Time</value>
+    <comment>(UTC-04:00)</comment>
+  </timezone>
+  <timezone name="A097">
+    <value>Saint Pierre Standard Time</value>
+    <comment>(UTC-03:00)</comment>
+  </timezone>
+  <timezone name="A098">
+    <value>Sakhalin Standard Time</value>
+    <comment>(UTC+11:00)</comment>
+  </timezone>
+  <timezone name="A099">
+    <value>Samoa Standard Time</value>
+    <comment>(UTC+13:00)</comment>
+  </timezone>
+  <timezone name="A100">
+    <value>SE Asia Standard Time</value>
+    <comment>(UTC+07:00)</comment>
+  </timezone>
+  <timezone name="A101">
+    <value>Singapore Standard Time</value>
+    <comment>(UTC+08:00)</comment>
+  </timezone>
+  <timezone name="A102">
+    <value>South Africa Standard Time</value>
+    <comment>(UTC+02:00)</comment>
+  </timezone>
+  <timezone name="A103">
+    <value>Sri Lanka Standard Time</value>
+    <comment>(UTC+05:30)</comment>
+  </timezone>
+  <timezone name="A104">
+    <value>Syria Standard Time</value>
+    <comment>(UTC+02:00)</comment>
+  </timezone>
+  <timezone name="A105">
+    <value>Taipei Standard Time</value>
+    <comment>(UTC+08:00)</comment>
+  </timezone>
+  <timezone name="A106">
+    <value>Tasmania Standard Time</value>
+    <comment>(UTC+10:00)</comment>
+  </timezone>
+  <timezone name="A107">
+    <value>Tocantins Standard Time</value>
+    <comment>(UTC-03:00)</comment>
+  </timezone>
+  <timezone name="A108">
+    <value>Tokyo Standard Time</value>
+    <comment>(UTC+09:00)</comment>
+  </timezone>
+  <timezone name="A109">
+    <value>Tomsk Standard Time</value>
+    <comment>(UTC+07:00)</comment>
+  </timezone>
+  <timezone name="A110">
+    <value>Tonga Standard Time</value>
+    <comment>(UTC+13:00)</comment>
+  </timezone>
+  <timezone name="A111">
+    <value>Transbaikal Standard Time</value>
+    <comment>(UTC+09:00)</comment>
+  </timezone>
+  <timezone name="A112">
+    <value>Turkey Standard Time</value>
+    <comment>(UTC+03:00)</comment>
+  </timezone>
+  <timezone name="A113">
+    <value>Turks And Caicos Standard Time</value>
+    <comment>(UTC-04:00)</comment>
+  </timezone>
+  <timezone name="A114">
+    <value>Ulaanbaatar Standard Time</value>
+    <comment>(UTC+08:00)</comment>
+  </timezone>
+  <timezone name="A115">
+    <value>US Eastern Standard Time</value>
+    <comment>(UTC-05:00)</comment>
+  </timezone>
+  <timezone name="A116">
+    <value>US Mountain Standard Time</value>
+    <comment>(UTC-07:00)</comment>
+  </timezone>
+  <timezone name="A117">
+    <value>UTC</value>
+    <comment>(UTC)</comment>
+  </timezone>
+  <timezone name="A118">
+    <value>UTC+12</value>
+    <comment>(UTC+12:00)</comment>
+  </timezone>
+  <timezone name="A119">
+    <value>UTC-02</value>
+    <comment>(UTC-02:00)</comment>
+  </timezone>
+  <timezone name="A120">
+    <value>UTC-08</value>
+    <comment>(UTC-08:00)</comment>
+  </timezone>
+  <timezone name="A121">
+    <value>UTC-09</value>
+    <comment>(UTC-09:00)</comment>
+  </timezone>
+  <timezone name="A122">
+    <value>UTC-11</value>
+    <comment>(UTC-11:00)</comment>
+  </timezone>
+  <timezone name="A123">
+    <value>Venezuela Standard Time</value>
+    <comment>(UTC-04:00)</comment>
+  </timezone>
+  <timezone name="A124">
+    <value>Vladivostok Standard Time</value>
+    <comment>(UTC+10:00)</comment>
+  </timezone>
+  <timezone name="A125">
+    <value>W. Australia Standard Time</value>
+    <comment>(UTC+08:00)</comment>
+  </timezone>
+  <timezone name="A126">
+    <value>W. Central Africa Standard Time</value>
+    <comment>(UTC+01:00)</comment>
+  </timezone>
+  <timezone name="A127">
+    <value>W. Europe Standard Time</value>
+    <comment>(UTC+01:00)</comment>
+  </timezone>
+  <timezone name="A128">
+    <value>W. Mongolia Standard Time</value>
+    <comment>(UTC+07:00)</comment>
+  </timezone>
+  <timezone name="A129">
+    <value>West Asia Standard Time</value>
+    <comment>(UTC+05:00)</comment>
+  </timezone>
+  <timezone name="A130">
+    <value>West Bank Standard Time</value>
+    <comment>(UTC+02:00)</comment>
+  </timezone>
+  <timezone name="A131">
+    <value>West Pacific Standard Time</value>
+    <comment>(UTC+10:00)</comment>
+  </timezone>
+  <timezone name="A132">
+    <value>Yakutsk Standard Time</value>
+    <comment>(UTC+09:00)</comment>
+  </timezone>
+</timezones>

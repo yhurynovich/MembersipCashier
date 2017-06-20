@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "Test";
+}
+
+<h2>Membership Test</h2>
+
+<div>
+    <h2>Members</h2>
+    <ul id="products" />
+</div>
+<div>
+    <h2>Search by UserName</h2>
+    <input type="text" id="userName" size="5" />
+    <input type="button" value="Search" onclick="find();" />
+    <p id="product" />
+</div>
+
+<script>
+    var uri = '/api/membership/GetUserProfile';
+
+$(document).ready(function () {
+    restoreBlob()
+
+    // Send an AJAX request
+    $.getJSON(uri).done(function (data) {
+        document.blob.profiles = data;
+            $.event.trigger({
+                type: "blobChanged",
+                blob: document.blob
+            });
+        });
+});
+
+$(document).on("blobChanged", function (e) {
+    $.each(e.blob.profiles, function (key, item) {
+        $('<li>', { text: formatItem(item) }).appendTo($('#products'));
+    });
+});
+
+function formatItem(item) {
+    return item.UserId + ': $' + item.UserName;
+}
+
+function find() {
+    $('#products').html('');
+    var id = $('#userName').val();
+    $.getJSON(uri + '/' + id)
+        .done(function (data) {
+            document.blob.profiles = data;
+            $.event.trigger({
+                type: "blobChanged",
+                blob: document.blob
+            });
+        })
+        .fail(function (jqXHR, textStatus, err) {
+            $('#product').text('Error: ' + err);
+        });
+}
+</script>

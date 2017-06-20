@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<x>
+	<c file="admin.dashboard.component.js" type="component" folder="admin">
+		<allow>
+			<role>super_admin</role>
+			<scenario>admin</scenario>
+			<role>system</role>
+		</allow>
+		<dependency>
+			<c file="admin.dashboard.factory.js" type="factory" />
+		</dependency>
+	</c>
+	<c file="location.component.js" type="component" folder="marketing">
+		<allow>
+			<role>super_admin</role>
+			<role>marketing</role>
+			<role>owner</role>
+			<scenario>marketing</scenario>
+		</allow>
+		<dependency>
+			<c file="company.factory.js" type="factory" />
+			<c file="location.factory.js" type="factory" />
+			<c file="party.factory.js" type="factory" />
+		</dependency>
+	</c>
+	<c file="userprofiles.controller.js" type="component" folder="">
+		<allow>
+			<role>system</role>
+			<role>super_admin</role>
+			<role>admin</role>
+			<role>marketing</role>
+			<role>owner</role>
+			<role>system</role>
+			<role>teller</role>
+		</allow>
+		<dependency>
+		</dependency>
+	</c>
+	<c file="userprofile.controller.js" type="component" folder="">
+		<allow>
+			<role>system</role>
+			<role>super_admin</role>
+			<role>admin</role>
+			<role>marketing</role>
+			<role>owner</role>
+			<role>system</role>
+			<role>teller</role>
+		</allow>
+		<dependency>
+		</dependency>
+	</c>
+	<c file="usersnapshots.controller.js" type="component" folder="">
+		<allow>
+			<role>system</role>
+			<role>super_admin</role>
+			<role>admin</role>
+			<role>marketing</role>
+			<role>owner</role>
+			<role>system</role>
+			<role>teller</role>
+		</allow>
+		<dependency>
+		</dependency>
+	</c>
+	<c file="ClientService.js" type="service" folder="">
+		<allow>
+			<role>system</role>
+			<role>super_admin</role>
+			<role>admin</role>
+			<role>marketing</role>
+			<role>owner</role>
+			<role>system</role>
+			<role>teller</role>
+			<scenario>dashboard</scenario>
+		</allow>
+	</c>
+	<c file="proximityWatch.js" type="directive" folder="">
+		<allow>
+			<role>system</role>
+			<role>super_admin</role>
+			<role>admin</role>
+			<role>marketing</role>
+			<role>owner</role>
+			<role>system</role>
+			<role>teller</role>
+			<scenario>dashboard</scenario>
+		</allow>
+	</c>
+	<c file="JsonService.js" type="service" folder="">
+		<allow>
+			<role>system</role>
+			<role>super_admin</role>
+			<role>admin</role>
+			<role>marketing</role>
+			<role>owner</role>
+			<role>system</role>
+			<role>teller</role>
+			<scenario>dashboard</scenario>
+		</allow>
+	</c>
+	<c file="ClientsCtrl.js" type="controller" folder="">
+		<allow>
+			<role>system</role>
+			<role>super_admin</role>
+			<role>admin</role>
+			<role>marketing</role>
+			<role>owner</role>
+			<role>system</role>
+			<role>teller</role>
+			<scenario>dashboard</scenario>
+		</allow>
+	</c>
+</x>

@@ -1,0 +1,8 @@
+﻿<fieldset class="userProfilePart" onchange="$(this).find('input[type=button]').parent().show()">
+    <input type="hidden" name="UserId" ng-model="$ctrl.profile.UserId">
+    <input type="hidden" name="UserName" ng-model="$ctrl.profile.UserName">
+    <input type="hidden" name="UserStatusId" ng-model="$ctrl.profile.UserStatusId">
+    <div><label ng-translate="First Name" /> <input name="FirstName" ng-model="$ctrl.profile.FirstName"></div>
+    <div><label ng-translate="Last Name" /> <input name="LastName" ng-model="$ctrl.profile.LastName"></div>
+    <div style='display:none; text-align:right;'><input type='button' value='Update' ng-click="$ctrl.update()" /></div>
+</fieldset>

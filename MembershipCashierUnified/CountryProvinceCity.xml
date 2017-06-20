@@ -1,0 +1,327 @@
+﻿<world>
+  <country code="UK" alt_code="GB" en="United Kingdom" ship_enabled="true" require_city="true" require_postal_code="true">
+    <province code="NE" en="North East" />
+    <province code="NW" en="North West" />
+    <province code="YH" en="Yorkshire and the Humber" />
+    <province code="EM" en="East Midlands" />
+    <province code="WM" en="West Midlands" />
+    <province code="EE" en="East of England" />
+    <province code="LD" en="London" />
+    <province code="SE" en="South East" />
+    <province code="SW" en="South West" />
+  </country>
+  <country code="CA" en="Canada" require_postal_code="true" require_city="false" require_b13="false">
+    <province code="AB" en="Alberta" />
+    <province code="BC" en="British Columbia" fr="Colombie-Britannique" />
+    <province code="MB" en="Manitoba" fr="Manitoba" />
+    <province code="NB" en="New Brunswick" fr="Nouveau-Brunswick" />
+    <province code="NL" en="Newfoundland &amp; Labrador" fr="Terre-Neuve-et-Labrador" />
+    <province code="NS" en="Nova Scotia" fr="Nouvelle-Écosse" />
+    <province code="NT" en="Northwest Territories" fr="Territoires du Nord-Ouest" />
+    <province code="NU" en="Nunavut" />
+    <province code="ON" en="Ontario" />
+    <province code="PE" en="Prince Edward Isl." fr="Île-du-Prince-Édouard" />
+    <province code="PQ" en="Québec" />
+    <province code="SK" en="Saskatchewan" />
+    <province code="YT" en="Yukon" />
+  </country>
+  <country code="US" en="United States Of America" fr="États-Unis d'Amérique" require_postal_code="true" require_city="false" require_b13="false">
+    <province code="AL" en="Alabama" />
+    <province code="AK" en="Alaska" />
+    <province code="AZ" en="Arizona" />
+    <province code="AR" en="Arkansas" />
+    <province code="CA" en="California" />
+    <province code="CO" en="Colorado" />
+    <province code="CT" en="Connecticut" />
+    <province code="DE" en="Delaware" />
+    <province code="FL" en="Florida" />
+    <province code="GA" en="Georgia" />
+    <province code="HI" en="Hawaii" />
+    <province code="ID" en="Idaho" />
+    <province code="IL" en="Illinois" />
+    <province code="IN" en="Indiana" />
+    <province code="IA" en="Iowa" />
+    <province code="KS" en="Kansas" />
+    <province code="KY" en="Kentucky" />
+    <province code="LA" en="Louisiana" />
+    <province code="ME" en="Maine" />
+    <province code="MD" en="Maryland" />
+    <province code="MA" en="Massachusetts" />
+    <province code="MI" en="Michigan" />
+    <province code="MN" en="Minnesota" />
+    <province code="MS" en="Mississippi" />
+    <province code="MO" en="Missouri" />
+    <province code="MT" en="Montana" />
+    <province code="NE" en="Nebraska" />
+    <province code="NV" en="Nevada" />
+    <province code="NH" en="New Hampshire" />
+    <province code="NJ" en="New Jersey" />
+    <province code="NM" en="New Mexico" />
+    <province code="NY" en="New York" />
+    <province code="NC" en="North Carolina" />
+    <province code="ND" en="North Dakota" />
+    <province code="OH" en="Ohio" />
+    <province code="OK" en="Oklahoma" />
+    <province code="OR" en="Oregon" />
+    <province code="PA" en="Pennsylvania" />
+    <province code="RI" en="Rhode Island" />
+    <province code="SC" en="South Carolina" />
+    <province code="SD" en="South Dakota" />
+    <province code="TN" en="Tennessee" />
+    <province code="TX" en="Texas" />
+    <province code="UT" en="Utah" />
+    <province code="VT" en="Vermont" />
+    <province code="VA" en="Virginia" />
+    <province code="WA" en="Washington" />
+    <province code="WV" en="West Virginia" />
+    <province code="WI" en="Wisconsin" />
+    <province code="WY" en="Wyoming" />
+    <province code="DC" en="District of Columbia" />
+    <province code="AS" en="American Samoa" />
+    <province code="GU" en="Guam" />
+    <province code="MP" en="Northern Mariana Islands" />
+    <province code="PR" en="Puerto Rico" />
+    <province code="UM" en="United States Minor Outlying Islands" />
+    <province code="VI" en="Virgin Islands, U.S." />
+  </country>
+  <country code="MX" en="Mexico" fr="Mexique" require_city="true" require_postal_code="true">
+    <province code="AG" en="Aguascalientes" />
+    <province code="BN" en="Baja California" />
+    <province code="BS" en="Baja California Sur" />
+    <province code="CM" en="Campeche" />
+    <province code="CP" en="Chiapas" />
+    <province code="CH" en="Chihuahua" />
+    <province code="CA" en="Coahuila" />
+    <province code="CL" en="Colima" />
+    <province code="DF" en="Federal District" />
+    <province code="DU" en="Durango" />
+    <province code="GT" en="Guanajuato" />
+    <province code="GR" en="Guerrero" />
+    <province code="HI" en="Hidalgo" />
+    <province code="JA" en="Jalisco" />
+    <province code="MX" en="México" />
+    <province code="MC" en="Michoacán" />
+    <province code="MR" en="Morelos" />
+    <province code="NA" en="Nayarit" />
+    <province code="OA" en="Oaxaca" />
+    <province code="PU" en="Puebla" />
+    <province code="QE" en="Querétaro" />
+    <province code="QR" en="Quintana Roo" />
+    <province code="SL" en="San Luis Potosí" />
+    <province code="SI" en="Sinaloa" />
+    <province code="SO" en="Sonora" />
+    <province code="TB" en="Tabasco" />
+    <province code="TM" en="Tamaulipas" />
+    <province code="TL" en="Tlaxcala" />
+    <province code="VE" en="Veracruz" />
+    <province code="YU" en="Yucatán" />
+    <province code="ZA" en="Zacatecas" />
+  </country>
+  <country code="AF" en="Afghanistan" fr="Afghanistan" require_city="true" require_postal_code="false"></country>
+  <country code="AL" en="Albania" fr="Albanie" require_city="true" require_postal_code="false"></country>
+  <country code="DZ" en="Algeria" fr="Algérie" require_city="true" require_postal_code="false"></country>
+  <country code="AS" en="American Samoa" fr="Samoa américaines" require_city="true" require_postal_code="false"></country>
+  <country code="AD" en="Andorra" fr="Andorre" require_city="true" require_postal_code="false"></country>
+  <country code="AO" en="Angola" fr="Angola" require_city="true" require_postal_code="false"></country>
+  <country code="AI" en="Anguilla" fr="Anguilla" require_city="true" require_postal_code="false"></country>
+  <country code="AG" en="Antigua and Barbuda" fr="Antigua-et-Barbuda" require_city="true" require_postal_code="false"></country>
+  <country code="AR" en="Argentina" fr="Argentine" require_city="true" require_postal_code="false"></country>
+  <country code="AM" en="Armenia" fr="Arménie" require_city="true" require_postal_code="false"></country>
+  <country code="AW" en="Aruba" fr="Aruba" require_city="true" require_postal_code="false"></country>
+  <country code="AU" en="Australia" fr="Australie" require_city="true" require_postal_code="true"></country>
+  <country code="AT" en="Austria" fr="Autriche" require_city="true" require_postal_code="true"></country>
+  <country code="AZ" en="Azerbaijan" fr="Azerbaïdjan" require_city="true" require_postal_code="false"></country>
+  <country code="BS" en="Bahamas" fr="Bahamas" require_city="true" require_postal_code="false"></country>
+  <country code="BH" en="Bahrain" fr="Bahreïn" require_city="true" require_postal_code="false"></country>
+  <country code="BD" en="Bangladesh" fr="Bangladesh" require_city="true" require_postal_code="false"></country>
+  <country code="BB" en="Barbados" fr="Barbade" require_city="true" require_postal_code="false"></country>
+  <country code="BY" en="Belarus" fr="Bélarus" require_city="true" require_postal_code="false"></country>
+  <country code="BE" en="Belgium" fr="Belgique" require_city="true" require_postal_code="true"></country>
+  <country code="BZ" en="Belize" fr="Belize" require_city="true" require_postal_code="false"></country>
+  <country code="BJ" en="Benin" fr="Bénin" require_city="true" require_postal_code="false"></country>
+  <country code="BM" en="Bermuda" fr="Bermudes" require_city="true" require_postal_code="false"></country>
+  <country code="BT" en="Bhutan" fr="Bhoutan" require_city="true" require_postal_code="false"></country>
+  <country code="BO" en="Bolivia" fr="Bolivie" require_city="true" require_postal_code="false"></country>
+  <country code="BQ" en="Bonaire" fr="Bonaire" require_city="true" require_postal_code="false"></country>
+  <country code="BA" en="Bosnia-Herzegovina" fr="Bosnie-Herzégovine" require_city="true" require_postal_code="false"></country>
+  <country code="BW" en="Botswana" fr="Botswana" require_city="true" require_postal_code="false"></country>
+  <country code="BR" en="Brazil" fr="Brésil" require_city="true" require_postal_code="true"></country>
+  <country code="VG" en="British Virgin Islands" fr="Îles Vierges britanniques" require_city="true" require_postal_code="false"></country>
+  <country code="BN" en="Brunei" fr="Brunei" require_city="true" require_postal_code="false"></country>
+  <country code="BG" en="Bulgaria" fr="Bulgarie" require_city="true" require_postal_code="false"></country>
+  <country code="BF" en="Burkina Faso" fr="Burkina Faso" require_city="true" require_postal_code="false"></country>
+  <country code="BI" en="Burundi" fr="Burundi" require_city="true" require_postal_code="false"></country>
+  <country code="KH" en="Cambodia" fr="Cambodge" require_city="true" require_postal_code="false"></country>
+  <country code="CM" en="Cameroon" fr="Cameroun" require_city="true" require_postal_code="false"></country>
+  <country code="CV" en="Cape Verde" fr="Cap-Vert" require_city="true" require_postal_code="false"></country>
+  <country code="KY" en="Cayman Islands" fr="Îles Caïmans" require_city="true" require_postal_code="false"></country>
+  <country code="TD" en="Chad" fr="Tchad" require_city="true" require_postal_code="false"></country>
+  <country code="CL" en="Chile" fr="Chili" require_city="true" require_postal_code="false"></country>
+  <country code="CN" en="China" fr="Chine" require_city="true" require_postal_code="true"></country>
+  <country code="CO" en="Colombia" fr="Colombie" require_city="true" require_postal_code="true"></country>
+  <country code="CG" en="Congo" fr="Congo" require_city="true" require_postal_code="false"></country>
+  <country code="CD" en="Congo, Democratic Republic Of" fr="Congo, République démocratique du" require_city="true" require_postal_code="false"></country>
+  <country code="CK" en="Cook Islands" fr="Îles Cook" require_city="true" require_postal_code="false"></country>
+  <country code="CR" en="Costa Rica" fr="Costa Rica" require_city="true" require_postal_code="false"></country>
+  <country code="HR" en="Croatia" fr="Croatie" require_city="true" require_postal_code="false"></country>
+  <country code="CW" en="Curacao" fr="Curaçao" require_city="true" require_postal_code="false"></country>
+  <country code="CY" en="Cyprus" fr="Chypre" require_city="true" require_postal_code="false"></country>
+  <country code="CZ" en="Czech Republic" fr="République tchèque" require_city="true" require_postal_code="true"></country>
+  <country code="DK" en="Denmark" fr="Danemark" require_city="true" require_postal_code="true"></country>
+  <country code="DJ" en="Djibouti" fr="Djibouti" require_city="true" require_postal_code="false"></country>
+  <country code="DM" en="Dominica" fr="Dominique" require_city="true" require_postal_code="false"></country>
+  <country code="DO" en="Dominican Republic" fr="République dominicaine" require_city="true" require_postal_code="false"></country>
+  <country code="TL" en="East Timor" fr="Timor-Oriental" require_city="true" require_postal_code="false"></country>
+  <country code="EC" en="Ecuador" fr="Équateur" require_city="true" require_postal_code="false"></country>
+  <country code="EG" en="Egypt" fr="Égypte" require_city="true" require_postal_code="false"></country>
+  <country code="SV" en="El Salvador" fr="El Salvador" require_city="true" require_postal_code="false"></country>
+  <country code="GQ" en="Equatorial Guinea" fr="Guinée équatoriale" require_city="true" require_postal_code="false"></country>
+  <country code="ER" en="Eritrea" fr="Érythrée" require_city="true" require_postal_code="false"></country>
+  <country code="EE" en="Estonia" fr="Estonie" require_city="true" require_postal_code="false"></country>
+  <country code="ET" en="Ethiopia" fr="Éthiopie" require_city="true" require_postal_code="false"></country>
+  <country code="FO" en="Faeroe Islands" fr="Îles Féroé" require_city="true" require_postal_code="false"></country>
+  <country code="FJ" en="Fiji" fr="Fidji" require_city="true" require_postal_code="false"></country>
+  <country code="FI" en="Finland" fr="Finlande" require_city="true" require_postal_code="true"></country>
+  <country code="FR" en="France" fr="France" require_city="true" require_postal_code="true"></country>
+  <country code="GF" en="French Guiana" fr="Guyane française" require_city="true" require_postal_code="false"></country>
+  <country code="PF" en="French Polynesia" fr="Polynésie française" require_city="true" require_postal_code="false"></country>
+  <country code="GA" en="Gabon" fr="Gabon" require_city="true" require_postal_code="false"></country>
+  <country code="GM" en="Gambia" fr="Gambie" require_city="true" require_postal_code="false"></country>
+  <country code="GE" en="Georgia" fr="Géorgie" require_city="true" require_postal_code="false"></country>
+  <country code="DE" en="Germany" fr="Allemagne" require_city="true" require_postal_code="true"></country>
+  <country code="GH" en="Ghana" fr="Ghana" require_city="true" require_postal_code="false"></country>
+  <country code="GI" en="Gibraltar" fr="Gibraltar" require_city="true" require_postal_code="false"></country>
+  <country code="GB" en="Great Britain" fr="Grande-Bretagne" require_city="true" require_postal_code="true"></country>
+  <country code="GR" en="Greece" fr="Grèce" require_city="true" require_postal_code="true"></country>
+  <country code="GL" en="Greenland" fr="Groenland" require_city="true" require_postal_code="false"></country>
+  <country code="GD" en="Grenada" fr="Grenade" require_city="true" require_postal_code="false"></country>
+  <country code="GP" en="Guadeloupe" fr="Guadeloupe" require_city="true" require_postal_code="false"></country>
+  <country code="GU" en="Guam" fr="Guam" require_city="true" require_postal_code="false"></country>
+  <country code="GT" en="Guatemala" fr="Guatemala" require_city="true" require_postal_code="false"></country>
+  <country code="GN" en="Guinea" fr="Guinée" require_city="true" require_postal_code="false"></country>
+  <country code="GY" en="Guyana" fr="Guyana" require_city="true" require_postal_code="false"></country>
+  <country code="HT" en="Haiti" fr="Haïti" require_city="true" require_postal_code="false"></country>
+  <country code="HN" en="Honduras" fr="Honduras" require_city="true" require_postal_code="false"></country>
+  <country code="HK" en="Hong Kong" fr="Hong Kong" require_city="true" require_postal_code="false"></country>
+  <country code="HU" en="Hungary" fr="Hongrie" require_city="true" require_postal_code="true"></country>
+  <country code="IS" en="Iceland" fr="Islande" require_city="true" require_postal_code="false"></country>
+  <country code="IN" en="India" fr="Inde" require_city="true" require_postal_code="true"></country>
+  <country code="ID" en="Indonesia" fr="Indonésie" require_city="true" require_postal_code="true"></country>
+  <country code="IQ" en="Iraq" fr="Irak" require_city="true" require_postal_code="false"></country>
+  <country code="IE" en="Ireland" fr="Irlande" require_city="true" require_postal_code="false"></country>
+  <country code="IL" en="Israel" fr="Israël" require_city="true" require_postal_code="false"></country>
+  <country code="IT" en="Italy" fr="Italie" require_city="true" require_postal_code="true"></country>
+  <country code="CI" en="Ivory Coast" fr="Côte d'Ivoire" require_city="true" require_postal_code="false"></country>
+  <country code="JM" en="Jamaica" fr="Jamaïque" require_city="true" require_postal_code="false"></country>
+  <country code="JP" en="Japan" fr="Japon" require_city="true" require_postal_code="true"></country>
+  <country code="JO" en="Jordan" fr="Jordanie" require_city="true" require_postal_code="false"></country>
+  <country code="KZ" en="Kazakhstan" fr="Kazakhstan" require_city="true" require_postal_code="false"></country>
+  <country code="KE" en="Kenya" fr="Kenya" require_city="true" require_postal_code="false"></country>
+  <country code="KW" en="Kuwait" fr="Koweït" require_city="true" require_postal_code="false"></country>
+  <country code="KG" en="Kyrgyzstan" fr="Kirghizistan" require_city="true" require_postal_code="false"></country>
+  <country code="LA" en="Laos" fr="Laos" require_city="true" require_postal_code="false"></country>
+  <country code="LV" en="Latvia" fr="Lettonie" require_city="true" require_postal_code="false"></country>
+  <country code="LB" en="Lebanon" fr="Liban" require_city="true" require_postal_code="false"></country>
+  <country code="LS" en="Lesotho" fr="Lesotho" require_city="true" require_postal_code="false"></country>
+  <country code="LR" en="Liberia" fr="Libéria" require_city="true" require_postal_code="false"></country>
+  <country code="LY" en="Libya" fr="Libye" require_city="true" require_postal_code="false"></country>
+  <country code="LI" en="Liechtenstein" fr="Liechtenstein" require_city="true" require_postal_code="false"></country>
+  <country code="LT" en="Lithuania" fr="Lituanie" require_city="true" require_postal_code="false"></country>
+  <country code="LU" en="Luxembourg" fr="Luxembourg" require_city="true" require_postal_code="true"></country>
+  <country code="MO" en="Macau" fr="Macao" require_city="true" require_postal_code="false"></country>
+  <country code="MK" en="Macedonia" fr="Macédoine" require_city="true" require_postal_code="false"></country>
+  <country code="MG" en="Madagascar" fr="Madagascar" require_city="true" require_postal_code="false"></country>
+  <country code="MW" en="Malawi" fr="Malawi" require_city="true" require_postal_code="false"></country>
+  <country code="MY" en="Malaysia" fr="Malaisie" require_city="true" require_postal_code="true"></country>
+  <country code="MV" en="Maldives" fr="Maldives" require_city="true" require_postal_code="false"></country>
+  <country code="ML" en="Mali" fr="Mali" require_city="true" require_postal_code="false"></country>
+  <country code="MT" en="Malta" fr="Malte" require_city="true" require_postal_code="false"></country>
+  <country code="MH" en="Marshall Islands" fr="Îles Marshall" require_city="true" require_postal_code="false"></country>
+  <country code="MQ" en="Martinique" fr="Martinique" require_city="true" require_postal_code="false"></country>
+  <country code="MR" en="Mauritania" fr="Mauritanie" require_city="true" require_postal_code="false"></country>
+  <country code="MU" en="Mauritius" fr="Maurice" require_city="true" require_postal_code="false"></country>
+  <country code="FM" en="Micronesia" fr="Micronésie" require_city="true" require_postal_code="false"></country>
+  <country code="MD" en="Moldova" fr="Moldavie" require_city="true" require_postal_code="false"></country>
+  <country code="MC" en="Monaco" fr="Monaco" require_city="true" require_postal_code="false"></country>
+  <country code="MN" en="Mongolia" fr="Mongolie" require_city="true" require_postal_code="false"></country>
+  <country code="ME" en="Montenegro" fr="Monténégro" require_city="true" require_postal_code="false"></country>
+  <country code="MS" en="Montserrat" fr="Montserrat" require_city="true" require_postal_code="false"></country>
+  <country code="MA" en="Morocco" fr="Maroc" require_city="true" require_postal_code="false"></country>
+  <country code="MZ" en="Mozambique" fr="Mozambique" require_city="true" require_postal_code="false"></country>
+  <country code="NA" en="Namibia" fr="Namibie" require_city="true" require_postal_code="false"></country>
+  <country code="NP" en="Nepal" fr="Népal" require_city="true" require_postal_code="false"></country>
+  <country code="NL" en="Netherlands" fr="Pays-Bas" require_city="true" require_postal_code="true"></country>
+  <country code="NC" en="New Caledonia" fr="Nouvelle-Calédonie" require_city="true" require_postal_code="false"></country>
+  <country code="NZ" en="New Zealand" fr="Nouvelle-Zélande" require_city="true" require_postal_code="false"></country>
+  <country code="NI" en="Nicaragua" fr="Nicaragua" require_city="true" require_postal_code="false"></country>
+  <country code="NE" en="Niger" fr="Niger" require_city="true" require_postal_code="false"></country>
+  <country code="NG" en="Nigeria" fr="Nigeria" require_city="true" require_postal_code="false"></country>
+  <country code="MP" en="Northern Mariana Islands" fr="Îles Mariannes du Nord" require_city="true" require_postal_code="false"></country>
+  <country code="NO" en="Norway" fr="Norvège" require_city="true" require_postal_code="true"></country>
+  <country code="OM" en="Oman" fr="Oman" require_city="true" require_postal_code="false"></country>
+  <country code="PK" en="Pakistan" fr="Pakistan" require_city="true" require_postal_code="false"></country>
+  <country code="PW" en="Palau" fr="Palau" require_city="true" require_postal_code="false"></country>
+  <country code="PS" en="Palestine" fr="Palestine" require_city="true" require_postal_code="false"></country>
+  <country code="PA" en="Panama" fr="Panama" require_city="true" require_postal_code="false"></country>
+  <country code="PG" en="Papua New Guinea" fr="Papouasie-Nouvelle-Guinée" require_city="true" require_postal_code="false"></country>
+  <country code="PY" en="Paraguay" fr="Paraguay" require_city="true" require_postal_code="false"></country>
+  <country code="PE" en="Peru" fr="Pérou" require_city="true" require_postal_code="false"></country>
+  <country code="PH" en="Philippines" fr="Philippines" require_city="true" require_postal_code="true"></country>
+  <country code="PL" en="Poland" fr="Pologne" require_city="true" require_postal_code="true"></country>
+  <country code="PT" en="Portugal" fr="Portugal" require_city="true" require_postal_code="true"></country>
+  <country code="PR" en="Puerto Rico" fr="Porto Rico" require_postal_code="true" require_city="false" require_b13="false"></country>
+  <country code="QA" en="Qatar" fr="Qatar" require_city="true" require_postal_code="false"></country>
+  <country code="RE" en="Reunion" fr="Réunion" require_city="true" require_postal_code="false"></country>
+  <country code="RO" en="Romania" fr="Roumanie" require_city="true" require_postal_code="false"></country>
+  <country code="RU" en="Russia" fr="Russie" require_city="true" require_postal_code="true"></country>
+  <country code="RW" en="Rwanda" fr="Rwanda" require_city="true" require_postal_code="false"></country>
+  <country code="WS" en="Samoa" fr="Samoa" require_city="true" require_postal_code="false"></country>
+  <country code="SM" en="San Marino" fr="Saint-Marin" require_city="true" require_postal_code="false"></country>
+  <country code="SA" en="Saudi Arabia" fr="Arabie saoudite" require_city="true" require_postal_code="false"></country>
+  <country code="SN" en="Senegal" fr="Sénégal" require_city="true" require_postal_code="false"></country>
+  <country code="RS" en="Serbia" fr="Serbie" require_city="true" require_postal_code="false"></country>
+  <country code="SC" en="Seychelles" fr="Seychelles" require_city="true" require_postal_code="false"></country>
+  <country code="SG" en="Singapore" fr="Singapour" require_city="true" require_postal_code="true"></country>
+  <country code="SK" en="Slovak Republic" fr="Slovaquie" require_city="true" require_postal_code="false"></country>
+  <country code="SI" en="Slovenia" fr="Slovénie" require_city="true" require_postal_code="false"></country>
+  <country code="SO" en="Somalia" fr="Somalie" require_city="true" require_postal_code="false"></country>
+  <country code="ZA" en="South Africa" fr="Afrique du Sud" require_city="true" require_postal_code="true"></country>
+  <country code="KR" en="South Korea" fr="Corée du Sud" require_city="true" require_postal_code="true"></country>
+  <country code="KP" en="North Korea" fr="Corée du Nord" require_city="true" require_postal_code="false"></country>
+  <country code="ES" en="Spain" fr="Espagne" require_city="true" require_postal_code="true"></country>
+  <country code="LK" en="Sri Lanka" fr="Sri Lanka" require_city="true" require_postal_code="false"></country>
+  <country code="KN" en="St. Christopher" fr="Saint-Christophe" require_city="true" require_postal_code="false"></country>
+  <country code="KN" en="St. Kitts and Nevis" fr="Saint-Kitts-et-Nevis" require_city="true" require_postal_code="false"></country>
+  <country code="LC" en="St. Lucia" fr="Sainte-Lucie" require_city="true" require_postal_code="false"></country>
+  <country code="SX" en="St. Maarten (Dutch Control)" fr="St. Maarten (partie néerlandaise)" require_city="true" require_postal_code="false"></country>
+  <country code="MF" en="St. Martin (French Control)" fr="Saint-Martin (partie française)" require_city="true" require_postal_code="false"></country>
+  <country code="VC" en="St. Vincent" fr="Saint-Vincent" require_city="true" require_postal_code="false"></country>
+  <country code="SR" en="Suriname" fr="Suriname" require_city="true" require_postal_code="false"></country>
+  <country code="SZ" en="Swaziland" fr="Swaziland" require_city="true" require_postal_code="false"></country>
+  <country code="SE" en="Sweden" fr="Suède" require_city="true" require_postal_code="true"></country>
+  <country code="CH" en="Switzerland" fr="Suisse" require_city="true" require_postal_code="true"></country>
+  <country code="TW" en="Taiwan" fr="Taïwan" require_city="true" require_postal_code="false"></country>
+  <country code="TZ" en="Tanzania" fr="Tanzanie" require_city="true" require_postal_code="false"></country>
+  <country code="TH" en="Thailand" fr="Thaïlande" require_city="true" require_postal_code="true"></country>
+  <country code="TG" en="Togo" fr="Togo" require_city="true" require_postal_code="false"></country>
+  <country code="TO" en="Tonga" fr="Tonga" require_city="true" require_postal_code="false"></country>
+  <country code="TT" en="Trinidad and Tobago" fr="Trinité-et-Tobago" require_city="true" require_postal_code="false"></country>
+  <country code="TN" en="Tunisia" fr="Tunisie"  require_city="true" require_postal_code="false"></country>
+  <country code="TR" en="Turkey" fr="Turquie" require_city="true" require_postal_code="true"></country>
+  <country code="TM" en="Turkmenistan" fr="Turkménistan" require_city="true" require_postal_code="false"></country>
+  <country code="TC" en="Turks and Caicos Islands" fr="Îles Turks et Caicos" require_city="true" require_postal_code="false"></country>
+  <country code="VI" en="U.S. Virgin Islands" fr="Îles Vierges américaines" require_city="true" require_postal_code="false" require_b13="false"></country>
+  <country code="UG" en="Uganda" fr="Ouganda" require_city="true" require_postal_code="false"></country>
+  <country code="UA" en="Ukraine" fr="Ukraine" require_city="true" require_postal_code="false"></country>
+  <country code="VC" en="Union Island" fr="Île Union" require_city="true" require_postal_code="false"></country>
+  <country code="AE" en="United Arab Emirates" fr="Émirats arabes unis" require_city="true" require_postal_code="false"></country>
+  <country code="UY" en="Uruguay" fr="Uruguay" require_city="true" require_postal_code="false"></country>
+  <country code="UZ" en="Uzbekistan" fr="Ouzbékistan" require_city="true" require_postal_code="false"></country>
+  <country code="VU" en="Vanuatu" fr="Vanuatu" require_city="true" require_postal_code="false"></country>
+  <country code="VE" en="Venezuela" fr="Venezuela" require_city="true" require_postal_code="false"></country>
+  <country code="VN" en="Vietnam" fr="Vietnam" require_city="true" require_postal_code="false"></country>
+  <country code="WF" en="Wallis and Futuna Islands" fr="Îles Wallis-et-Futuna" require_city="true" require_postal_code="false"></country>
+  <country code="YE" en="Yemen" fr="Yémen" require_city="true" require_postal_code="false"></country>
+  <country code="ZM" en="Zambia" fr="Zambie" require_city="true" require_postal_code="false"></country>
+  <country code="ZW" en="Zimbabwe" fr="Zimbabwe" require_city="true" require_postal_code="false"></country>
+</world>

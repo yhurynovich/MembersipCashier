@@ -1,0 +1,7 @@
+﻿<fieldset ng-form="profileCredit" class="profileCreditPart" onchange="$(this).find('input[type=button]').parent().show()">
+    <input type="hidden" ng-model="$ctrl.credit.UserId">
+    <input type="hidden" ng-model="$ctrl.credit.OwnerId">
+    <input type="hidden" ng-model="$ctrl.credit.ProductId">
+    <div><label ng-translate="Ballance" /> <input ng-model="$ctrl.credit.Ballance"></div>
+    <div style='display:none; text-align:right;'><input type='button' value='Update' ng-click="$ctrl.update()" /></div>
+</fieldset>

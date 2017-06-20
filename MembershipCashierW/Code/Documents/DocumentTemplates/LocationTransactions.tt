@@ -1,0 +1,60 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="MembershipCashierDL.MixedContracts" #>
+<#@ import namespace="MembershipCashierUnified.Interfaces" #>
+<#@ import namespace="MembershipCashierW" #>
+
+<html><body>
+<head>
+  <link rel="stylesheet" type="text/css" href="/Content/document.css">
+</head>
+
+<# foreach (ILocation location in Locations) { #>  
+	<location>
+      <span><lbl1>location</lbl1>: <#= GetLocationDescription(location) #></span>
+	  <#var addr = Addresses.FirstOrDefault(); if(addr!=null) { #> 
+		<br\><span><#= addr.ToShortAddressStr().Replace(", ", @"<br/>") #></span>
+	  <# }//end if #> 
+	</location>
+<# } // end of foreach #>
+<br/>
+<dates><lbl1>from:</lbl1> <span><#= From.ToString("yyyy/MM/dd hh:mm tt") #>
+<br/>
+</span> <lbl1>to:</lbl1> <span><#= To.ToString("yyyy/MM/dd hh:mm tt") #></span></dates>
+<hr/>
+
+<center><h2>Transactions</h2></center>
+
+<table>
+<tr>
+	<th>time</th>
+	<th>client</th>
+	<th></th>
+	<th></th>
+	<th>debit</th>
+	<th>credit</th>
+</tr>
+<# foreach (ICreditTransaction trn in CreditTransactions) { #>  
+      <tr>
+		<td><#= trn.TransactionTime.ToString("yyyy/MM/dd hh:mm tt") #></td>
+		<td><#= GetUserName(trn) #></td>
+		<td><#= Products.First(x=>x.ProductId==trn.ProductId).Description #></td>
+		<td><#= trn.BallanceUnits > 1 || trn.BallanceUnits < 1 ? " x " + Convert.ToString(trn.BallanceUnits) : string.Empty #></td>
+		<td><#= IsCredit(trn).HasValue && !IsCredit(trn).Value ? (Prices.First(x=>x.ProductId==trn.ProductId).Price * trn.BallanceUnits).ToString("C") : string.Empty #></td>
+		<td><#= IsCredit(trn).HasValue && IsCredit(trn).Value ? (Prices.First(x=>x.ProductId==trn.ProductId).Price * trn.BallanceUnits).ToString("C") : string.Empty #></td>
+	  </tr>  
+<# } // end of foreach #>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td><lbl1>total:</lbl1></td>
+		<td><#= GetTotalDebit().ToString("C") #></td>
+		<td><#= GetTotalCredit().ToString("C") #></td>
+	</tr>
+</table>
+
+</body></html>  

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/MembershipCashierUnified.Contracts" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/MembershipCashierUnified.Contracts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:9812/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/SecurityUnified.Contracts" />
+  <xs:complexType name="CreditTransactionDiscriminator">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/SecurityUnified.Contracts" base="q1:DataDiscriminatorOfanyType">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CreditTransactionDiscriminator" nillable="true" type="tns:CreditTransactionDiscriminator" />
+  <xs:complexType name="ArrayOfCreditTransactionContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CreditTransactionContract" nillable="true" type="tns:CreditTransactionContract" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCreditTransactionContract" nillable="true" type="tns:ArrayOfCreditTransactionContract" />
+  <xs:complexType name="CreditTransactionContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="_creditTransaction" nillable="true" type="tns:CreditTransactionImplementor" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CreditTransactionContract" nillable="true" type="tns:CreditTransactionContract" />
+  <xs:complexType name="CreditTransactionImplementor">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:long" />
+      <xs:element minOccurs="0" name="Memo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OwnerId" type="xs:int" />
+      <xs:element minOccurs="0" name="ProductId" type="xs:int" />
+      <xs:element minOccurs="0" name="TransactionTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CreditTransactionImplementor" nillable="true" type="tns:CreditTransactionImplementor" />
+  <xs:complexType name="LocationDiscriminator">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/SecurityUnified.Contracts" base="q2:DataDiscriminatorOfanyType">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LocationDiscriminator" nillable="true" type="tns:LocationDiscriminator" />
+  <xs:complexType name="ArrayOfLocationContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LocationContract" nillable="true" type="tns:LocationContract" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLocationContract" nillable="true" type="tns:ArrayOfLocationContract" />
+  <xs:complexType name="LocationContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="_location" nillable="true" type="tns:LocationImplementor" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LocationContract" nillable="true" type="tns:LocationContract" />
+  <xs:complexType name="LocationImplementor">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="LocationCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LocationId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LocationImplementor" nillable="true" type="tns:LocationImplementor" />
+  <xs:complexType name="OwnerDiscriminator">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/SecurityUnified.Contracts" base="q3:DataDiscriminatorOfanyType">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="OwnerDiscriminator" nillable="true" type="tns:OwnerDiscriminator" />
+  <xs:complexType name="ArrayOfOwnerContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OwnerContract" nillable="true" type="tns:OwnerContract" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOwnerContract" nillable="true" type="tns:ArrayOfOwnerContract" />
+  <xs:complexType name="OwnerContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Owner" nillable="true" type="xs:anyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OwnerContract" nillable="true" type="tns:OwnerContract" />
+  <xs:complexType name="ProfileCreditDiscriminator">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/SecurityUnified.Contracts" base="q4:DataDiscriminatorOfanyType">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ProfileCreditDiscriminator" nillable="true" type="tns:ProfileCreditDiscriminator" />
+  <xs:complexType name="ArrayOfProfileCreditContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProfileCreditContract" nillable="true" type="tns:ProfileCreditContract" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProfileCreditContract" nillable="true" type="tns:ArrayOfProfileCreditContract" />
+  <xs:complexType name="ProfileCreditContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ProfileCredit" nillable="true" type="xs:anyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProfileCreditContract" nillable="true" type="tns:ProfileCreditContract" />
+</xs:schema>

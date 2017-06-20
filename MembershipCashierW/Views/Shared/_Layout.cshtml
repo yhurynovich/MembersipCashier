@@ -1,0 +1,130 @@
+﻿@{ 
+#if DEBUG
+    ViewBag.Version = "1.0.0";
+#else
+    ViewBag.Version = typeof(MembershipCashierW.Controllers.ComponentController).Assembly.GetName().Version;
+#endif
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>HTM</title>
+    <!-- Static Styles -->
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.htm.css" rel="stylesheet" />
+    @RenderSection("styles", false)
+    <!-- Static Scripts -->
+    <script type="text/javascript" src="~/Scripts/angular.js"></script>
+	<script type="text/javascript" src="~/Scripts/angular-resource.js"></script>
+    @if (MembershipCashierW.SessionGlobal.Language == "fr")
+    {
+    <script type="text/javascript" src="~/Scripts/angular.fr-ca.js"></script>
+    }
+    <script type="text/javascript" src="~/Scripts/angular-route.js"></script>
+	<script type="text/javascript" src="~/Scripts/jquery-2.2.1.js"></script>
+	<script type="text/javascript" src="~/Scripts/jquery.validate.js"></script>
+    <script type="text/javascript" src="~/Scripts/bootstrap.js"></script>
+    <script type="text/javascript" src="~/ScriptControls/Library/array.prototype.js?v=@(ViewBag.Version)"></script>
+    <!-- Angular App Scripts -->
+    <script type="text/javascript" src="~/ScriptControls/htm.app.js?v=@(ViewBag.Version)"></script>
+    <script type="text/javascript" src="~/ScriptControls/Library/htm.app.core.js?v=@(ViewBag.Version)"></script>
+    <script type="text/javascript" src="~/ScriptControls/Directives/validation.core.js?v=@(ViewBag.Version)"></script>
+    <script type="text/javascript" src="~/ScriptControls/Directives/input.core.js?v=@(ViewBag.Version)"></script>
+    <script type="text/javascript" src="~/ScriptControls/Factories/authentication.factory.js?v=@(ViewBag.Version)"></script>
+    <script type="text/javascript" src="~/ScriptControls/Components/core/htm.toggle.component.js?v=@(ViewBag.Version)"></script>
+    <script type="text/javascript" src="~/ScriptControls/Components/core/htm.toggle.list.component.js?v=@(ViewBag.Version)"></script>
+    <script type="text/javascript" src="~/ScriptControls/Components/core/htm.multi.toggle.component.js?v=@(ViewBag.Version)"></script>
+    <script type="text/javascript" src="~/ScriptControls/Components/core/htm.login.component.js?v=@(ViewBag.Version)"></script>
+    <script type="text/javascript" src="~/ScriptControls/Controllers/menu.controller.js?v=@(ViewBag.Version)"></script>
+    <script type="text/javascript" src="~/ScriptControls/Controllers/menu.animation.js?v=@(ViewBag.Version)"></script>
+    <script type="text/javascript" src="~/ScriptControls/Model/model.js?v=@(ViewBag.Version)"></script>
+    <script type="text/javascript" src="~/ScriptControls/Model/localizationKeys.js?v=@(ViewBag.Version)"></script>
+    <script type="text/javascript" src="~/ScriptControls/Localization/localization.js?v=@(ViewBag.Version)"></script>
+</head>
+<body ng-app="htm.app">
+	<script type="text/javascript">
+		var appRoot = '@(Request.Url.Scheme + "://" + Request.Url.Authority + Url.Content("~"))';
+	</script>
+
+    <div ng-controller="MenuController">
+        <div id="htm-menu" class="htm-menu" title="Click here to see more menu options..." ng-click="showMenu();">
+            <div>
+                <span class="glyphicon glyphicon-menu-hamburger"></span>
+            </div>
+        </div>
+        <div id="htm-nav-menu" style="display: none;">
+            <nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigationMenu" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a href="~/root" class="navbar-brand"><img src="~/Images/HTM/htm-logo.svg" style="height: 20px;" /></a>
+                    </div>
+                    <div class="collapse navbar-collapse navbar-right" id="navigationMenu">
+                        <ul class="nav navbar-nav">
+                            @MembershipCashierW.Code.Menu.MenuHelper.GetMenu()
+                            @if (MembershipCashierW.SessionGlobal.CurrentUser != null)
+								{
+									<li>
+										<a href="#" ng-click="logout()" ng-translate="Logout"></a>
+									</li>
+								}
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="http://www.fedex.com/images/c/s1/_fpo/countryflags/ca.gif" width="16" height="11" alt="" class="flag"> <span>{{getLanguage(currentLanguage)}}</span><span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#" ng-click="changeLanguage(altLanguage)">{{getLanguage(altLanguage)}}</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="container">
+            @RenderBody()
+    </div>
+    <!-- Login Screen -->
+    <div id="login-modal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <ng-login-component></ng-login-component>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+    <!-- Admin Messages -->
+    <div id="system-events-modal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <ng-system-events-component></ng-system-events-component>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-muted" data-dismiss="modal" aria-label="Close">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @RenderSection("scripts", false)
+    <div ng-show="doingHeavyWork" class="overlay">
+        <div class="overlay-body">
+            <img src="~/Images/ajax-loader.gif" />
+            <p class="text-info text-uppercase" style="margin: 0; margin-top: 10px;">{{doingHeavyWorkText | translate }}</p>
+        </div>
+    </div>
+</body>
+</html>

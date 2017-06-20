@@ -1,0 +1,60 @@
+﻿@using SecurityUnified.Contracts
+@using MembershipCashierW
+@{
+    ViewBag.Title = "Members";
+}
+
+<h2>@ViewBag.Title</h2>
+@Scripts.Render("~/scriptControls/userProfile")
+
+<h3>Search For Member</h3>
+<div id="UserProfileFilterShell"></div>
+<script>
+    $("#UserProfileFilterShell").empty().append( renderUserProfileFilter() );
+</script>
+
+<h3>Matching Profiles</h3>
+@Html.Partial("Partial/UserSnapShotList")
+
+<script>
+$(document).ready(function () {
+    restoreBlob();
+});
+
+$(document).on("profileCreditUpdated", function (data) {
+    replaceMessages(data.fieldSet, [{ message: "Updating ballance ...", type: "warning" }])
+    $.ajax({
+        url: "/api/ProfileCredit",
+        type: "POST",
+        data: JSON.stringify([data.profileCredit]),
+        contentType: "application/json",
+        success: replaceMessages(data.fieldSet, [{ message: "Ballance updated", type: "sucess" }]),
+        error: function (xhr, ajaxOptions, thrownError) { xhr.fieldSet = data.fieldSet; handleJqueryAjaxError(xhr, ajaxOptions, thrownError) },
+        timeout: 1000,
+        headers: {
+            'RequestVerificationToken': requestVerificationToken
+        }
+    });
+});
+</script>
+
+@section scripts{
+    <script src="~/ScriptControls/UserProfileFilter_render.js"></script>
+    <script src="~/ScriptControls/ProfileCredit_render.js"></script>
+    <script src="~/ScriptControls/ProfileCredit.js"></script>
+    <script src="~/ScriptControls/UserSnapshot_render.js"></script>
+    <script src="~/ScriptControls/UserSnapshot.js"></script>
+    <script src="~/Scripts/jquery-barcode.min.js"></script>
+}
+@section PageStyle
+{
+    <style>
+        .userProfile fieldset {
+            border: 1px solid;
+            width: 260px;
+            padding-bottom: 4px;
+        }
+    </style>
+}
+
+

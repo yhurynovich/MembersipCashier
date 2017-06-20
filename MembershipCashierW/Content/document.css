@@ -1,0 +1,14 @@
+﻿body {
+    max-width:8.5in
+}
+lbl1 {
+    font-weight:bolder;
+    font-size:smaller;
+    
+}
+h2 {
+    font-size:larger;   
+}
+.aligned_right {
+    float: right;
+}

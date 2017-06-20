@@ -1,0 +1,257 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 page-header">
+			<h3 class="text-uppercase">Settings</h3>
+			<h5 class="text-muted">Add/Modify customers, products and manage your system.</h5>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<ul class="nav nav-tabs" role="tablist">
+				<li role="presentation" class="active"><a href="#users" aria-controls="home" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-user"></span> Customers</a></li>
+				<li role="presentation"><a href="#products" aria-controls="products" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-shopping-cart"></span> Products</a></li>
+				<li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
+			</ul>
+			<div class="tab-content">
+				<div role="tabpanel" class="tab-pane active" id="users">
+					<div class="container-fluid">
+						<div class="row space">
+							<div class="col-xs-12 col-md-6 col-lg-6 form-group">
+								<input type="text" class="form-control input-sm" placeholder="Search Customers..." />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12">
+								<div class="panel panel-primary">
+									<div class="panel-heading">
+										<button type="button" class="btn btn-default btn-sm" ng-click="$ctrl.userEdit = true; $ctrl.selectedUser = { $new: true }"><span class="glyphicon glyphicon-plus"></span> Add New Customer</button>
+									</div>
+								</div>
+								<div class="panel-body">
+									<div ng-show="!$ctrl.userEdit">
+										<p class="text-muted text-center" ng-show="!$ctrl.users || $ctrl.users.length == 0"><span class="glyphicon glyphicon-warning-sign text-info"></span> There are no customers currently in the system. <a href="">Click here</a> to add new Customers.</p>
+										<div class="table-responsive" ng-show="$ctrl.users.length > 0">
+											<table class="table table-hover text-sm">
+												<thead>
+													<tr>
+														<th></th>
+														<th>Email</th>
+														<th>First Name</th>
+														<th>Last Name</th>
+														<th>Phone</th>
+														<th>Customer Since</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr ng-repeat="user in $ctrl.users">
+														<td style="width: 75px;">
+															<button type="button" class="btn btn-primary btn-xs" ng-click="$ctrl.selectedUser = user; $ctrl.userEdit = true;"><span class="glyphicon glyphicon-pencil"></span></button>
+															<button type="button" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></button>
+														</td>
+														<td>{{user.Email}}</td>
+														<td>{{user.FirstName}}</td>
+														<td>{{user.LastName}}</td>
+														<td>{{user.Phone}}</td>
+														<td>{{user.CustomerSince | date: 'MMMM d, yyyy'}}</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+									<div ng-show="$ctrl.userEdit">
+										<div class="row">
+											<div class="col-xs-12 col-md-6 col-lg-4 form-group">
+												<label class="control-label">Email</label>
+												<input type="email" class="form-control" ng-model="$ctrl.selectedUser.Email" />
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-xs-12 col-md-6 col-lg-4 form-group">
+												<label class="control-label">First Name</label>
+												<input type="text" class="form-control" ng-model="$ctrl.selectedUser.FirstName" />
+											</div>
+											<div class="col-xs-12 col-md-6 col-lg-4 form-group">
+												<label class="control-label">Last Name</label>
+												<input type="text" class="form-control" ng-model="$ctrl.selectedUser.LastName" />
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-xs-12 col-md-6 col-lg-4 form-group">
+												<label class="control-label">Phone</label>
+												<input type="tel" class="form-control" ng-model="$ctrl.selectedUser.Phone" />
+											</div>
+										</div>
+										<div class="row space">
+											<div class="col-xs-12">
+												<button type="button" class="btn btn-success btn-sm" ng-click="$ctrl.saveUserChanges();"><span class="glyphicon glyphicon-ok"></span> Save Changes</button>
+												<button type="button" class="btn btn-default btn-sm" ng-click="$ctrl.cancelUserChanges();"><span class="glyphicon glyphicon-ban-circle"></span> Cancel</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div role="tabpanel" class="tab-pane" id="products">
+					<div class="container-fluid">
+						<div class="row space">
+							<div class="col-xs-12 col-md-6 col-lg-6 form-group">
+								<input type="text" class="form-control input-sm" placeholder="Search Products..." />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12">
+								<div class="panel panel-primary">
+									<div class="panel-heading">
+										<button type="button" class="btn btn-default btn-sm" ng-click="$ctrl.productEdit = true; $ctrl.selectedProduct = { $new: true }"><span class="glyphicon glyphicon-plus"></span> Add New Product</button>
+									</div>
+								</div>
+								<div class="panel-body">
+									<div ng-show="!$ctrl.productEdit">
+										<p class="text-muted text-center" ng-show="!$ctrl.products || $ctrl.products.length == 0"><span class="glyphicon glyphicon-warning-sign text-info"></span> There are no products currently in the system. <a href="$ctrl.productEdit = true; $ctrl.selectedProduct = { $new: true }" ng-click="">Click here</a> to add new Products.</p>
+										<div class="table-responsive" ng-show="$ctrl.products.length > 0">
+											<table class="table table-hover text-sm">
+												<thead>
+													<tr>
+														<th></th>
+														<th>Code</th>
+														<th>Name</th>
+														<th>Description</th>
+														<th class="text-right">Price per Unit</th>
+														<th>Last Modified</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr ng-repeat="product in $ctrl.products">
+														<td style="width: 75px;">
+															<button type="button" class="btn btn-primary btn-xs" ng-click="$ctrl.selectedProduct = product; $ctrl.productEdit = true;"><span class="glyphicon glyphicon-pencil"></span></button>
+															<button type="button" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></button>
+														</td>
+														<td>{{product.Code}}</td>
+														<td>{{product.Name}}</td>
+														<td>{{product.Description}}</td>
+														<td class="text-right">{{product.Price | currency}}</td>
+														<td>{{product.LastModified | date: 'MMMM d, yyyy'}}</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+									<div ng-show="$ctrl.productEdit">
+										<div class="row">
+											<div class="col-xs-12 col-md-6 col-lg-4 form-group">
+												<label class="control-label">Product Code</label>
+												<div class="input-group">
+													<input type="email" class="form-control input" ng-model="$ctrl.selectedProduct.Code" />
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-primary" type="button">Scan Bar Code</button>
+                                                    </span>
+                                                </div>
+											</div>
+											<div class="col-xs-12 col-md-6 col-lg-4 form-group">
+												<label class="control-label">Product Image</label>
+												<div class="input-group">
+													<input type="email" class="form-control input" ng-model="$ctrl.selectedProduct.Image" />
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-primary" type="button">Upload</button>
+                                                    </span>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-xs-12 col-md-6 col-lg-4 form-group">
+												<label class="control-label">Product Name</label>
+												<input type="text" class="form-control" ng-model="$ctrl.selectedProduct.Name" />
+											</div>
+                                            <div class="col-xs-12 col-md-6 col-lg-4 form-group">
+                                                <label class="control-label">Price per Unit</label>
+                                                <input type="number" class="form-control" ng-model="$ctrl.selectedProduct.Price" />
+                                            </div>
+										</div>
+										<div class="row">
+                                            <div class="col-xs-12 col-lg-8 form-group">
+                                                <label class="control-label">Product Description</label>
+                                                <textarea class="form-control" rows="4" style="resize: vertical" ng-model="$ctrl.selectedProduct.Description"></textarea>
+                                            </div>
+										</div>
+										<div class="row space">
+											<div class="col-xs-12">
+												<button type="button" class="btn btn-success btn-sm" ng-click="$ctrl.saveProductChanges();"><span class="glyphicon glyphicon-ok"></span> Save Changes</button>
+												<button type="button" class="btn btn-default btn-sm" ng-click="$ctrl.cancelProductChanges();"><span class="glyphicon glyphicon-ban-circle"></span> Cancel</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div role="tabpanel" class="tab-pane" id="settings">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h5 class="text-uppercase">Personal Information</h5>
+                            </div>
+                        </div>
+                        <div class="row space">
+                            <div class="col-xs-12 col-md-6 col-lg-4 form-group">
+                                <label class="control-label">Email</label>
+                                <p class="form-control-static">test@foo.com <small><a href="">(Change)</a></small></p>
+                            </div>
+                            <div class="col-xs-12 col-md-6 col-lg-4 form-group">
+                                <label class="control-label">Password and Security</label>
+                                <p class="form-control-static"><a href="">Change Password</a></p>
+                                <p class="form-control-static"><a href="">Set 2-Way Authentication</a></p>
+                            </div>
+                        </div>
+                        <div class="row space">
+                            <div class="col-xs-12">
+                                <div class="col-xs-12">
+                                    <h5 class="text-uppercase">Address Information</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row space">
+                            <div class="col-xs-12 col-md-6 col-lg-4 form-group">
+                                <label class="control-label">Address</label>
+                                <input type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6 col-lg-4 form-group">
+                                <label class="control-label">City</label>
+                                <input type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6 col-lg-4 form-group">
+                                <label class="control-label">Country</label>
+                                <select class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6 col-lg-4 form-group">
+                                <label class="control-label">State/Province</label>
+                                <select class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6 col-lg-4 form-group">
+                                <label class="control-label">Zip/Postal Code</label>
+                                <input type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row space">
+                            <div class="col-xs-12 col-lg-8">
+                                <button class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Save Changes</button>
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-ban-circle"></span> Cancel</button>
+                            </div>
+                        </div>
+                        <div class="row space"></div>
+                    </div>
+                </div>
+			</div>
+		</div>
+	</div>
+</div>

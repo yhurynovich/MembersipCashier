@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 14.875" name="SecurityEntities">
+  <DataContextMoniker Name="/SecurityEntitiesDataContext" />
+  <nestedChildShapes>
+    <classShape Id="beb60f95-b4d3-4807-8814-bc6c389e5d2e" absoluteBounds="6.5, 6, 2, 1.7708968098958327">
+      <DataClassMoniker Name="/SecurityEntitiesDataContext/webpages_UsersInRolesAudit" />
+      <nestedChildShapes>
+        <elementListCompartment Id="66a440c5-27a8-49be-a31c-7f9cc099e827" absoluteBounds="6.515, 6.46, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="dd05a456-f245-49c7-a23a-501ee6f62829" absoluteBounds="3.5, 5.375, 2, 1.1939925130208327">
+      <DataClassMoniker Name="/SecurityEntitiesDataContext/webpages_UsersInRole" />
+      <nestedChildShapes>
+        <elementListCompartment Id="707a46c9-5ec2-4109-a10c-d14e7465d795" absoluteBounds="3.515, 5.835, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="70540030-fc73-4817-b78e-030765cdcafb" absoluteBounds="0.75, 3.375, 2, 1.193992513020834">
+      <DataClassMoniker Name="/SecurityEntitiesDataContext/webpages_Role" />
+      <nestedChildShapes>
+        <elementListCompartment Id="65d2c091-1517-45c5-aa2c-a1da1eb246b9" absoluteBounds="0.765, 3.835, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b39b60b9-8a17-412d-8a09-7c7968356f4c" absoluteBounds="3.5, 8.125, 2, 2.9247054036458326">
+      <DataClassMoniker Name="/SecurityEntitiesDataContext/UserProfileAudit" />
+      <nestedChildShapes>
+        <elementListCompartment Id="59d9fadf-2a60-4c02-bc6c-bd0a6f95d59e" absoluteBounds="3.515, 8.585, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="71e42647-9890-472c-9442-aff2b74ddb43" absoluteBounds="3.5, 11.5, 2, 3.1170068359375023">
+      <DataClassMoniker Name="/SecurityEntitiesDataContext/webpages_Membership" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f5c96a47-1a95-4100-b6be-6d6d46ae9705" absoluteBounds="3.515, 11.96, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 3.97199625651042); (7.5 : 3.97199625651042); (7.5 : 6)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SecurityEntitiesDataContext/webpages_Role/webpages_Role_webpages_UsersInRolesAudit" />
+      <nodes>
+        <classShapeMoniker Id="70540030-fc73-4817-b78e-030765cdcafb" />
+        <classShapeMoniker Id="beb60f95-b4d3-4807-8814-bc6c389e5d2e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 4.30174688476563); (4.5 : 4.30174688476563); (4.5 : 5.375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SecurityEntitiesDataContext/webpages_Role/webpages_Role_webpages_UsersInRole" />
+      <nodes>
+        <classShapeMoniker Id="70540030-fc73-4817-b78e-030765cdcafb" />
+        <classShapeMoniker Id="dd05a456-f245-49c7-a23a-501ee6f62829" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="a08b1bb4-5aa2-4de2-bc4c-7b8d1a2329dd" absoluteBounds="0.75, 6.625, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/SecurityEntitiesDataContext/UserProfile" />
+      <nestedChildShapes>
+        <elementListCompartment Id="63e67ea0-c280-4c91-a01f-c2874c8db02b" absoluteBounds="0.76500000000000012, 7.085, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 7.19794840494792); (6.5 : 7.19794840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SecurityEntitiesDataContext/UserProfile/UserProfile_webpages_UsersInRolesAudit" />
+      <nodes>
+        <classShapeMoniker Id="a08b1bb4-5aa2-4de2-bc4c-7b8d1a2329dd" />
+        <classShapeMoniker Id="beb60f95-b4d3-4807-8814-bc6c389e5d2e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.75 : 6.625); (1.75 : 5.97199625651042); (3.5 : 5.97199625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SecurityEntitiesDataContext/UserProfile/UserProfile_webpages_UsersInRole" />
+      <nodes>
+        <classShapeMoniker Id="a08b1bb4-5aa2-4de2-bc4c-7b8d1a2329dd" />
+        <classShapeMoniker Id="dd05a456-f245-49c7-a23a-501ee6f62829" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 8.58997497558594); (3.5 : 8.58997497558594)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SecurityEntitiesDataContext/UserProfile/UserProfile_UserProfileAudit" />
+      <nodes>
+        <classShapeMoniker Id="a08b1bb4-5aa2-4de2-bc4c-7b8d1a2329dd" />
+        <classShapeMoniker Id="b39b60b9-8a17-412d-8a09-7c7968356f4c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 8.29498748779297); (3.5 : 8.29498748779297)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SecurityEntitiesDataContext/UserProfile/UserProfile_UserProfileAudit1" />
+      <nodes>
+        <classShapeMoniker Id="a08b1bb4-5aa2-4de2-bc4c-7b8d1a2329dd" />
+        <classShapeMoniker Id="b39b60b9-8a17-412d-8a09-7c7968356f4c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.75 : 8.78049967447917); (1.75 : 13.0585034179688); (3.5 : 13.0585034179688)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SecurityEntitiesDataContext/UserProfile/UserProfile_webpages_Membership" />
+      <nodes>
+        <classShapeMoniker Id="a08b1bb4-5aa2-4de2-bc4c-7b8d1a2329dd" />
+        <classShapeMoniker Id="71e42647-9890-472c-9442-aff2b74ddb43" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

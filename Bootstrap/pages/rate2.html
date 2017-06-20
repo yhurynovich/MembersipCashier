@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>FedEx</title>
+	<link href="../css/bootstrap.css" rel="stylesheet" />
+	<link href="../css/bootstrap.fedex.css" rel="stylesheet" />
+    <link href="../css/bootstrap.fedex.controls.css" rel="stylesheet" />
+	<script type="text/javascript" src="../js/jquery-2.2.1.js"></script>
+	<script type="text/javascript" src="../js/bootstrap.js"></script>
+	<style>
+		h2{
+			margin: 15px 0;
+		}
+		
+		h4 {
+			margin: 5px 0;
+		}
+		
+		h5 {
+			margin: 5px 0;
+			font-size: 12px;
+		}
+		
+/*		#expressRates::-webkit-scrollbar {
+			height: 5px;
+		}
+		 
+		#expressRates::-webkit-scrollbar-track {
+			background-color: white;
+		}
+		 
+		#expressRates::-webkit-scrollbar-thumb {
+			background-color: #4D148C;
+			border-radius: 5px;
+		}*/
+		
+		#expressRates table{
+			margin-bottom: 5px;
+		}
+	</style>
+</head>
+<body style="margin-top: 70px;">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img src="../img/fedex-logo.svg" style="height: 20px;" /></a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">Ship</a></li>
+                    <li><a href="#">Track</a></li>
+                    <li><a href="#">Location</a></li>
+                    <li><a href="#">Manage</a></li>
+                    <li><a href="#">Learn</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row" style="margin-top: 24px;">
+            <div class="col-xs-12 form-group" style="padding: 0;">
+                <div>
+                    <label class="control-label">Ship Date</label>
+                    <select class="form-control input-lg">
+                        <option value="">Today</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 24px;">
+            <div class="col-xs-12 col-sm-8 col-md-9">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="row">
+							<div class="col-xs-12 col-sm-8 col-lg-10">
+								<div id="expressRates" class="table-responsive">
+									<table style="width: 100%; border-collapse: unset;">
+										<caption>
+											<h4 class="text-primary" style="margin-top: 0;">Express</h4>
+										</caption>
+										<tbody>
+											<tr>
+												<td class="text-center">
+													<h4 class="text-primary">Tomorrow</h4>
+												</td>
+												<td class="text-center" colspan="4" style="border-bottom: 2px solid #4D148C;">
+													<h4 class="text-primary">Dec 13, 2016</h4>
+												</td>
+												<td class="text-center">
+													<h4 class="text-primary">Dec 14, 2016</h4>
+												</td>
+											</tr>
+											<tr>
+												<td class="text-center" style="vertical-align: top;">
+													<div style="width: 150px; padding: 10px 0; margin: 10px 0;">
+														<h4 class="text-primary">12:00 PM</h4>
+														<h2 class="text-primary">$61.59</h2>
+														<h5>FedEx<br />First Overnight&reg;</h5>
+													</div>
+												</td>
+												<td class="text-center" style="vertical-align: top; position: relative;">
+													<div style="width: 150px; padding: 10px 0; margin: 10px 0; background-color: #4D148C; color: white;">
+														<h4>10:00 AM</h4>
+														<h2>$52.53</h2>
+														<h5>FedEx<br />Priority Overnight&reg;</h5>
+													</div>
+												</td>
+												<td class="text-center" style="vertical-align: top;">
+													<div style="width: 150px; padding: 10px 0; margin: 10px 0;">
+														<h4 class="text-primary">10:00 AM</h4>
+														<h2 class="text-primary">$52.53</h2>
+														<h5>FedEx<br />First Overnight&reg;</h5>
+													</div>
+												</td>
+												<td class="text-center" style="vertical-align: top;">
+													<div style="width: 150px; padding: 10px 0; margin: 10px 0;">
+														<h4 class="text-primary">12:00 PM</h4>
+														<h2 class="text-primary">$31.43</h2>
+														<h5>FedEx<br />Standard Overnight&reg;</h5>
+													</div>
+												</td>
+												<td class="text-center" style="vertical-align: top;">
+													<div style="width: 150px; padding: 10px 0; margin: 10px 0;">
+														<h4 class="text-primary">5:00 PM</h4>
+														<h2 class="text-primary">$32.08</h2>
+														<h5>FedEx<br />2Day&reg;</h5>
+													</div>
+												</td>
+												<td class="text-center" style="vertical-align: top;">
+													<div style="width: 150px; padding: 10px 0; margin: 10px 0;">
+														<h4 class="text-primary">5:00 PM</h4>
+														<h2 class="text-primary">$32.08</h2>
+														<h5>FedEx<br />Economy&reg;</h5>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div><div class="col-xs-12 col-sm-4 col-lg-2">
+								<table style="margin-bottom: 5px;">
+									<caption>
+										<h4 class="text-success">&nbsp;</h4>
+									</caption>
+									<tr>
+										<td style="border-bottom: 2px solid #009900"><h4 class="text-success">Ground</h4></td>
+									</tr>
+									<tr>
+										<td style="width: 130px;" class="text-center">
+											<div style="width: 130px; padding: 10px 0; margin: 10px 0;">
+												<h4 class="text-success">In 1 business day</h4>
+												<h2 class="text-success">$16.59</h2>
+												<h5>FedEx<br /> Ground&reg;</h5>
+											</div>
+										</td>
+									</tr>
+								</table>
+							</div>
+                        </div>
+<!--                         <div class="row">
+							<div class="col-xs-12">
+                                <div class="table-responsive">
+                                    <table>
+										<caption>
+											<h4 class="text-success">Ground</h4>
+										</caption>
+                                        <tr>
+                                            <td style="width: 150px;" class="text-center">
+                                                <div style="width: 150px; margin: 10px 0;">
+                                                    <h4 class="text-success">In 1 business day</h4>
+                                                    <h2 class="text-success">$16.59</h2>
+                                                    <h5>FedEx<br /> Ground&reg;</h5>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-3 table-responsive" style="border-left: 2px solid #808080">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <table style="width: 100%; font-size: 12px;">
+                            <caption>
+                                <h4 class="text-primary" colspan="2" style="margin-top: 0;">Rate Summary</h4>
+                            </caption>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 5px 0;"><b>FedEx Priority Overnight®</b></td>
+                                    <td style="padding: 5px 0;" class="text-right">$0.00</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 5px 0;">Surcharge</td>
+                                    <td style="padding: 5px 0;" class="text-right">$0.00</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 5px 0;">Taxes</td>
+                                    <td style="padding: 5px 0;" class="text-right">$0.00</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 5px 0;"><b>Total</b></td>
+                                    <td style="padding: 5px 0;" class="text-right"><b>$0.00</b></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div style="padding: 10px; border-top: 1px solid #ccc;">
+                    <div class="form-group" style="margin-top: 24px;">
+                        <div style="display: inline-block; vertical-align: middle; background-color: #EEEEEE;">
+                            <label class="control-label">Promo Code</label>
+                            <input class="form-control" type="text" style="background-color: #EEEEEE;" />
+                        </div><div class="bg-muted" style="display: inline-block; vertical-align: middle">
+                            <button type="button" class="btn btn-primary" style="height: 56px; width: 50px; padding: 0;"><span class="glyphicon glyphicon-ok"></span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 24px;">
+            <div class="col-xs-offset-1 col-xs-10">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-offset-2 col-sm-4 col-md-offset-3 col-md-3">
+                        <div class="table-responsive">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 24px; margin-bottom: 24px;">
+            <div class="col-xs-12 text-center">
+                <a href="ship.html" data-role="button" class="btn btn-muted text-left"><span class="glyphicon glyphicon-chevron-left"></span> Back</a>
+                <a href="commodities.html" data-role="button" class="btn btn-info text-right" style="width: 200px;">Next <span class="glyphicon glyphicon-chevron-right"></span></a>
+            </div>
+        </div>
+    </div>
+	<script type="text/javascript">
+        $("input, select, textarea").on("focus", function (e) { $(e.target).parent().addClass("focused") });
+        $("input, select, textarea").on("blur", function (e) { $(e.target).parent().removeClass("focused") });
+	</script>
+    <script type="text/javascript">
+        $("#next").click(function () {
+            var left = $("#expressRates").scrollLeft();
+
+            $("#expressRates").scrollLeft((left ? left : 0) + 150);
+
+
+        });
+    </script>
+</body>
+</html>
