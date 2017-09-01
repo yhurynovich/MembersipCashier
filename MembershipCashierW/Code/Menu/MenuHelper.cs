@@ -22,6 +22,7 @@ namespace MembershipCashierW.Code.Menu
             if (SessionGlobal.CurrentUser == null)
             {
                 menu.AppendLine(CreateMenuItemWithToggle("#login-modal", "Login"));
+                menu.AppendLine(CreateMenuItem("/Products", "Products"));
                 return new MvcHtmlString(menu.ToString());
             }
 

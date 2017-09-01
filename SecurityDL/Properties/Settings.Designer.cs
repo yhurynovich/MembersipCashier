@@ -26,8 +26,8 @@ namespace SecurityDL.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=sql1;Initial Catalog=MembershipCashier;Integrated Security=True;Multi" +
-            "pleActiveResultSets=True;Application Name=EntityFramework")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=CORSAIR-PC;Initial Catalog=MembershipCashier;Integrated Security=True" +
+            ";MultipleActiveResultSets=True;Application Name=EntityFramework")]
         public string MembershipCashierConnectionString {
             get {
                 return ((string)(this["MembershipCashierConnectionString"]));

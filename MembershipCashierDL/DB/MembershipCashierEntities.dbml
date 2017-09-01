@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="MembershipCashier" Class="MembershipCashierEntitiesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=sql1;Initial Catalog=MembershipCashier;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework" SettingsObjectName="MembershipCashierDL.Properties.Settings" SettingsPropertyName="MembershipCashierConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=CORSAIR-PC;Initial Catalog=MembershipCashier;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework" SettingsObjectName="MembershipCashierDL.Properties.Settings" SettingsPropertyName="MembershipCashierConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.UserProfileVsLocation" Member="UserProfileVsLocations">
     <Type Name="UserProfileVsLocation">
       <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -133,7 +133,7 @@
   </Table>
   <Table Name="dbo.CreditTransactions" Member="CreditTransactions">
     <Type Name="CreditTransaction">
-      <Column Name="Id" Member="CreditTransactionId" Storage="_Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CreditTransactionId" Storage="_Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="LocationId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="ProductId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />

@@ -114,6 +114,11 @@
             //$locationProvider.html5Mode({ enabled: true, requireBase: false, rewriteLinks: false });
 
             $routeProvider
+                .when('/Products', {
+                    templateUrl: appRoot + '/ScriptControls/Views/products.html',
+                    controller: 'ProductsCtrl',
+                    title: 'Products'
+                })
 				.when('/Clients', {
 					templateUrl: appRoot + '/ScriptControls/Views/clients.html',
 					controller: 'ClientsCtrl',
@@ -123,9 +128,9 @@
 					templateUrl: appRoot + '/ScriptControls/Views/client.html',
 					controller: 'ClientCtrl',
 					title: 'Client'
-				})
+				})                
 				.otherwise({
-					redirectTo: '/Clients'
+				    redirectTo: '/Products'
 				});
         })
         .directive("ngTranslate",
