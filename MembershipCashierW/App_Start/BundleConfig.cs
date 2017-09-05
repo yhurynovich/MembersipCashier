@@ -19,16 +19,16 @@ namespace MembershipCashierW
                         "~/Scripts/jquery.validate*"));
 
             bundles.Add(new ScriptBundle("~/bundles/vendors").Include(
-               "~/Scripts/jquery.js",
+               //"~/Scripts/jquery.js",
                "~/Scripts/popper.js",
-               "~/Scripts/bootstrap.js",
+              // "~/Scripts/bootstrap.js",
                "~/Scripts/respond.src.js",
                "~/Scripts/angular.js",
                "~/Scripts/angular-route.js",
                "~/Scripts/angular-cookies.js",
                "~/Scripts/angular-validator.js",
-               "~/Scripts/angular-base64.js",
-               "~/Scripts/ui-bootstrap-tpls-0.13.1.js",
+               //"~/Scripts/angular-base64.js",
+               //"~/Scripts/ui-bootstrap-tpls-2.5.0.js",
                "~/Scripts/underscore.js",
                "~/Scripts/jquery.fancybox.js",
                "~/Scripts/jquery.fancybox-media.js",
@@ -41,9 +41,9 @@ namespace MembershipCashierW
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                "~/Content/site.css",
-                "~/Content/bootstrap.css",
-                "~/Content/bootstrap-theme.css",
+                //"~/Content/site.css",
+                //"~/Content/bootstrap.css",
+                //"~/Content/bootstrap-theme.css",
                 "~/Content/font-awesome.css",
                 "~/Content/jquery.fancybox.css",
                 "~/Content/loading-bar.css"));

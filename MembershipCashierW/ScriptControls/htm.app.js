@@ -2,7 +2,7 @@
 (function () {
     "use strict";
 
-    htm.app = angular.module("htm.app", ['ngRoute','ngResource'])
+    htm.app = angular.module("htm.app", ['ngRoute', 'ngResource', 'ui.bootstrap'])
         .factory("$global",
         [
             "$rootScope", function($rootScope) {

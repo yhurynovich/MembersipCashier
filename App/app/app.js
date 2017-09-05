@@ -2,7 +2,7 @@
 	"use strict";
 	
 	//Modules
-	var app = angular.module("app", ["ngRoute"]);
+	var app = angular.module("app", ["ngRoute", "ui.bootstrap"]);
 	
 	//Configuration
 	app.config(function($locationProvider, $routeProvider, $httpProvider){

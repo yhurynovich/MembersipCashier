@@ -1,76 +1,77 @@
 ﻿'use strict';
 
 htm.app.controller('ProductsCtrl',
-    ['$location', '$q', '$routeParams', 'productService', '$http',
-    function ($location, $q, $routeParams, productService, $http) {
+    ['$scope', '$location', '$q', '$routeParams', 'productService', '$http', '$uibModal',
+    function ($scope, $location, $q, $routeParams, productService, $http, $uibModal) {
         var ctrl = this;
-        ctrl.userAndProducts = [];
-        ctrl.products = [];
-        ctrl.loading = false;
-        ctrl.filter = $routeParams.filter;
+        $scope.userAndProducts = [];
+        $scope.products = [];
+        $scope.loading = false;
+        $scope.filter = $routeParams.filter;
 
         var currentPageIndex = 0, currentRequestStream = 0;
         const PAGE_SIZE = 20;
 
-        ctrl.getMore = function () {
-            ctrl.loading = true;
+        $scope.getMore = function () {
+            $scope.loading = true;
 
             var promise = $q.defer();
             var pageIndex = ++currentPageIndex;
             var requestStream = currentRequestStream;
-	        var curentFilter = ctrl.filter;
+	        var curentFilter = $scope.filter;
             var skip = (pageIndex - 1) * PAGE_SIZE;
 
             productService.ClientProducts.query({
-                blob: ctrl.filter ? ctrl.filter : "",
+                blob: $scope.filter ? $scope.filter : "",
                 skip: skip,
                 take: PAGE_SIZE
             }, function (extraProducts) {
-                if (requestStream === currentRequestStream && curentFilter === ctrl.filter) {
-                    Array.prototype.push.apply(ctrl.userAndProducts, extraProducts);
-                    ctrl.loading = false;
+                if (requestStream === currentRequestStream && curentFilter === $scope.filter) {
+                    //Array.prototype.push.apply($scope.userAndProducts, extraProducts);
+                    $scope.userAndProducts = extraProducts;
+                    $scope.loading = false;
                 }
 
                 promise.resolve();
             }, function (err) {
                 promise.resolve();
-                if (requestStream === currentRequestStream && curentFilter === ctrl.filter) {
-                    ctrl.loading = false;
+                if (requestStream === currentRequestStream && curentFilter === $scope.filter) {
+                    $scope.loading = false;
                 }
-                ctrl.error = err.data.Message || err.data;
+                $scope.error = err.data.Message || err.data;
             });
 
             return promise.promise;
         };
 
-        ctrl.doSearch = function () {
-            if (ctrl.searchString != null && ctrl.searchString.length > 0) {
-                ctrl.filter = ctrl.searchString;
+        $scope.doSearch = function () {
+            if ($scope.searchString != null && $scope.searchString.length > 0) {
+                $scope.filter = $scope.searchString;
             } else {
-                ctrl.filter = "";
+                $scope.filter = "";
             }
 
-            ctrl.products = [];
+            $scope.products = [];
             currentPageIndex = 0;
             currentRequestStream = 0;
 
-            ctrl.getMore();
+            $scope.getMore();
         };
 
-        ctrl.loadProducts = function (userId) {
-            ctrl.loading = true;
+        $scope.loadProducts = function (userId) {
+            $scope.loading = true;
             $http({
                 method: 'GET',
                 url: appRoot + 'api/ClientLastUsedProducts?blob=a&skip=0&take=100'
             }).then(function successCallback(response) {
-                ctrl.userAndProducts = response.data;
-                ctrl.loading = false;
+                $scope.userAndProducts = response.data;
+                $scope.loading = false;
             }, function errorCallback(response) {
-                ctrl.loading = false;
+                $scope.loading = false;
             });
         };
 
-        ctrl.updateBalance = function (product, ballanceUnits) {
+        $scope.updateBalance = function (product, ballanceUnits) {
             if (product) {
                 let transaction = {
                     UserId: product.ProfileCredit.UserId,
@@ -84,20 +85,47 @@ htm.app.controller('ProductsCtrl',
                     url: appRoot + 'api/CreditTransaction',
                     data: [transaction]
                 }).then(function successCallback(response) {
-                    ctrl.BallanseResponse = response.data;
-                    ctrl.loading = false;
+                    $scope.BallanseResponse = response.data;
+                    $scope.loading = false;
                 }, function errorCallback(response) {
-                    ctrl.errorResponse = response.data;
-                    ctrl.loading = false;
+                    $scope.errorResponse = response.data;
+                    $scope.loading = false;
                 });
             }
         };
 
-        ctrl.calcCurrentBalance = function (products) {
+        $scope.calcCurrentBalance = function (products) {
             var total = 0;
             angular.forEach(products, function (key, value) {
-                total += key.ProfileCredit.Ballance;                
+                total += (key.ProfileCredit.Ballance * key.ProfileCredit.BallanceUnits);                
             });
             return total;
+        };
+
+        $scope.OpenAddProductDialog = function (selectedUser) {
+            //var modalScope = $scope.$new();
+
+            //var modalInstance = $uibModal.open({
+            //    templateUrl: '/ScriptControls/Views/addProductModal.html',
+            //    controller: 'AddProductCtrl',
+            //    scope: modalScope
+            //});
+
+            //modalScope.modalInstance = modalInstance;
+
+            //modalInstance.result.then(function (result) {
+            //}, null);
+            $uibModal.open({
+                templateUrl: '/ScriptControls/Views/addProductModal.html',
+                controller: 'AddProductCtrl',
+                resolve: {
+                    user: function () {
+                        return selectedUser;
+                    }
+                }
+            }).result.then(function ($scope) {
+                //clearSearch();
+            }, function () {
+            });
         };
     }]);

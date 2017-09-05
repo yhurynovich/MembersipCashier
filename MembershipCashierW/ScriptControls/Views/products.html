@@ -5,15 +5,15 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="input-group">
-                    <input id="inputSearchProducts" type="search" class="form-control shortInputSearch" placeholder="Search" ng-model="ctrl.searchString" ng-change="ctrl.doSearch();" ng-model-options="{debounce: 200}" />
-                    <button class="btn btn-default ml-2" id="searchCon" ng-click="ctrl.doSearch();" type="button">Read QR code</button>
+                    <input id="inputSearchProducts" type="search" class="form-control shortInputSearch" placeholder="Search" ng-model="searchString" ng-change="doSearch();" ng-model-options="{debounce: 200}" />
+                    <button class="btn btn-default ml-2" id="searchCon" ng-click="doSearch();" type="button">Read QR code</button>
                 </div>
             </div>
             <div class="col-md-6">
                 <button type="button" class="btn btn-default pull-right" data-toggle="modal" data-target="#myModal" id="new">Enroll New Client</button>
             </div>
         </div>    
-        <div class="card mt-2" ng-repeat="user in ctrl.userAndProducts">
+        <div class="card mt-2" ng-repeat="user in userAndProducts | filter:searchString">
             <div class="card-header">
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
@@ -22,12 +22,12 @@
                         <div class="small text-muted">{{user.UserProfile.Phone}}</div>
                     </div>
                     <div class="col-md-4 col-sm-12 pull-right">
-                        <span class="help-block text-muted small-font">Last Updated</span>
+                        <span class="help-block text-muted small-font">Last Payment</span>
                         <input type="text" class="form-control" value="What field should be bound?" readonly />
                     </div>
                     <div class="col-md-2 col-sm-12">
                         <span class="help-block text-muted small-font">Balance</span>
-                        <input type="text" class="form-control" value="{{ctrl.calcCurrentBalance(user.Products) | currency}}" readonly />
+                        <input type="text" class="form-control" value="{{calcCurrentBalance(user.Products) | currency}}" readonly />
                     </div>
                 </div>
             </div>
@@ -45,173 +45,34 @@
                                 <div class="col-md-3 col-sm-3 col-xs-12">
                                     <div class="input-group">
                                         <span class="input-group-btn">
-                                            <button class="btn btn-secondary"type="button" ng-click="ctrl.updateBalance(product, (-1 * product.ProfileCredit.BallanceUnits))"><span class="fa fa-minus"></span></button>
+                                            <button class="btn btn-secondary"type="button" ng-click="updateBalance(product, -1)"><span class="fa fa-minus"></span></button>
                                         </span>
                                         <input type="text" name="balance" class="form-control text-center" ng-model="product.ProfileCredit.Ballance">
                                         <span class="input-group-btn">
-                                            <button class="btn btn-secondary" type="button" ng-click="ctrl.updateBalance(product, product.ProfileCredit.BallanceUnits)"><span class="fa fa-plus"></span></button>
+                                            <button class="btn btn-secondary" type="button" ng-click="updateBalance(product, 1)"><span class="fa fa-plus"></span></button>
                                         </span> 
                                     </div>
                                 </div>
                                 <div class="col-md-3 col-sm-3 col-xs-12">
-                                    <input type="text" class="form-control" value="{{product.ProfileCredit.BallanceUnits | currency}}" readonly />
+                                    <input type="text" class="form-control" value="{{product.ProfileCredit.Ballance * product.ProfileCredit.BallanceUnits | currency}}" readonly />
                                 </div>
                                 <div class="span4"></div>
                             </div>
                         </div>
                         <div class="card-block mu-2">
-                            <a href="#" class="card-link">Add More</a>
+                            <a href="#" class="card-link" ng-click="OpenAddProductDialog(this)">Add More</a>
                             <a href="#" class="card-link">Transaction History</a>
                         </div>
                     </div>                   
                 </div>
             </div>
-        </div>
-
-        <!--<div id="header" class="row" ng-repeat="user in ctrl.userAndProducts" ng-animate="{enter: 'fade'}">
-            <div class="col-sm-2">
-                <img class="thumbnail" ng-src="../../Images/unknown.jpg" alt="">
-            </div>
-            <div class="col-sm-10">
-                <div class="row">
-                    <div class="span7">
-                    </div>
-                    <div class="col-sm-3 text-right">
-                        Last Payment
-                    </div>
-                    <div class="col-sm-2 text-right">
-                        Current Balance
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-3">
-                        <h3>{{user.UserProfile.FirstName}} {{user.UserProfile.LastName}}</h3>
-                    </div>
-                    <div class="col-sm-2 text-right">
-                        {{user.UserProfile.EmailId}}
-                    </div>
-                    <div class="col-sm-2 text-right">
-                        {{user.UserProfile.Phone}}
-                    </div>
-                    <div class="col-sm-3 text-right">
-                        {{user.UserProfile.UserName}}
-                    </div>
-                    <div class="col-sm-2 text-right">
-                        {{ctrl.calcCurrentBalance(user.Products) | currency}}
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row" ng-repeat="product in user.Products" ng-animate="{enter: 'fade'}">
-            <div class="col-sm-3">
-                <h4>{{product.Product.Description}}</h4>
-            </div>
-            <div class="input-group col-sm-3">
-                <span class="input-group-btn">
-                    <button type="button" class="btn btn-danger btn-number" ng-click="ctrl.updateBalance(product, (-1 * product.ProfileCredit.BallanceUnits))">
-                        <span class="glyphicon glyphicon-minus"></span>
-                    </button>
-                </span>
-                <input type="text" name="balance" class="form-control input-number" ng-model="product.ProfileCredit.Ballance" currency>
-                <span class="input-group-btn">
-                    <button type="button" class="btn btn-success btn-number" ng-click="ctrl.updateBalance(product, product.ProfileCredit.BallanceUnits)">
-                        <span class="glyphicon glyphicon-plus"></span>
-                    </button>
-                </span>
-            </div>
-            <div class="col-md-6 pull-left">
-                <span>{{product.ProfileCredit.BallanceUnits}}</span>
-            </div>
-            <p>
-                <br />
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" id="edit">Edit</button>
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target=".bs-example-modal-sm">Delete</button>
-            </p>
-        </div>-->
-
-
-           
-
-            <!--<div class="row">
-            <div class="panel panel-primary">
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-12" ng-repeat="user in ctrl.userAndProducts" ng-animate="{enter: 'fade'}">
-                                <div class="media">
-                                    <a class="pull-left" ng-href="#" title="View {{user.UserProfile.LastName}} details">
-                                        <img class="media-object" height="120" ng-src="../../Images/unknown.jpg" alt="" />
-                                    </a>
-                                    <div class="media-body">
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-xs-3" ml-1>
-                                                    <label class="control-label"></label>
-                                                    <h4 class="media-heading">{{user.UserProfile.FirstName}} {{user.UserProfile.LastName}}</h4>
-                                                </div>
-
-                                                <div class="col-xs-2">
-                                                    <label class="control-label"></label>
-                                                    <h4 class="media-heading">{{user.UserProfile.EmailId}}</h4>
-                                                </div>
-
-                                                <div class="col-xs-2">
-                                                    <label class="control-label"></label>
-                                                    <h4 class="media-heading">{{user.UserProfile.Phone}}</h4>
-                                                </div>
-
-                                                <div class="col-xs-3">
-                                                    <label class="control-label">Last Payment</label>
-                                                    <h4 class="media-heading">{{user.UserProfile.UserName}}</h4>
-                                                </div>
-                                                <div class="col-xs-2">
-                                                    <label class="control-label">Current Balance</label>
-                                                    <h4 class="media-heading">{{ctrl.calcCurrentBalance(user.Products) | currency}}</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                            <div class="row" ng-repeat="product in user.Products" ng-animate="{enter: 'fade'}">
-                                                <div class="col-md-3">
-                                                    <h4 class="media-heading">{{product.Product.Description}}</h4>
-                                                </div>
-                                                <div class="input-group col-md-2 pull-left">
-                                                    <span class="input-group-btn">
-                                                        <button type="button" class="btn btn-danger btn-number" ng-click="ctrl.updateBalance(product, (-1 * product.ProfileCredit.BallanceUnits))">
-                                                            <span class="glyphicon glyphicon-minus"></span>
-                                                        </button>
-                                                    </span>
-                                                    <input type="text" name="balance" class="form-control input-number" ng-model="product.ProfileCredit.Ballance" currency>
-                                                    <span class="input-group-btn">
-                                                        <button type="button" class="btn btn-success btn-number" ng-click="ctrl.updateBalance(product, product.ProfileCredit.BallanceUnits)">
-                                                            <span class="glyphicon glyphicon-plus"></span>
-                                                        </button>
-                                                    </span>
-                                                </div>
-                                                <div class="col-md-6 pull-left" >
-                                                    <span>{{product.ProfileCredit.BallanceUnits}}</span>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    <div class="media-bottom">
-                                        <div class="pull-left">
-                                            <buton class="btn btn-primary btn-xs" ng-click="">Add More...<i class="fa fa-pencil pull-right"></i></buton>
-                                            <buton class="btn btn-primary btn-xs" ng-click="">Transaction History <i class="fa fa-pencil pull-right"></i></buton>
-                                        </div>
-                                    </div>
-                                </div>
-                                <br /><br />
-                            </div>
-                    </div>
-                </div>
-            </div>
-        </div>-->
+        </div>       
             <div class="panel-footer">
                 <div class="text-center">
                     <!--<custom-pager page="{{page}}" pages-count="{{pagesCount}}" total-count="{{totalCount}}" search-func="search(page)"></custom-pager>-->
                 </div>
-                <div proximity-watch="ctrl.userAndProducts" proximity-action="ctrl.loadProducts()" style="text-align:center;">
-                    <span ng-show="ctrl.loading" style="width: 40px"></span> <span ng-show="ctrl.loading">Loading...</span>
+                <div proximity-watch="userAndProducts" proximity-action="loadProducts()" style="text-align:center;">
+                    <span ng-show="loading" style="width: 40px"></span> <span ng-show="loading">Loading...</span>
                 </div>
             </div>
         </div>

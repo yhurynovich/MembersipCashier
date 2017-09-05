@@ -367,6 +367,7 @@
     <Content Include="Content\font\glyphicons-halflings-regular.svg" />
     <Content Include="Content\jquery.fancybox.css" />
     <Content Include="Content\loading-bar.css" />
+    <Content Include="Content\myTest.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -390,12 +391,15 @@
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </None>
     <Content Include="Images\ajax-loader.gif" />
     <Content Include="Images\HTM\htm-logo.svg" />
     <Content Include="Integration.svc" />
     <Content Include="IntegrationSecurity.svc" />
     <None Include="JavascriptNamingConvention.txt" />
+    <Content Include="ScriptControls\Controllers\AddProductCtrl.js" />
+    <Content Include="ScriptControls\Views\addProductModal.html" />
     <Content Include="ScriptControls\Controllers\ProductsCtrl.js" />
     <Content Include="ScriptControls\Directives\proximityWatch.js" />
     <Content Include="ScriptControls\Services\ClientService.js" />
@@ -470,6 +474,7 @@
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\respond.src.js" />
     <Content Include="Scripts\ui-bootstrap-tpls-0.13.1.js" />
+    <Content Include="Scripts\ui-bootstrap-tpls-2.5.0.js" />
     <Content Include="Scripts\underscore.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
