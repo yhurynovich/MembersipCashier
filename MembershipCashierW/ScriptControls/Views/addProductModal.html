@@ -8,39 +8,47 @@
 
 </body>
 </html>-->
-<div class="modal-dialog">
+
     <div class="modal-content">
         <div class="modal-header">
-            <h3 class="modal-title">Find Product</h3>
+            <h5 class="modal-title">Find Product</h5>
         </div>
         <div class="modal-body">
-            <form role="form" novalidate angular-validator name="addCustomerForm" angular-validator-submit="Register()">
-                <div class="">
+            <form role="form" novalidate angular-validator name="addCustomerForm" angular-validator-submit="Register()">              
                     <div class="form-group">
-                        <div class="row">
+                        <!--<div class="row">
                             <div class="col-sm-6">
                                 <input id="inputSearchProducts" type="search" class="form-control shortInputSearch" placeholder="Search product" ng-model="searchString" ng-change="doSearch();" ng-model-options="{debounce: 200}" />
                             </div>
-                        </div>
-                    </div>
-                    <div class="h4 mb-0 text-primary">{{selectedUser.UserProfile.FirstName}} {{selectedUser.UserProfile.LastName}}</div>
+                        </div>-->
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <input id="inputSearchProducts" type="search" class="form-control shortInputSearch" placeholder="Search product" ng-model="searchString" ng-change="doSearch();" ng-model-options="{debounce: 200}" />
+                            </li>
+                            <li class="list-group-item justify-content-between" ng-repeat="product in products">
+                                {{product.Description}}                                
+                                <button type="button" class="btn btn-warning btn-sm pull-right">Add</button>   
+                                
+                            </li>                           
+                        </ul>
+                    </div>                    
+                    <!--<div class="h4 mb-0 text-primary">{{selectedUser.UserProfile.FirstName}} {{selectedUser.UserProfile.LastName}}</div>
                     <ul class="list-unstyled">
                         <li ng-repeat="product in products">
                             <h2>{{Description}}</h2>
                             <button type="button" class="btn btn-primary btn-sm">Add</button>
                         </li>
-                    </ul>
-                </div>
+                    </ul>-->
             </form>
         </div>
         <div class="modal-footer">
-            <button class="btn btn-default" ng-click="cancel()">Close</button>
+            <button class="btn btn-info btn-md" ng-click="cancel()">Close</button>
             <div proximity-watch="products" proximity-action="loadProducts()" style="text-align:center;">
                 <span ng-show="loading" style="width: 40px"></span> <span ng-show="loading">Loading...</span>
             </div>
         </div>
         
     </div>
-</div>
+
 
 
