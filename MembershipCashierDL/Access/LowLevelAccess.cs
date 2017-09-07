@@ -249,7 +249,15 @@ namespace MembershipCashierDL.Access
             }
         }
 
-        public ProductContract[] FindProduct(ProductDiscriminator d, LocationDiscriminator l, ProfileCreditDiscriminator c)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="d"></param>
+        /// <param name="l"></param>
+        /// <param name="c"></param>
+        /// <param name="userId">User id that will be used to remove products known for the user</param>
+        /// <returns></returns>
+        public ProductContract[] FindProduct(ProductDiscriminator d, LocationDiscriminator l, ProfileCreditDiscriminator c, int userId)
         {
             try
             {
@@ -258,6 +266,7 @@ namespace MembershipCashierDL.Access
                     records.Discriminator = d;
                     records.LocationFilter = l;
                     records.ProfileCreditFilter = c;
+                    records.UserIdForExcludingAlreadyUsedProducts = userId;
                     return records.Select(r => new ProductContract() { Product = r }).ToArray();
                 }
             }
