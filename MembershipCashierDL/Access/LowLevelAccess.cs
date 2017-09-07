@@ -384,7 +384,7 @@ namespace MembershipCashierDL.Access
                             product = MDB.Products.FirstOrDefault(p=>p.ProductId == productId);
                         else
                         {
-                            product = MDB.Products.FirstOrDefault(p => p.Description == x.Product.Description);
+                            product = MDB.Products.FirstOrDefault(p => p.Description == x.Product.Description && (!p.ProductPriceHistories.Any() || p.ProductPriceHistories.OrderByDescending(r=>r.ChangeDate).First().Price == x.Price));
 
                             if (product == null)
                             {
