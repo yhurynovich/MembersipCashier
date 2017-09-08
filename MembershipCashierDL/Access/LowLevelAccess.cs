@@ -249,7 +249,15 @@ namespace MembershipCashierDL.Access
             }
         }
 
-        public ProductContract[] FindProduct(ProductDiscriminator d, LocationDiscriminator l, ProfileCreditDiscriminator c)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="d"></param>
+        /// <param name="l"></param>
+        /// <param name="c"></param>
+        /// <param name="userId">User id that will be used to remove products known for the user</param>
+        /// <returns></returns>
+        public ProductContract[] FindProduct(ProductDiscriminator d, LocationDiscriminator l, ProfileCreditDiscriminator c, int userId)
         {
             try
             {
@@ -258,6 +266,7 @@ namespace MembershipCashierDL.Access
                     records.Discriminator = d;
                     records.LocationFilter = l;
                     records.ProfileCreditFilter = c;
+                    records.UserIdForExcludingAlreadyUsedProducts = userId;
                     return records.Select(r => new ProductContract() { Product = r }).ToArray();
                 }
             }
@@ -289,6 +298,7 @@ namespace MembershipCashierDL.Access
 
         public UserAndProductsContarct[] FindLastUsedProducts(UserProfile2Discriminator u, UserProfileVsLocationDiscriminator pvl)
         {
+            //TODO: it is not matching how it is implemented in the ProductRepository
             try
             {
                 var userRecords = RepositoryFactory.GetUserProfile();
@@ -368,8 +378,21 @@ namespace MembershipCashierDL.Access
                 {
                     foreach (var x in d)
                     {
-                        var product = new DB.Product();
-                        x.Product.CopyTo(product, false);
+                        int productId = x.Product.ProductId;
+                        DB.Product product;
+                        if(productId != default(int))
+                            product = MDB.Products.FirstOrDefault(p=>p.ProductId == productId);
+                        else
+                        {
+                            product = MDB.Products.FirstOrDefault(p => p.Description == x.Product.Description && (!p.ProductPriceHistories.Any() || p.ProductPriceHistories.OrderByDescending(r=>r.ChangeDate).First().Price == x.Price));
+
+                            if (product == null)
+                            {
+                                product = new DB.Product();
+                                x.Product.CopyTo(product, false);
+                                MDB.Products.InsertOnSubmit(product);
+                            }
+                        }
 
                         var prodVsLoc = new DB.ProductVsLocation() { Product = product, LocationId = x.Location.LocationId };
                         MDB.ProductVsLocations.InsertOnSubmit(prodVsLoc);

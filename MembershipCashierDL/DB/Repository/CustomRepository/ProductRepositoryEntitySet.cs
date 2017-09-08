@@ -1,4 +1,5 @@
-﻿using MembershipCashierUnified.Contracts;
+﻿using MembershipCashierDL.Properties;
+using MembershipCashierUnified.Contracts;
 using MembershipCashierUnified.Interfaces;
 using SecurityDL.DB.Repository;
 using SecurityUnified.Contracts;
@@ -15,6 +16,8 @@ namespace MembershipCashierDL.DB.Repository.CustomRepository
         public LocationDiscriminator LocationFilter { get; set; }
 
         public bool ShowRecordsWithBallanceFirst { get; set; }
+
+        public int UserIdForExcludingAlreadyUsedProducts { get; set; }
 
         public CreditTransactionDiscriminator CreditTransactionFilter
         {
@@ -109,6 +112,12 @@ namespace MembershipCashierDL.DB.Repository.CustomRepository
                     if (ShowRecordsWithBallanceFirst)
                     {
                         newResult = newResult.OrderByDescending(x=>x.ProfileCredits.Any(c=>c.HasBallance.Value));
+                    }
+
+                    if (UserIdForExcludingAlreadyUsedProducts != default(int))
+                    {
+                        var lastProductIds = GetTable<DB.ProfileCredit>().Where(x=>x.UserId== UserIdForExcludingAlreadyUsedProducts).OrderByDescending(pc => pc.HasBallance).ThenByDescending(pc => pc.CalculatedTime).ThenByDescending(pc => pc.Product.CreditTransactions.Count).Select(x=>x.Product.ProductId).Distinct().Take(Settings.Default.NumberOfLastProductsToShow).ToArray();
+                        newResult = newResult.Where(x=>!lastProductIds.Contains(x.ProductId)).OfType<DB.Product>();
                     }
 
                     if (discriminator != null)

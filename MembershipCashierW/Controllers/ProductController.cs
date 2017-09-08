@@ -35,6 +35,11 @@ namespace MembershipCashierW.Controllers
             /// </summary>
             [DataMember]
             public string LocationLambda { get; set; }
+            /// <summary>
+            /// Exclude products that current user already have in history
+            /// </summary>
+            [DataMember]
+            public bool NotInCurrentUserHistory { get; set; }
         }
 
         [DataContract]
@@ -67,10 +72,15 @@ namespace MembershipCashierW.Controllers
                 if (locationFilter == null && productFilter == null)
                     return base.BadRequest();
 
+                int currentUserId = default(int);
+                if (request.NotInCurrentUserHistory)
+                    currentUserId = SessionGlobal.CurrentUser.Identity.UserId;
+
                 return base.Ok(Db.FindProduct(
                     productFilter != null ? new ProductDiscriminator() { Filter = productFilter } : null,
                     locationFilter != null ? new LocationDiscriminator() { Filter = locationFilter } : null,
-                    null
+                    null,
+                    currentUserId
                 ).Select(x => x.Product));
             });
         }

@@ -49,7 +49,7 @@ namespace MembershipCashierW.Code.Documents.Generators
                 var lastTransactions = Db.FindCreditTransaction(new CreditTransactionDiscriminator() { Filter = x => x.UserId == UserId && reportLocationIds2.Contains(x.LocationId) && x.TransactionTime >= lastTrnTime });
                 var productIds = lastTransactions.Select(x => x.CreditTransaction.ProductId).Distinct().ToArray();
                 var productFilter = new ProductDiscriminator() { Filter = x => productIds.Contains(x.ProductId) };
-                var products = Db.FindProduct(productFilter, null, null);
+                var products = Db.FindProduct(productFilter, null, null, default(int));
                 var prices = Db.FindProductPriceHistory(productFilter, true);
                 var receiptTemplate = new Receipt();
                 receiptTemplate.User = user.UserProfile2;

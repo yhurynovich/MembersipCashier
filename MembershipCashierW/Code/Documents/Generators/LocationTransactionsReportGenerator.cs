@@ -35,7 +35,7 @@ namespace MembershipCashierW.Code.Documents.Generators
             var trns = Db.FindCreditTransaction(new CreditTransactionDiscriminator() { Filter = x => reportLocationIds.Contains(x.LocationId) && x.TransactionTime >= from && x.TransactionTime < to });
             var productIds = trns.Select(x => x.CreditTransaction.ProductId).Distinct().ToArray();
             var productFilter = new ProductDiscriminator() { Filter = x => productIds.Contains(x.ProductId) };
-            var products = Db.FindProduct(productFilter, null, null);
+            var products = Db.FindProduct(productFilter, null, null, default(int));
             var prices = Db.FindProductPriceHistory(productFilter, true);
             var userIds = trns.Select(t => t.CreditTransaction.UserId).Distinct().ToArray();
             var users = SecrityDB.FindUserProfile(new UserProfileDiscriminator() { Filter = x=> userIds.Contains(x.UserId) });
