@@ -14,31 +14,21 @@
             <h5 class="modal-title">Find Product</h5>
         </div>
         <div class="modal-body">
-            <form role="form" novalidate angular-validator name="addCustomerForm" angular-validator-submit="Register()">              
-                    <div class="form-group">
-                        <!--<div class="row">
-                            <div class="col-sm-6">
-                                <input id="inputSearchProducts" type="search" class="form-control shortInputSearch" placeholder="Search product" ng-model="searchString" ng-change="doSearch();" ng-model-options="{debounce: 200}" />
-                            </div>
-                        </div>-->
-                        <ul class="list-group">
-                            <li class="list-group-item">
-                                <input id="inputSearchProducts" type="search" class="form-control shortInputSearch" placeholder="Search product" ng-model="searchString" ng-change="doSearch();" ng-model-options="{debounce: 200}" />
-                            </li>
-                            <li class="list-group-item justify-content-between" ng-repeat="product in products">
-                                {{product.Description}}                                
-                                <button type="button" class="btn btn-warning btn-sm pull-right">Add</button>   
-                                
-                            </li>                           
-                        </ul>
-                    </div>                    
-                    <!--<div class="h4 mb-0 text-primary">{{selectedUser.UserProfile.FirstName}} {{selectedUser.UserProfile.LastName}}</div>
-                    <ul class="list-unstyled">
-                        <li ng-repeat="product in products">
-                            <h2>{{Description}}</h2>
-                            <button type="button" class="btn btn-primary btn-sm">Add</button>
-                        </li>
-                    </ul>-->
+            <form role="form" novalidate angular-validator name="addCustomerForm" angular-validator-submit="Register()">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <input id="inputSearchProducts" type="search" class="form-control shortInputSearch" placeholder="Search product" ng-model="searchString" ng-change="doSearch();" ng-model-options="{debounce: 200}" />
+                        </div>
+                    </div>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item justify-content-between" ng-repeat="product in products">
+                        {{product.Description}}
+                        <button type="button" class="btn btn-warning btn-sm pull-right">Add</button>
+
+                    </li>
+                </ul>
             </form>
         </div>
         <div class="modal-footer">
