@@ -45,6 +45,7 @@ namespace MembershipCashierW.Controllers
         [DataContract]
         public class NewProductRequest : ProductImplementor, IHasPrice
         {
+            [DataMember]
             public decimal Price { get; set; }
         }
 

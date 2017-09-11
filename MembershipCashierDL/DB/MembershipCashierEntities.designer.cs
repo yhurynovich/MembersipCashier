@@ -36,9 +36,6 @@ namespace MembershipCashierDL.DB
     partial void InsertOwner(Owner instance);
     partial void UpdateOwner(Owner instance);
     partial void DeleteOwner(Owner instance);
-    partial void InsertProduct(Product instance);
-    partial void UpdateProduct(Product instance);
-    partial void DeleteProduct(Product instance);
     partial void InsertUserProfileAudit(UserProfileAudit instance);
     partial void UpdateUserProfileAudit(UserProfileAudit instance);
     partial void DeleteUserProfileAudit(UserProfileAudit instance);
@@ -75,6 +72,9 @@ namespace MembershipCashierDL.DB
     partial void InsertPayment(Payment instance);
     partial void UpdatePayment(Payment instance);
     partial void DeletePayment(Payment instance);
+    partial void InsertProduct(Product instance);
+    partial void UpdateProduct(Product instance);
+    partial void DeleteProduct(Product instance);
     #endregion
 		
 		public MembershipCashierEntitiesDataContext() : 
@@ -120,14 +120,6 @@ namespace MembershipCashierDL.DB
 			get
 			{
 				return this.GetTable<Owner>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Product> Products
-		{
-			get
-			{
-				return this.GetTable<Product>();
 			}
 		}
 		
@@ -224,6 +216,14 @@ namespace MembershipCashierDL.DB
 			get
 			{
 				return this.GetTable<Payment>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Product> Products
+		{
+			get
+			{
+				return this.GetTable<Product>();
 			}
 		}
 	}
@@ -548,204 +548,6 @@ namespace MembershipCashierDL.DB
 		{
 			this.SendPropertyChanging();
 			entity.Owner = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Product")]
-	public partial class Product : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ProductId;
-		
-		private string _Description;
-		
-		private EntitySet<ProductVsLocation> _ProductVsLocations;
-		
-		private EntitySet<ProductPriceHistory> _ProductPriceHistories;
-		
-		private EntitySet<ProfileCredit> _ProfileCredits;
-		
-		private EntitySet<CreditTransaction> _CreditTransactions;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnProductIdChanging(int value);
-    partial void OnProductIdChanged();
-    partial void OnDescriptionChanging(string value);
-    partial void OnDescriptionChanged();
-    #endregion
-		
-		public Product()
-		{
-			this._ProductVsLocations = new EntitySet<ProductVsLocation>(new Action<ProductVsLocation>(this.attach_ProductVsLocations), new Action<ProductVsLocation>(this.detach_ProductVsLocations));
-			this._ProductPriceHistories = new EntitySet<ProductPriceHistory>(new Action<ProductPriceHistory>(this.attach_ProductPriceHistories), new Action<ProductPriceHistory>(this.detach_ProductPriceHistories));
-			this._ProfileCredits = new EntitySet<ProfileCredit>(new Action<ProfileCredit>(this.attach_ProfileCredits), new Action<ProfileCredit>(this.detach_ProfileCredits));
-			this._CreditTransactions = new EntitySet<CreditTransaction>(new Action<CreditTransaction>(this.attach_CreditTransactions), new Action<CreditTransaction>(this.detach_CreditTransactions));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductId", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int ProductId
-		{
-			get
-			{
-				return this._ProductId;
-			}
-			set
-			{
-				if ((this._ProductId != value))
-				{
-					this.OnProductIdChanging(value);
-					this.SendPropertyChanging();
-					this._ProductId = value;
-					this.SendPropertyChanged("ProductId");
-					this.OnProductIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string Description
-		{
-			get
-			{
-				return this._Description;
-			}
-			set
-			{
-				if ((this._Description != value))
-				{
-					this.OnDescriptionChanging(value);
-					this.SendPropertyChanging();
-					this._Description = value;
-					this.SendPropertyChanged("Description");
-					this.OnDescriptionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_ProductVsLocation", Storage="_ProductVsLocations", ThisKey="ProductId", OtherKey="ProductId")]
-		public EntitySet<ProductVsLocation> ProductVsLocations
-		{
-			get
-			{
-				return this._ProductVsLocations;
-			}
-			set
-			{
-				this._ProductVsLocations.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_ProductPriceHistory", Storage="_ProductPriceHistories", ThisKey="ProductId", OtherKey="ProductId")]
-		public EntitySet<ProductPriceHistory> ProductPriceHistories
-		{
-			get
-			{
-				return this._ProductPriceHistories;
-			}
-			set
-			{
-				this._ProductPriceHistories.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_ProfileCredit", Storage="_ProfileCredits", ThisKey="ProductId", OtherKey="ProductId")]
-		public EntitySet<ProfileCredit> ProfileCredits
-		{
-			get
-			{
-				return this._ProfileCredits;
-			}
-			set
-			{
-				this._ProfileCredits.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_CreditTransaction", Storage="_CreditTransactions", ThisKey="ProductId", OtherKey="ProductId")]
-		public EntitySet<CreditTransaction> CreditTransactions
-		{
-			get
-			{
-				return this._CreditTransactions;
-			}
-			set
-			{
-				this._CreditTransactions.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_ProductVsLocations(ProductVsLocation entity)
-		{
-			this.SendPropertyChanging();
-			entity.Product = this;
-		}
-		
-		private void detach_ProductVsLocations(ProductVsLocation entity)
-		{
-			this.SendPropertyChanging();
-			entity.Product = null;
-		}
-		
-		private void attach_ProductPriceHistories(ProductPriceHistory entity)
-		{
-			this.SendPropertyChanging();
-			entity.Product = this;
-		}
-		
-		private void detach_ProductPriceHistories(ProductPriceHistory entity)
-		{
-			this.SendPropertyChanging();
-			entity.Product = null;
-		}
-		
-		private void attach_ProfileCredits(ProfileCredit entity)
-		{
-			this.SendPropertyChanging();
-			entity.Product = this;
-		}
-		
-		private void detach_ProfileCredits(ProfileCredit entity)
-		{
-			this.SendPropertyChanging();
-			entity.Product = null;
-		}
-		
-		private void attach_CreditTransactions(CreditTransaction entity)
-		{
-			this.SendPropertyChanging();
-			entity.Product = this;
-		}
-		
-		private void detach_CreditTransactions(CreditTransaction entity)
-		{
-			this.SendPropertyChanging();
-			entity.Product = null;
 		}
 	}
 	
@@ -1569,9 +1371,9 @@ namespace MembershipCashierDL.DB
 		
 		private int _LocationId;
 		
-		private EntityRef<Product> _Product;
-		
 		private EntityRef<Location> _Location;
+		
+		private EntityRef<Product> _Product;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1585,8 +1387,8 @@ namespace MembershipCashierDL.DB
 		
 		public ProductVsLocation()
 		{
-			this._Product = default(EntityRef<Product>);
 			this._Location = default(EntityRef<Location>);
+			this._Product = default(EntityRef<Product>);
 			OnCreated();
 		}
 		
@@ -1638,40 +1440,6 @@ namespace MembershipCashierDL.DB
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_ProductVsLocation", Storage="_Product", ThisKey="ProductId", OtherKey="ProductId", IsForeignKey=true)]
-		public Product Product
-		{
-			get
-			{
-				return this._Product.Entity;
-			}
-			set
-			{
-				Product previousValue = this._Product.Entity;
-				if (((previousValue != value) 
-							|| (this._Product.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Product.Entity = null;
-						previousValue.ProductVsLocations.Remove(this);
-					}
-					this._Product.Entity = value;
-					if ((value != null))
-					{
-						value.ProductVsLocations.Add(this);
-						this._ProductId = value.ProductId;
-					}
-					else
-					{
-						this._ProductId = default(int);
-					}
-					this.SendPropertyChanged("Product");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Location_ProductVsLocation", Storage="_Location", ThisKey="LocationId", OtherKey="LocationId", IsForeignKey=true)]
 		public Location Location
 		{
@@ -1702,6 +1470,40 @@ namespace MembershipCashierDL.DB
 						this._LocationId = default(int);
 					}
 					this.SendPropertyChanged("Location");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_ProductVsLocation", Storage="_Product", ThisKey="ProductId", OtherKey="ProductId", IsForeignKey=true)]
+		public Product Product
+		{
+			get
+			{
+				return this._Product.Entity;
+			}
+			set
+			{
+				Product previousValue = this._Product.Entity;
+				if (((previousValue != value) 
+							|| (this._Product.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Product.Entity = null;
+						previousValue.ProductVsLocations.Remove(this);
+					}
+					this._Product.Entity = value;
+					if ((value != null))
+					{
+						value.ProductVsLocations.Add(this);
+						this._ProductId = value.ProductId;
+					}
+					else
+					{
+						this._ProductId = default(int);
+					}
+					this.SendPropertyChanged("Product");
 				}
 			}
 		}
@@ -2678,11 +2480,11 @@ namespace MembershipCashierDL.DB
 		
 		private System.Nullable<bool> _HasBallance;
 		
-		private EntityRef<Product> _Product;
-		
 		private EntityRef<UserProfile> _UserProfile;
 		
 		private EntityRef<Location> _Location;
+		
+		private EntityRef<Product> _Product;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -2706,9 +2508,9 @@ namespace MembershipCashierDL.DB
 		
 		public ProfileCredit()
 		{
-			this._Product = default(EntityRef<Product>);
 			this._UserProfile = default(EntityRef<UserProfile>);
 			this._Location = default(EntityRef<Location>);
+			this._Product = default(EntityRef<Product>);
 			OnCreated();
 		}
 		
@@ -2864,40 +2666,6 @@ namespace MembershipCashierDL.DB
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_ProfileCredit", Storage="_Product", ThisKey="ProductId", OtherKey="ProductId", IsForeignKey=true)]
-		public Product Product
-		{
-			get
-			{
-				return this._Product.Entity;
-			}
-			set
-			{
-				Product previousValue = this._Product.Entity;
-				if (((previousValue != value) 
-							|| (this._Product.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Product.Entity = null;
-						previousValue.ProfileCredits.Remove(this);
-					}
-					this._Product.Entity = value;
-					if ((value != null))
-					{
-						value.ProfileCredits.Add(this);
-						this._ProductId = value.ProductId;
-					}
-					else
-					{
-						this._ProductId = default(int);
-					}
-					this.SendPropertyChanged("Product");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserProfile_ProfileCredit", Storage="_UserProfile", ThisKey="UserId", OtherKey="UserId", IsForeignKey=true)]
 		public UserProfile UserProfile
 		{
@@ -2966,6 +2734,40 @@ namespace MembershipCashierDL.DB
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_ProfileCredit", Storage="_Product", ThisKey="ProductId", OtherKey="ProductId", IsForeignKey=true)]
+		public Product Product
+		{
+			get
+			{
+				return this._Product.Entity;
+			}
+			set
+			{
+				Product previousValue = this._Product.Entity;
+				if (((previousValue != value) 
+							|| (this._Product.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Product.Entity = null;
+						previousValue.ProfileCredits.Remove(this);
+					}
+					this._Product.Entity = value;
+					if ((value != null))
+					{
+						value.ProfileCredits.Add(this);
+						this._ProductId = value.ProductId;
+					}
+					else
+					{
+						this._ProductId = default(int);
+					}
+					this.SendPropertyChanged("Product");
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -3009,11 +2811,11 @@ namespace MembershipCashierDL.DB
 		
 		private EntitySet<Payment> _Payments;
 		
-		private EntityRef<Product> _Product;
-		
 		private EntityRef<UserProfile> _UserProfile;
 		
 		private EntityRef<Location> _Location;
+		
+		private EntityRef<Product> _Product;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -3038,9 +2840,9 @@ namespace MembershipCashierDL.DB
 		public CreditTransaction()
 		{
 			this._Payments = new EntitySet<Payment>(new Action<Payment>(this.attach_Payments), new Action<Payment>(this.detach_Payments));
-			this._Product = default(EntityRef<Product>);
 			this._UserProfile = default(EntityRef<UserProfile>);
 			this._Location = default(EntityRef<Location>);
+			this._Product = default(EntityRef<Product>);
 			OnCreated();
 		}
 		
@@ -3209,40 +3011,6 @@ namespace MembershipCashierDL.DB
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_CreditTransaction", Storage="_Product", ThisKey="ProductId", OtherKey="ProductId", IsForeignKey=true)]
-		public Product Product
-		{
-			get
-			{
-				return this._Product.Entity;
-			}
-			set
-			{
-				Product previousValue = this._Product.Entity;
-				if (((previousValue != value) 
-							|| (this._Product.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Product.Entity = null;
-						previousValue.CreditTransactions.Remove(this);
-					}
-					this._Product.Entity = value;
-					if ((value != null))
-					{
-						value.CreditTransactions.Add(this);
-						this._ProductId = value.ProductId;
-					}
-					else
-					{
-						this._ProductId = default(int);
-					}
-					this.SendPropertyChanged("Product");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserProfile_CreditTransaction", Storage="_UserProfile", ThisKey="UserId", OtherKey="UserId", IsForeignKey=true)]
 		public UserProfile UserProfile
 		{
@@ -3307,6 +3075,40 @@ namespace MembershipCashierDL.DB
 						this._LocationId = default(int);
 					}
 					this.SendPropertyChanged("Location");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_CreditTransaction", Storage="_Product", ThisKey="ProductId", OtherKey="ProductId", IsForeignKey=true)]
+		public Product Product
+		{
+			get
+			{
+				return this._Product.Entity;
+			}
+			set
+			{
+				Product previousValue = this._Product.Entity;
+				if (((previousValue != value) 
+							|| (this._Product.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Product.Entity = null;
+						previousValue.CreditTransactions.Remove(this);
+					}
+					this._Product.Entity = value;
+					if ((value != null))
+					{
+						value.CreditTransactions.Add(this);
+						this._ProductId = value.ProductId;
+					}
+					else
+					{
+						this._ProductId = default(int);
+					}
+					this.SendPropertyChanged("Product");
 				}
 			}
 		}
@@ -3899,6 +3701,204 @@ namespace MembershipCashierDL.DB
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Product")]
+	public partial class Product : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ProductId;
+		
+		private string _Description;
+		
+		private EntitySet<ProductVsLocation> _ProductVsLocations;
+		
+		private EntitySet<ProductPriceHistory> _ProductPriceHistories;
+		
+		private EntitySet<ProfileCredit> _ProfileCredits;
+		
+		private EntitySet<CreditTransaction> _CreditTransactions;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnProductIdChanging(int value);
+    partial void OnProductIdChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    #endregion
+		
+		public Product()
+		{
+			this._ProductVsLocations = new EntitySet<ProductVsLocation>(new Action<ProductVsLocation>(this.attach_ProductVsLocations), new Action<ProductVsLocation>(this.detach_ProductVsLocations));
+			this._ProductPriceHistories = new EntitySet<ProductPriceHistory>(new Action<ProductPriceHistory>(this.attach_ProductPriceHistories), new Action<ProductPriceHistory>(this.detach_ProductPriceHistories));
+			this._ProfileCredits = new EntitySet<ProfileCredit>(new Action<ProfileCredit>(this.attach_ProfileCredits), new Action<ProfileCredit>(this.detach_ProfileCredits));
+			this._CreditTransactions = new EntitySet<CreditTransaction>(new Action<CreditTransaction>(this.attach_CreditTransactions), new Action<CreditTransaction>(this.detach_CreditTransactions));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ProductId
+		{
+			get
+			{
+				return this._ProductId;
+			}
+			set
+			{
+				if ((this._ProductId != value))
+				{
+					this.OnProductIdChanging(value);
+					this.SendPropertyChanging();
+					this._ProductId = value;
+					this.SendPropertyChanged("ProductId");
+					this.OnProductIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_ProductVsLocation", Storage="_ProductVsLocations", ThisKey="ProductId", OtherKey="ProductId")]
+		public EntitySet<ProductVsLocation> ProductVsLocations
+		{
+			get
+			{
+				return this._ProductVsLocations;
+			}
+			set
+			{
+				this._ProductVsLocations.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_ProductPriceHistory", Storage="_ProductPriceHistories", ThisKey="ProductId", OtherKey="ProductId")]
+		public EntitySet<ProductPriceHistory> ProductPriceHistories
+		{
+			get
+			{
+				return this._ProductPriceHistories;
+			}
+			set
+			{
+				this._ProductPriceHistories.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_ProfileCredit", Storage="_ProfileCredits", ThisKey="ProductId", OtherKey="ProductId")]
+		public EntitySet<ProfileCredit> ProfileCredits
+		{
+			get
+			{
+				return this._ProfileCredits;
+			}
+			set
+			{
+				this._ProfileCredits.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product_CreditTransaction", Storage="_CreditTransactions", ThisKey="ProductId", OtherKey="ProductId")]
+		public EntitySet<CreditTransaction> CreditTransactions
+		{
+			get
+			{
+				return this._CreditTransactions;
+			}
+			set
+			{
+				this._CreditTransactions.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_ProductVsLocations(ProductVsLocation entity)
+		{
+			this.SendPropertyChanging();
+			entity.Product = this;
+		}
+		
+		private void detach_ProductVsLocations(ProductVsLocation entity)
+		{
+			this.SendPropertyChanging();
+			entity.Product = null;
+		}
+		
+		private void attach_ProductPriceHistories(ProductPriceHistory entity)
+		{
+			this.SendPropertyChanging();
+			entity.Product = this;
+		}
+		
+		private void detach_ProductPriceHistories(ProductPriceHistory entity)
+		{
+			this.SendPropertyChanging();
+			entity.Product = null;
+		}
+		
+		private void attach_ProfileCredits(ProfileCredit entity)
+		{
+			this.SendPropertyChanging();
+			entity.Product = this;
+		}
+		
+		private void detach_ProfileCredits(ProfileCredit entity)
+		{
+			this.SendPropertyChanging();
+			entity.Product = null;
+		}
+		
+		private void attach_CreditTransactions(CreditTransaction entity)
+		{
+			this.SendPropertyChanging();
+			entity.Product = this;
+		}
+		
+		private void detach_CreditTransactions(CreditTransaction entity)
+		{
+			this.SendPropertyChanging();
+			entity.Product = null;
 		}
 	}
 }

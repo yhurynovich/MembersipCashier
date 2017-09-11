@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="MembershipCashier" Class="MembershipCashierEntitiesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=CORSAIR-PC;Initial Catalog=MembershipCashier;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework" SettingsObjectName="MembershipCashierDL.Properties.Settings" SettingsPropertyName="MembershipCashierConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=MembershipCashier;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework" SettingsObjectName="MembershipCashierDL.Properties.Settings" SettingsPropertyName="MembershipCashierConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.UserProfileVsLocation" Member="UserProfileVsLocations">
     <Type Name="UserProfileVsLocation">
       <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -14,16 +14,6 @@
       <Column Name="OwnerUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Owner_OwnerVsLocation" Member="OwnerVsLocations" ThisKey="OwnerId" OtherKey="OwnerId" Type="OwnerVsLocation" />
       <Association Name="UserProfile_Owner" Member="UserProfile" ThisKey="OwnerUserId" OtherKey="UserId" Type="UserProfile" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Product" Member="Products">
-    <Type Name="Product">
-      <Column Name="ProductId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Description" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="Product_ProductVsLocation" Member="ProductVsLocations" ThisKey="ProductId" OtherKey="ProductId" Type="ProductVsLocation" />
-      <Association Name="Product_ProductPriceHistory" Member="ProductPriceHistories" ThisKey="ProductId" OtherKey="ProductId" Type="ProductPriceHistory" />
-      <Association Name="Product_ProfileCredit" Member="ProfileCredits" ThisKey="ProductId" OtherKey="ProductId" Type="ProfileCredit" />
-      <Association Name="Product_CreditTransaction" Member="CreditTransactions" ThisKey="ProductId" OtherKey="ProductId" Type="CreditTransaction" />
     </Type>
   </Table>
   <Table Name="dbo.UserProfileAudit" Member="UserProfileAudits">
@@ -66,8 +56,8 @@
     <Type Name="ProductVsLocation">
       <Column Name="ProductId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="LocationId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Association Name="Product_ProductVsLocation" Member="Product" ThisKey="ProductId" OtherKey="ProductId" Type="Product" IsForeignKey="true" />
       <Association Name="Location_ProductVsLocation" Member="Location" ThisKey="LocationId" OtherKey="LocationId" Type="Location" IsForeignKey="true" />
+      <Association Name="Product_ProductVsLocation" Member="Product" ThisKey="ProductId" OtherKey="ProductId" Type="Product" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.ProductPriceHistory" Member="ProductPriceHistories">
@@ -126,9 +116,9 @@
       <Column Name="Ballance" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
       <Column Name="CalculatedTime" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
       <Column Name="HasBallance" Type="System.Boolean" DbType="Bit" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
-      <Association Name="Product_ProfileCredit" Member="Product" ThisKey="ProductId" OtherKey="ProductId" Type="Product" IsForeignKey="true" />
       <Association Name="UserProfile_ProfileCredit" Member="UserProfile" ThisKey="UserId" OtherKey="UserId" Type="UserProfile" IsForeignKey="true" />
       <Association Name="Location_ProfileCredit" Member="Location" ThisKey="LocationId" OtherKey="LocationId" Type="Location" IsForeignKey="true" />
+      <Association Name="Product_ProfileCredit" Member="Product" ThisKey="ProductId" OtherKey="ProductId" Type="Product" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.CreditTransactions" Member="CreditTransactions">
@@ -141,9 +131,9 @@
       <Column Name="BallanceUnits" Type="System.Decimal" DbType="SmallMoney NOT NULL" CanBeNull="false" />
       <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
       <Association Name="CreditTransaction_Payment" Member="Payments" ThisKey="CreditTransactionId" OtherKey="PaymentId" Type="Payment" />
-      <Association Name="Product_CreditTransaction" Member="Product" ThisKey="ProductId" OtherKey="ProductId" Type="Product" IsForeignKey="true" />
       <Association Name="UserProfile_CreditTransaction" Member="UserProfile" ThisKey="UserId" OtherKey="UserId" Type="UserProfile" IsForeignKey="true" />
       <Association Name="Location_CreditTransaction" Member="Location" ThisKey="LocationId" OtherKey="LocationId" Type="Location" IsForeignKey="true" />
+      <Association Name="Product_CreditTransaction" Member="Product" ThisKey="ProductId" OtherKey="ProductId" Type="Product" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Location" Member="Locations">
@@ -170,6 +160,16 @@
       <Column Name="Amount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
       <Column Name="Currency" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
       <Association Name="CreditTransaction_Payment" Member="CreditTransaction" ThisKey="PaymentId" OtherKey="CreditTransactionId" Type="CreditTransaction" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Product" Member="Products">
+    <Type Name="Product">
+      <Column Name="ProductId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Product_ProductVsLocation" Member="ProductVsLocations" ThisKey="ProductId" OtherKey="ProductId" Type="ProductVsLocation" />
+      <Association Name="Product_ProductPriceHistory" Member="ProductPriceHistories" ThisKey="ProductId" OtherKey="ProductId" Type="ProductPriceHistory" />
+      <Association Name="Product_ProfileCredit" Member="ProfileCredits" ThisKey="ProductId" OtherKey="ProductId" Type="ProfileCredit" />
+      <Association Name="Product_CreditTransaction" Member="CreditTransactions" ThisKey="ProductId" OtherKey="ProductId" Type="CreditTransaction" />
     </Type>
   </Table>
 </Database>

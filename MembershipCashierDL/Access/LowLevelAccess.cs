@@ -378,13 +378,30 @@ namespace MembershipCashierDL.Access
                 {
                     foreach (var x in d)
                     {
-                        int productId = x.Product.ProductId;
+                        var productId = x.Product.ProductId;
                         DB.Product product;
                         if(productId != default(int))
                             product = MDB.Products.FirstOrDefault(p=>p.ProductId == productId);
                         else
                         {
-                            product = MDB.Products.FirstOrDefault(p => p.Description == x.Product.Description && (!p.ProductPriceHistories.Any() || p.ProductPriceHistories.OrderByDescending(r=>r.ChangeDate).First().Price == x.Price));
+                            var locationId = x.Location.LocationId;
+                            if (locationId == default(int))
+                                throw new Xxception("LocationId is not specified");
+
+                            //All owners of this location
+                            var owners = MDB.OwnerVsLocations.Where(o=>o.LocationId == locationId).Select(o=>o.OwnerId);
+
+                            //All locations that owners may own
+                            var locationIds = MDB.OwnerVsLocations.Where(o=>owners.Contains(o.OwnerId)).Select(o=>o.LocationId).ToArray();
+
+                            //Only reuse products from other locations of those owners
+                            product = MDB.Products.FirstOrDefault(p => 
+                                p.Description == x.Product.Description 
+                                && (
+                                      (!p.ProductVsLocations.Any() || p.ProductVsLocations.Any(l=> locationIds.Contains(l.LocationId)))
+                                      &&  (!p.ProductPriceHistories.Any() || p.ProductPriceHistories.OrderByDescending(r=>r.ChangeDate).First().Price == x.Price)
+                                   )
+                            );
 
                             if (product == null)
                             {
