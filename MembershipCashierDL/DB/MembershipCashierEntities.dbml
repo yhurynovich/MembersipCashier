@@ -130,7 +130,7 @@
       <Column Name="TransactionTime" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
       <Column Name="BallanceUnits" Type="System.Decimal" DbType="SmallMoney NOT NULL" CanBeNull="false" />
       <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
-      <Association Name="CreditTransaction_Payment" Member="Payments" ThisKey="CreditTransactionId" OtherKey="PaymentId" Type="Payment" />
+      <Association Name="CreditTransaction_Payment" Member="Payments" ThisKey="CreditTransactionId" OtherKey="CreditTransactionId" Type="Payment" />
       <Association Name="UserProfile_CreditTransaction" Member="UserProfile" ThisKey="UserId" OtherKey="UserId" Type="UserProfile" IsForeignKey="true" />
       <Association Name="Location_CreditTransaction" Member="Location" ThisKey="LocationId" OtherKey="LocationId" Type="Location" IsForeignKey="true" />
       <Association Name="Product_CreditTransaction" Member="Product" ThisKey="ProductId" OtherKey="ProductId" Type="Product" IsForeignKey="true" />
@@ -152,16 +152,6 @@
       <Association Name="Address_Location" Member="Address" ThisKey="AddressId" OtherKey="AddressId" Type="Address" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Payment" Member="Payments">
-    <Type Name="Payment">
-      <Column Name="Id" Member="PaymentId" Storage="_Id" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Sequence" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="PaymentMethod" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
-      <Column Name="Amount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
-      <Column Name="Currency" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
-      <Association Name="CreditTransaction_Payment" Member="CreditTransaction" ThisKey="PaymentId" OtherKey="CreditTransactionId" Type="CreditTransaction" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Product" Member="Products">
     <Type Name="Product">
       <Column Name="ProductId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -170,6 +160,16 @@
       <Association Name="Product_ProductPriceHistory" Member="ProductPriceHistories" ThisKey="ProductId" OtherKey="ProductId" Type="ProductPriceHistory" />
       <Association Name="Product_ProfileCredit" Member="ProfileCredits" ThisKey="ProductId" OtherKey="ProductId" Type="ProfileCredit" />
       <Association Name="Product_CreditTransaction" Member="CreditTransactions" ThisKey="ProductId" OtherKey="ProductId" Type="CreditTransaction" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Payment" Member="Payments">
+    <Type Name="Payment">
+      <Column Name="CreditTransactionId" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Sequence" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PaymentMethod" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Currency" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Association Name="CreditTransaction_Payment" Member="CreditTransaction" ThisKey="CreditTransactionId" OtherKey="CreditTransactionId" Type="CreditTransaction" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

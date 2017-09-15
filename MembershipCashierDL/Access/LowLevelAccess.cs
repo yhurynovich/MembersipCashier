@@ -3,6 +3,7 @@ using MembershipCashierDL.MixedContracts;
 using MembershipCashierDL.Properties;
 using MembershipCashierUnified;
 using MembershipCashierUnified.Contracts;
+using MembershipCashierUnified.Interfaces;
 using SecurityUnified;
 using SecurityUnified.Contracts;
 using SecurityUnified.Exceptions;
@@ -305,7 +306,7 @@ namespace MembershipCashierDL.Access
                 userRecords.Discriminator2 = u;
                 userRecords.UserProfileVsLocationFilter = pvl;
 
-                return userRecords.OfType<DB.UserProfile>()
+                var ret = userRecords.OfType<DB.UserProfile>()
                     .Select(p=>new UserAndProductsContarct() {
                          UserProfile = p,
                          Products = p.ProfileCredits.OrderByDescending(pc=>pc.HasBallance).ThenByDescending(pc=>pc.CalculatedTime).ThenByDescending(pc=>pc.Product.CreditTransactions.Count).Take(Settings.Default.NumberOfLastProductsToShow)
@@ -314,6 +315,38 @@ namespace MembershipCashierDL.Access
                               ProfileCredit = pc
                          }).ToArray()
                     }).ToArray();
+
+
+                foreach (var r in ret)
+                {
+                    DB.UserProfile profile = (DB.UserProfile)userRecords.Result2.First(z=>z.UserId==r.UserProfile.UserId);
+                    IQueryable<DB.CreditTransaction> transactions = profile.CreditTransactions.AsQueryable();
+                    if (pvl != null && pvl.Filter != null)
+                    {
+                        var locations = MDB.UserProfileVsLocations.Where(pvl.Filter);
+                        transactions = transactions.Join(locations,
+                            location => location.LocationId,
+                            transaction => transaction.LocationId,
+                            (transaction, location) => transaction
+                        );
+                    }
+                    var lastTransaction = transactions.LastOrDefault();
+                    if (lastTransaction != null)
+                    {
+                        var lastPayment = lastTransaction.Payments.LastOrDefault();
+                        if (lastPayment != null)
+                            r.LastPayment = lastPayment;
+                        else
+                        {
+                            //TODO: replace mocked-up payment with location-settings driven data
+                            r.LastPayment = new PaymentImplementor {
+                                 Amount = lastTransaction.BallanceUnits * lastTransaction.Product.ProductPriceHistories.OrderByDescending(p=>p.ChangeDate).First().Price
+                            };
+                        }
+                    }
+                }
+
+                return ret;
             }
             catch (Exception ex)
             {
@@ -557,7 +590,7 @@ namespace MembershipCashierDL.Access
             }
         }
 
-        public long[] InsertPayment(params PaymentContract[] d)
+        public KeyValuePair<long, short>[] InsertPayment(params PaymentContract[] d)
         {
             lock (MDB)
             {
@@ -572,13 +605,13 @@ namespace MembershipCashierDL.Access
                     var payments = MDB.GetChangeSet().Inserts.OfType<DB.Payment>();
                     MDB.SubmitChanges();
 
-                    var paymentsIds = payments.Select(l => l.PaymentId).ToArray();
+                    var paymentsIds = payments.Select(l => new KeyValuePair<long, short>(l.CreditTransactionId, l.Sequence)).ToArray();
                     return paymentsIds;
                 }
                 catch (Exception ex)
                 {
                     HandleMyException(ex);
-                    return new long[] { };
+                    return new KeyValuePair<long, short>[] { };
                 }
             }
         }

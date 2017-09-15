@@ -249,18 +249,18 @@ namespace MembershipCashierUnified
                 to.LdapAccount = from.LdapAccount;
         }
 
-        public static void CopyTo(this IHasPaymentId from, IPayment to, bool allowDefaultValues = true)
-        {
-            if (allowDefaultValues || from.PaymentId != default(long))
-                to.PaymentId = from.PaymentId;
-        }
+        //public static void CopyTo(this IHasPaymentId from, IPayment to, bool allowDefaultValues = true)
+        //{
+        //    if (allowDefaultValues || from.PaymentId != default(long))
+        //        to.PaymentId = from.PaymentId;
+        //}
 
         public static void CopyTo(this IPayment from, IPayment to, bool allowDefaultValues = true)
         {
             if (from == null || to == null)
                 return;
 
-            (from as IHasPaymentId).CopyTo(to, allowDefaultValues);
+            (from as IHasCreditTransactionId).CopyTo(to, allowDefaultValues);
             if (allowDefaultValues || from.Sequence != default(short))
                 to.Sequence = from.Sequence;
             if (allowDefaultValues || from.PaymentMethod != default(char))

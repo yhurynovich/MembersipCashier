@@ -11,7 +11,7 @@ namespace MembershipCashierUnified.Contracts
         [DataMember]
         public string Currency { get; set; }
         [DataMember]
-        public long PaymentId { get; set; }
+        public long CreditTransactionId { get; set; }
         [DataMember]
         public char PaymentMethod { get; set; }
         [DataMember]

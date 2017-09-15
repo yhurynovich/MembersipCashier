@@ -2,7 +2,7 @@
 
 namespace MembershipCashierUnified.Interfaces
 {
-    public interface IPayment : IHasPaymentId
+    public interface IPayment : IHasCreditTransactionId
     {
         Int16 Sequence { get; set; }
         char PaymentMethod { get; set; }

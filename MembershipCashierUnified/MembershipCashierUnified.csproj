@@ -106,7 +106,6 @@
     <Compile Include="Interfaces\IHasOwnerId.cs" />
     <Compile Include="Interfaces\IHasOwnerVsLocation.cs" />
     <Compile Include="Interfaces\IHasPayment.cs" />
-    <Compile Include="Interfaces\IHasPaymentId.cs" />
     <Compile Include="Interfaces\IHasPrice.cs" />
     <Compile Include="Interfaces\IHasProduct.cs" />
     <Compile Include="Interfaces\IHasProductId.cs" />

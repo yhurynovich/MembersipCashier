@@ -69,12 +69,12 @@ namespace MembershipCashierDL.DB
     partial void InsertLocation(Location instance);
     partial void UpdateLocation(Location instance);
     partial void DeleteLocation(Location instance);
-    partial void InsertPayment(Payment instance);
-    partial void UpdatePayment(Payment instance);
-    partial void DeletePayment(Payment instance);
     partial void InsertProduct(Product instance);
     partial void UpdateProduct(Product instance);
     partial void DeleteProduct(Product instance);
+    partial void InsertPayment(Payment instance);
+    partial void UpdatePayment(Payment instance);
+    partial void DeletePayment(Payment instance);
     #endregion
 		
 		public MembershipCashierEntitiesDataContext() : 
@@ -211,19 +211,19 @@ namespace MembershipCashierDL.DB
 			}
 		}
 		
-		public System.Data.Linq.Table<Payment> Payments
-		{
-			get
-			{
-				return this.GetTable<Payment>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Product> Products
 		{
 			get
 			{
 				return this.GetTable<Product>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Payment> Payments
+		{
+			get
+			{
+				return this.GetTable<Payment>();
 			}
 		}
 	}
@@ -2998,7 +2998,7 @@ namespace MembershipCashierDL.DB
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CreditTransaction_Payment", Storage="_Payments", ThisKey="CreditTransactionId", OtherKey="PaymentId")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CreditTransaction_Payment", Storage="_Payments", ThisKey="CreditTransactionId", OtherKey="CreditTransactionId")]
 		public EntitySet<Payment> Payments
 		{
 			get
@@ -3509,201 +3509,6 @@ namespace MembershipCashierDL.DB
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Payment")]
-	public partial class Payment : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private long _Id;
-		
-		private short _Sequence;
-		
-		private char _PaymentMethod;
-		
-		private System.Nullable<decimal> _Amount;
-		
-		private string _Currency;
-		
-		private EntityRef<CreditTransaction> _CreditTransaction;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnPaymentIdChanging(long value);
-    partial void OnPaymentIdChanged();
-    partial void OnSequenceChanging(short value);
-    partial void OnSequenceChanged();
-    partial void OnPaymentMethodChanging(char value);
-    partial void OnPaymentMethodChanged();
-    partial void OnAmountChanging(System.Nullable<decimal> value);
-    partial void OnAmountChanged();
-    partial void OnCurrencyChanging(string value);
-    partial void OnCurrencyChanged();
-    #endregion
-		
-		public Payment()
-		{
-			this._CreditTransaction = default(EntityRef<CreditTransaction>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="Id", Storage="_Id", DbType="BigInt NOT NULL", IsPrimaryKey=true)]
-		public long PaymentId
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnPaymentIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("PaymentId");
-					this.OnPaymentIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sequence", DbType="SmallInt NOT NULL", IsPrimaryKey=true)]
-		public short Sequence
-		{
-			get
-			{
-				return this._Sequence;
-			}
-			set
-			{
-				if ((this._Sequence != value))
-				{
-					this.OnSequenceChanging(value);
-					this.SendPropertyChanging();
-					this._Sequence = value;
-					this.SendPropertyChanged("Sequence");
-					this.OnSequenceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PaymentMethod", DbType="Char(1) NOT NULL")]
-		public char PaymentMethod
-		{
-			get
-			{
-				return this._PaymentMethod;
-			}
-			set
-			{
-				if ((this._PaymentMethod != value))
-				{
-					this.OnPaymentMethodChanging(value);
-					this.SendPropertyChanging();
-					this._PaymentMethod = value;
-					this.SendPropertyChanged("PaymentMethod");
-					this.OnPaymentMethodChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Money")]
-		public System.Nullable<decimal> Amount
-		{
-			get
-			{
-				return this._Amount;
-			}
-			set
-			{
-				if ((this._Amount != value))
-				{
-					this.OnAmountChanging(value);
-					this.SendPropertyChanging();
-					this._Amount = value;
-					this.SendPropertyChanged("Amount");
-					this.OnAmountChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Currency", DbType="VarChar(3)")]
-		public string Currency
-		{
-			get
-			{
-				return this._Currency;
-			}
-			set
-			{
-				if ((this._Currency != value))
-				{
-					this.OnCurrencyChanging(value);
-					this.SendPropertyChanging();
-					this._Currency = value;
-					this.SendPropertyChanged("Currency");
-					this.OnCurrencyChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CreditTransaction_Payment", Storage="_CreditTransaction", ThisKey="PaymentId", OtherKey="CreditTransactionId", IsForeignKey=true)]
-		public CreditTransaction CreditTransaction
-		{
-			get
-			{
-				return this._CreditTransaction.Entity;
-			}
-			set
-			{
-				CreditTransaction previousValue = this._CreditTransaction.Entity;
-				if (((previousValue != value) 
-							|| (this._CreditTransaction.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._CreditTransaction.Entity = null;
-						previousValue.Payments.Remove(this);
-					}
-					this._CreditTransaction.Entity = value;
-					if ((value != null))
-					{
-						value.Payments.Add(this);
-						this._Id = value.CreditTransactionId;
-					}
-					else
-					{
-						this._Id = default(long);
-					}
-					this.SendPropertyChanged("CreditTransaction");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Product")]
 	public partial class Product : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -3899,6 +3704,205 @@ namespace MembershipCashierDL.DB
 		{
 			this.SendPropertyChanging();
 			entity.Product = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Payment")]
+	public partial class Payment : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _CreditTransactionId;
+		
+		private short _Sequence;
+		
+		private char _PaymentMethod;
+		
+		private System.Nullable<decimal> _Amount;
+		
+		private string _Currency;
+		
+		private EntityRef<CreditTransaction> _CreditTransaction;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnCreditTransactionIdChanging(long value);
+    partial void OnCreditTransactionIdChanged();
+    partial void OnSequenceChanging(short value);
+    partial void OnSequenceChanged();
+    partial void OnPaymentMethodChanging(char value);
+    partial void OnPaymentMethodChanged();
+    partial void OnAmountChanging(System.Nullable<decimal> value);
+    partial void OnAmountChanged();
+    partial void OnCurrencyChanging(string value);
+    partial void OnCurrencyChanged();
+    #endregion
+		
+		public Payment()
+		{
+			this._CreditTransaction = default(EntityRef<CreditTransaction>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreditTransactionId", DbType="BigInt NOT NULL", IsPrimaryKey=true)]
+		public long CreditTransactionId
+		{
+			get
+			{
+				return this._CreditTransactionId;
+			}
+			set
+			{
+				if ((this._CreditTransactionId != value))
+				{
+					if (this._CreditTransaction.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnCreditTransactionIdChanging(value);
+					this.SendPropertyChanging();
+					this._CreditTransactionId = value;
+					this.SendPropertyChanged("CreditTransactionId");
+					this.OnCreditTransactionIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sequence", DbType="SmallInt NOT NULL", IsPrimaryKey=true)]
+		public short Sequence
+		{
+			get
+			{
+				return this._Sequence;
+			}
+			set
+			{
+				if ((this._Sequence != value))
+				{
+					this.OnSequenceChanging(value);
+					this.SendPropertyChanging();
+					this._Sequence = value;
+					this.SendPropertyChanged("Sequence");
+					this.OnSequenceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PaymentMethod", DbType="Char(1) NOT NULL")]
+		public char PaymentMethod
+		{
+			get
+			{
+				return this._PaymentMethod;
+			}
+			set
+			{
+				if ((this._PaymentMethod != value))
+				{
+					this.OnPaymentMethodChanging(value);
+					this.SendPropertyChanging();
+					this._PaymentMethod = value;
+					this.SendPropertyChanged("PaymentMethod");
+					this.OnPaymentMethodChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Money")]
+		public System.Nullable<decimal> Amount
+		{
+			get
+			{
+				return this._Amount;
+			}
+			set
+			{
+				if ((this._Amount != value))
+				{
+					this.OnAmountChanging(value);
+					this.SendPropertyChanging();
+					this._Amount = value;
+					this.SendPropertyChanged("Amount");
+					this.OnAmountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Currency", DbType="VarChar(3)")]
+		public string Currency
+		{
+			get
+			{
+				return this._Currency;
+			}
+			set
+			{
+				if ((this._Currency != value))
+				{
+					this.OnCurrencyChanging(value);
+					this.SendPropertyChanging();
+					this._Currency = value;
+					this.SendPropertyChanged("Currency");
+					this.OnCurrencyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CreditTransaction_Payment", Storage="_CreditTransaction", ThisKey="CreditTransactionId", OtherKey="CreditTransactionId", IsForeignKey=true)]
+		public CreditTransaction CreditTransaction
+		{
+			get
+			{
+				return this._CreditTransaction.Entity;
+			}
+			set
+			{
+				CreditTransaction previousValue = this._CreditTransaction.Entity;
+				if (((previousValue != value) 
+							|| (this._CreditTransaction.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._CreditTransaction.Entity = null;
+						previousValue.Payments.Remove(this);
+					}
+					this._CreditTransaction.Entity = value;
+					if ((value != null))
+					{
+						value.Payments.Add(this);
+						this._CreditTransactionId = value.CreditTransactionId;
+					}
+					else
+					{
+						this._CreditTransactionId = default(long);
+					}
+					this.SendPropertyChanged("CreditTransaction");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

@@ -1,7 +1,7 @@
-﻿using MembershipCashierDL.DB;
-using MembershipCashierDL.MixedContracts;
+﻿using MembershipCashierDL.MixedContracts;
 using MembershipCashierUnified.Contracts;
 using SecurityUnified.Contracts;
+using System.Collections.Generic;
 using System.ServiceModel;
 
 namespace MembershipCashierDL.Access
@@ -79,7 +79,7 @@ namespace MembershipCashierDL.Access
         void InsertOwnerVsLocation(params OwnerVsLocationContract[] d);
 
         [OperationContract]
-        long[] InsertPayment(params PaymentContract[] d);
+        KeyValuePair<long, short>[] InsertPayment(params PaymentContract[] d);
         #endregion
 
         #region InsertOrUpdate
