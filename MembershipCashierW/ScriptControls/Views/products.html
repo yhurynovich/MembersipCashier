@@ -59,10 +59,12 @@
                                 <div class="span4"></div>
                             </div>
                         </div>
-                        <div class="card-block mu-2">
-                            <a href="#" class="card-link" ng-click="OpenAddProductDialog(this)">Add More</a>
-                            <a href="#" class="card-link">Transaction History</a>
-                        </div>
+                        <div class="card-block mu-2 mt-2">
+                                <!--<a href="#" target="_self" class="card-link" ng-click="OpenAddProductDialog(user)">Add More</a>
+        <a href="#" class="card-link">Transaction History</a>-->
+                                <button type="button" class="btn btn-primary btn-sm" ng-click="OpenAddProductDialog(user)">Add More</button>
+                                <button type="button" class="btn btn-primary btn-sm">Transaction History</button>
+                            </div>
                     </div>                   
                 </div>
             </div>
@@ -71,7 +73,7 @@
                 <div class="text-center">
                     <!--<custom-pager page="{{page}}" pages-count="{{pagesCount}}" total-count="{{totalCount}}" search-func="search(page)"></custom-pager>-->
                 </div>
-                <div proximity-watch="userAndProducts" proximity-action="loadProducts()" style="text-align:center;">
+                <div proximity-watch="userAndProducts" proximity-action="loadClientLastUsedProducts()" style="text-align:center;">
                     <span ng-show="loading" style="width: 40px"></span> <span ng-show="loading">Loading...</span>
                 </div>
             </div>

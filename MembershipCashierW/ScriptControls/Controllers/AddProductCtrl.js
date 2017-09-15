@@ -34,7 +34,7 @@ htm.app.controller('AddProductCtrl',
         $scope.loadProducts = function () {
             $http({
                 method: 'GET',
-                url: appRoot + 'api/Product?request.notInCurrentUserHistory=true' 
+                url: appRoot + 'api/Product?request.notInUserHistory=' + user.UserProfile.UserId
             }).then(function successCallback(response) {
                 $scope.products = response.data;
 

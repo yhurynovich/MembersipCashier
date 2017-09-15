@@ -58,7 +58,7 @@ htm.app.controller('ProductsCtrl',
             $scope.getMore();
         };
 
-        $scope.loadProducts = function (userId) {
+        $scope.loadClientLastUsedProducts = function (userId) {
             $scope.loading = true;
             $http({
                 method: 'GET',
