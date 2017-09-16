@@ -209,6 +209,10 @@
       <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.3.2.3\lib\net45\WebMatrix.WebData.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Zen.Barcode.Core, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b5ae55aa76d2d9de, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zen.Barcode.Core.2.0.0\lib\net45\Zen.Barcode.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -219,6 +223,14 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Code\Authentication\XMembershipProvider.cs" />
     <Compile Include="Code\Authentication\XRoleProvider.cs" />
+    <Compile Include="Code\BeardTemplate\Beard.cs" />
+    <Compile Include="Code\BeardTemplate\Code\IndexedSlice.cs" />
+    <Compile Include="Code\BeardTemplate\Code\OperationSlice.cs" />
+    <Compile Include="Code\BeardTemplate\Code\Slice.cs" />
+    <Compile Include="Code\BeardTemplate\Code\Slicer.cs" />
+    <Compile Include="Code\BeardTemplate\Code\Slice_EACH.cs" />
+    <Compile Include="Code\BeardTemplate\Code\Slice_IF.cs" />
+    <Compile Include="Code\BeardTemplate\Code\TextSlice.cs" />
     <Compile Include="Code\Captcha\RandomImage.cs" />
     <Compile Include="Code\Collections\HalfPersistentList.cs" />
     <Compile Include="Code\ContentHanling\JSComponent\Filters\ConfigurationFilter.cs" />
@@ -260,6 +272,7 @@
     </Compile>
     <Compile Include="Code\Documents\Generators\CustomerArrearsByLocationReportGenerator.cs" />
     <Compile Include="Code\Documents\Generators\LocationTransactionsReportGenerator.cs" />
+    <Compile Include="Code\Documents\Generators\MemberCardGenerator.cs" />
     <Compile Include="Code\Documents\Generators\UserInvoiceGenerator.cs" />
     <Compile Include="Code\Documents\Generators\UserReceiptGenerator.cs" />
     <Compile Include="Code\Enumerations\ModelMessageTypeOptions.cs" />
@@ -335,6 +348,7 @@
     <Content Include="Code\ContentHanling\JSComponent\Filters\JSComponentPremissions.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Code\Documents\BeardTemplates\profilecard.html" />
     <Content Include="Code\Documents\DocumentTemplates\CustomerArrearsByLocation.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>CustomerArrearsByLocation.cs</LastGenOutput>

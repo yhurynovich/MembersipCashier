@@ -4,8 +4,8 @@
     <Type Name="UserProfileVsLocation">
       <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="LocationId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Association Name="UserProfile_UserProfileVsLocation" Member="UserProfile" ThisKey="UserId" OtherKey="UserId" Type="UserProfile" IsForeignKey="true" />
       <Association Name="Location_UserProfileVsLocation" Member="Location" ThisKey="LocationId" OtherKey="LocationId" Type="Location" IsForeignKey="true" />
+      <Association Name="UserProfile_UserProfileVsLocation" Member="UserProfile" ThisKey="UserId" OtherKey="UserId" Type="UserProfile" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Owner" Member="Owners">
@@ -32,26 +32,6 @@
       <Association Name="UserProfile_UserProfileAudit1" Member="UserProfile1" ThisKey="UserId" OtherKey="UserId" Type="UserProfile" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.UserProfile" Member="UserProfiles">
-    <Type Name="UserProfile">
-      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="UserStatusId" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
-      <Column Name="UserName" Type="System.String" DbType="NVarChar(56) NOT NULL" CanBeNull="false" />
-      <Column Name="EmailId" Type="System.String" DbType="VarChar(70)" CanBeNull="true" />
-      <Column Name="FirstName" Type="System.String" DbType="VarChar(35)" CanBeNull="true" />
-      <Column Name="LastName" Type="System.String" DbType="VarChar(35)" CanBeNull="true" />
-      <Column Name="Photo" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="Phone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="LdapAccount" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
-      <Association Name="UserProfile_UserProfileVsLocation" Member="UserProfileVsLocations" ThisKey="UserId" OtherKey="UserId" Type="UserProfileVsLocation" />
-      <Association Name="UserProfile_Owner" Member="Owners" ThisKey="UserId" OtherKey="OwnerUserId" Type="Owner" />
-      <Association Name="UserProfile_UserProfileAudit" Member="UserProfileAudits" ThisKey="UserId" OtherKey="ModifiedBy" Type="UserProfileAudit" />
-      <Association Name="UserProfile_UserProfileAudit1" Member="UserProfileAudits1" ThisKey="UserId" OtherKey="UserId" Type="UserProfileAudit" />
-      <Association Name="UserProfile_webpages_UsersInRole" Member="webpages_UsersInRoles" ThisKey="UserId" OtherKey="UserId" Type="webpages_UsersInRole" />
-      <Association Name="UserProfile_ProfileCredit" Member="ProfileCredits" ThisKey="UserId" OtherKey="UserId" Type="ProfileCredit" />
-      <Association Name="UserProfile_CreditTransaction" Member="CreditTransactions" ThisKey="UserId" OtherKey="UserId" Type="CreditTransaction" />
-    </Type>
-  </Table>
   <Table Name="dbo.ProductVsLocation" Member="ProductVsLocations">
     <Type Name="ProductVsLocation">
       <Column Name="ProductId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -72,8 +52,8 @@
     <Type Name="webpages_UsersInRole">
       <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="RoleId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Association Name="UserProfile_webpages_UsersInRole" Member="UserProfile" ThisKey="UserId" OtherKey="UserId" Type="UserProfile" IsForeignKey="true" />
       <Association Name="webpages_Role_webpages_UsersInRole" Member="webpages_Role" ThisKey="RoleId" OtherKey="RoleId" Type="webpages_Role" IsForeignKey="true" />
+      <Association Name="UserProfile_webpages_UsersInRole" Member="UserProfile" ThisKey="UserId" OtherKey="UserId" Type="UserProfile" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.webpages_Roles" Member="webpages_Roles">
@@ -116,9 +96,9 @@
       <Column Name="Ballance" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
       <Column Name="CalculatedTime" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
       <Column Name="HasBallance" Type="System.Boolean" DbType="Bit" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
-      <Association Name="UserProfile_ProfileCredit" Member="UserProfile" ThisKey="UserId" OtherKey="UserId" Type="UserProfile" IsForeignKey="true" />
       <Association Name="Location_ProfileCredit" Member="Location" ThisKey="LocationId" OtherKey="LocationId" Type="Location" IsForeignKey="true" />
       <Association Name="Product_ProfileCredit" Member="Product" ThisKey="ProductId" OtherKey="ProductId" Type="Product" IsForeignKey="true" />
+      <Association Name="UserProfile_ProfileCredit" Member="UserProfile" ThisKey="UserId" OtherKey="UserId" Type="UserProfile" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.CreditTransactions" Member="CreditTransactions">
@@ -131,9 +111,9 @@
       <Column Name="BallanceUnits" Type="System.Decimal" DbType="SmallMoney NOT NULL" CanBeNull="false" />
       <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
       <Association Name="CreditTransaction_Payment" Member="Payments" ThisKey="CreditTransactionId" OtherKey="CreditTransactionId" Type="Payment" />
-      <Association Name="UserProfile_CreditTransaction" Member="UserProfile" ThisKey="UserId" OtherKey="UserId" Type="UserProfile" IsForeignKey="true" />
       <Association Name="Location_CreditTransaction" Member="Location" ThisKey="LocationId" OtherKey="LocationId" Type="Location" IsForeignKey="true" />
       <Association Name="Product_CreditTransaction" Member="Product" ThisKey="ProductId" OtherKey="ProductId" Type="Product" IsForeignKey="true" />
+      <Association Name="UserProfile_CreditTransaction" Member="UserProfile" ThisKey="UserId" OtherKey="UserId" Type="UserProfile" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Location" Member="Locations">
@@ -170,6 +150,27 @@
       <Column Name="Amount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
       <Column Name="Currency" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
       <Association Name="CreditTransaction_Payment" Member="CreditTransaction" ThisKey="CreditTransactionId" OtherKey="CreditTransactionId" Type="CreditTransaction" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserProfile" Member="UserProfiles">
+    <Type Name="UserProfile">
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserStatusId" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(56) NOT NULL" CanBeNull="false" />
+      <Column Name="EmailId" Type="System.String" DbType="VarChar(70)" CanBeNull="true" />
+      <Column Name="FirstName" Type="System.String" DbType="VarChar(35)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="VarChar(35)" CanBeNull="true" />
+      <Column Name="Photo" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="LdapAccount" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Column Name="PersonalId" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="UserProfile_UserProfileVsLocation" Member="UserProfileVsLocations" ThisKey="UserId" OtherKey="UserId" Type="UserProfileVsLocation" />
+      <Association Name="UserProfile_Owner" Member="Owners" ThisKey="UserId" OtherKey="OwnerUserId" Type="Owner" />
+      <Association Name="UserProfile_UserProfileAudit" Member="UserProfileAudits" ThisKey="UserId" OtherKey="ModifiedBy" Type="UserProfileAudit" />
+      <Association Name="UserProfile_UserProfileAudit1" Member="UserProfileAudits1" ThisKey="UserId" OtherKey="UserId" Type="UserProfileAudit" />
+      <Association Name="UserProfile_webpages_UsersInRole" Member="webpages_UsersInRoles" ThisKey="UserId" OtherKey="UserId" Type="webpages_UsersInRole" />
+      <Association Name="UserProfile_ProfileCredit" Member="ProfileCredits" ThisKey="UserId" OtherKey="UserId" Type="ProfileCredit" />
+      <Association Name="UserProfile_CreditTransaction" Member="CreditTransactions" ThisKey="UserId" OtherKey="UserId" Type="CreditTransaction" />
     </Type>
   </Table>
 </Database>

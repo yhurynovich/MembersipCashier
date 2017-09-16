@@ -5,6 +5,8 @@ namespace MembershipCashierUnified.Interfaces
     public interface IUserProfile2 : SecurityUnified.Interfaces.IUserProfile, IUserProfileWithLDAP
     {
         [DataMember]
-        System.Data.Linq.Binary Photo { get; set; }
+        string Photo { get; set; }
+        [DataMember]
+        string PersonalId { get; set; }
     }
 }

@@ -12,7 +12,8 @@ namespace MembershipCashierW.Controllers
         public enum DocumentType : byte
         {
             INVOICE = 0,
-            RECEIPT = 1
+            RECEIPT = 1,
+            PROFILE_CARD = 2
         }
 
         public HttpResponseMessage Get([FromUri] int userId, [FromUri] DocumentType[] docTypes)
@@ -35,6 +36,11 @@ namespace MembershipCashierW.Controllers
                             generatorR.UserId = userId;
                             generatorR.LocationIds = new int[] { SessionGlobal.CurrentLocation.LocationId };
                             sb.Append(generatorR.GetReportHTML());
+                            break;
+                        case DocumentType.PROFILE_CARD:
+                            var generatorP = new MemberCardGenerator(Db);
+                            generatorP.UserId = userId;
+                            sb.Append(generatorP.GetReportHTML());
                             break;
                     }
                 }

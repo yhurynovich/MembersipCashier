@@ -11,6 +11,9 @@ namespace MembershipCashierUnified.Contracts
         public string LdapAccount { get; set; }
 
         [DataMember]
-        public System.Data.Linq.Binary Photo { get; set; }
+        public string PersonalId { get; set; }
+
+        [DataMember]
+        public string Photo { get; set; }
     }
 }

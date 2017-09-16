@@ -162,11 +162,13 @@ namespace MembershipCashierUnified
                 to.IsCurrent = from.IsCurrent;
         }
 
-        public static void CopyTo(this IUserProfile2 from, IUserProfile2 to, bool allowDefaultValues = true)
+ public static void CopyTo(this IUserProfile2 from, IUserProfile2 to, bool allowDefaultValues = true)
         {
             (from as IUserProfile).CopyTo(to, allowDefaultValues);
-            if (allowDefaultValues || from.Photo != null)
+            if (allowDefaultValues || !string.IsNullOrEmpty( from.Photo ))
                 to.Photo = from.Photo;
+            if (allowDefaultValues || !string.IsNullOrEmpty(from.PersonalId))
+                to.PersonalId = from.PersonalId;
         }
 
         public static void CopyTo(this IHasProductId from, IHasProductId to, bool allowDefaultValues = true)

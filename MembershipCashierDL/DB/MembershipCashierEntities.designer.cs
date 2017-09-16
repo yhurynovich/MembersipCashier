@@ -39,9 +39,6 @@ namespace MembershipCashierDL.DB
     partial void InsertUserProfileAudit(UserProfileAudit instance);
     partial void UpdateUserProfileAudit(UserProfileAudit instance);
     partial void DeleteUserProfileAudit(UserProfileAudit instance);
-    partial void InsertUserProfile(UserProfile instance);
-    partial void UpdateUserProfile(UserProfile instance);
-    partial void DeleteUserProfile(UserProfile instance);
     partial void InsertProductVsLocation(ProductVsLocation instance);
     partial void UpdateProductVsLocation(ProductVsLocation instance);
     partial void DeleteProductVsLocation(ProductVsLocation instance);
@@ -75,6 +72,9 @@ namespace MembershipCashierDL.DB
     partial void InsertPayment(Payment instance);
     partial void UpdatePayment(Payment instance);
     partial void DeletePayment(Payment instance);
+    partial void InsertUserProfile(UserProfile instance);
+    partial void UpdateUserProfile(UserProfile instance);
+    partial void DeleteUserProfile(UserProfile instance);
     #endregion
 		
 		public MembershipCashierEntitiesDataContext() : 
@@ -128,14 +128,6 @@ namespace MembershipCashierDL.DB
 			get
 			{
 				return this.GetTable<UserProfileAudit>();
-			}
-		}
-		
-		public System.Data.Linq.Table<UserProfile> UserProfiles
-		{
-			get
-			{
-				return this.GetTable<UserProfile>();
 			}
 		}
 		
@@ -226,6 +218,14 @@ namespace MembershipCashierDL.DB
 				return this.GetTable<Payment>();
 			}
 		}
+		
+		public System.Data.Linq.Table<UserProfile> UserProfiles
+		{
+			get
+			{
+				return this.GetTable<UserProfile>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UserProfileVsLocation")]
@@ -238,9 +238,9 @@ namespace MembershipCashierDL.DB
 		
 		private int _LocationId;
 		
-		private EntityRef<UserProfile> _UserProfile;
-		
 		private EntityRef<Location> _Location;
+		
+		private EntityRef<UserProfile> _UserProfile;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -254,8 +254,8 @@ namespace MembershipCashierDL.DB
 		
 		public UserProfileVsLocation()
 		{
-			this._UserProfile = default(EntityRef<UserProfile>);
 			this._Location = default(EntityRef<Location>);
+			this._UserProfile = default(EntityRef<UserProfile>);
 			OnCreated();
 		}
 		
@@ -307,40 +307,6 @@ namespace MembershipCashierDL.DB
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserProfile_UserProfileVsLocation", Storage="_UserProfile", ThisKey="UserId", OtherKey="UserId", IsForeignKey=true)]
-		public UserProfile UserProfile
-		{
-			get
-			{
-				return this._UserProfile.Entity;
-			}
-			set
-			{
-				UserProfile previousValue = this._UserProfile.Entity;
-				if (((previousValue != value) 
-							|| (this._UserProfile.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._UserProfile.Entity = null;
-						previousValue.UserProfileVsLocations.Remove(this);
-					}
-					this._UserProfile.Entity = value;
-					if ((value != null))
-					{
-						value.UserProfileVsLocations.Add(this);
-						this._UserId = value.UserId;
-					}
-					else
-					{
-						this._UserId = default(int);
-					}
-					this.SendPropertyChanged("UserProfile");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Location_UserProfileVsLocation", Storage="_Location", ThisKey="LocationId", OtherKey="LocationId", IsForeignKey=true)]
 		public Location Location
 		{
@@ -371,6 +337,40 @@ namespace MembershipCashierDL.DB
 						this._LocationId = default(int);
 					}
 					this.SendPropertyChanged("Location");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserProfile_UserProfileVsLocation", Storage="_UserProfile", ThisKey="UserId", OtherKey="UserId", IsForeignKey=true)]
+		public UserProfile UserProfile
+		{
+			get
+			{
+				return this._UserProfile.Entity;
+			}
+			set
+			{
+				UserProfile previousValue = this._UserProfile.Entity;
+				if (((previousValue != value) 
+							|| (this._UserProfile.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._UserProfile.Entity = null;
+						previousValue.UserProfileVsLocations.Remove(this);
+					}
+					this._UserProfile.Entity = value;
+					if ((value != null))
+					{
+						value.UserProfileVsLocations.Add(this);
+						this._UserId = value.UserId;
+					}
+					else
+					{
+						this._UserId = default(int);
+					}
+					this.SendPropertyChanged("UserProfile");
 				}
 			}
 		}
@@ -911,456 +911,6 @@ namespace MembershipCashierDL.DB
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UserProfile")]
-	public partial class UserProfile : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _UserId;
-		
-		private byte _UserStatusId;
-		
-		private string _UserName;
-		
-		private string _EmailId;
-		
-		private string _FirstName;
-		
-		private string _LastName;
-		
-		private System.Data.Linq.Binary _Photo;
-		
-		private string _Phone;
-		
-		private string _LdapAccount;
-		
-		private EntitySet<UserProfileVsLocation> _UserProfileVsLocations;
-		
-		private EntitySet<Owner> _Owners;
-		
-		private EntitySet<UserProfileAudit> _UserProfileAudits;
-		
-		private EntitySet<UserProfileAudit> _UserProfileAudits1;
-		
-		private EntitySet<webpages_UsersInRole> _webpages_UsersInRoles;
-		
-		private EntitySet<ProfileCredit> _ProfileCredits;
-		
-		private EntitySet<CreditTransaction> _CreditTransactions;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnUserIdChanging(int value);
-    partial void OnUserIdChanged();
-    partial void OnUserStatusIdChanging(byte value);
-    partial void OnUserStatusIdChanged();
-    partial void OnUserNameChanging(string value);
-    partial void OnUserNameChanged();
-    partial void OnEmailIdChanging(string value);
-    partial void OnEmailIdChanged();
-    partial void OnFirstNameChanging(string value);
-    partial void OnFirstNameChanged();
-    partial void OnLastNameChanging(string value);
-    partial void OnLastNameChanged();
-    partial void OnPhotoChanging(System.Data.Linq.Binary value);
-    partial void OnPhotoChanged();
-    partial void OnPhoneChanging(string value);
-    partial void OnPhoneChanged();
-    partial void OnLdapAccountChanging(string value);
-    partial void OnLdapAccountChanged();
-    #endregion
-		
-		public UserProfile()
-		{
-			this._UserProfileVsLocations = new EntitySet<UserProfileVsLocation>(new Action<UserProfileVsLocation>(this.attach_UserProfileVsLocations), new Action<UserProfileVsLocation>(this.detach_UserProfileVsLocations));
-			this._Owners = new EntitySet<Owner>(new Action<Owner>(this.attach_Owners), new Action<Owner>(this.detach_Owners));
-			this._UserProfileAudits = new EntitySet<UserProfileAudit>(new Action<UserProfileAudit>(this.attach_UserProfileAudits), new Action<UserProfileAudit>(this.detach_UserProfileAudits));
-			this._UserProfileAudits1 = new EntitySet<UserProfileAudit>(new Action<UserProfileAudit>(this.attach_UserProfileAudits1), new Action<UserProfileAudit>(this.detach_UserProfileAudits1));
-			this._webpages_UsersInRoles = new EntitySet<webpages_UsersInRole>(new Action<webpages_UsersInRole>(this.attach_webpages_UsersInRoles), new Action<webpages_UsersInRole>(this.detach_webpages_UsersInRoles));
-			this._ProfileCredits = new EntitySet<ProfileCredit>(new Action<ProfileCredit>(this.attach_ProfileCredits), new Action<ProfileCredit>(this.detach_ProfileCredits));
-			this._CreditTransactions = new EntitySet<CreditTransaction>(new Action<CreditTransaction>(this.attach_CreditTransactions), new Action<CreditTransaction>(this.detach_CreditTransactions));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int UserId
-		{
-			get
-			{
-				return this._UserId;
-			}
-			set
-			{
-				if ((this._UserId != value))
-				{
-					this.OnUserIdChanging(value);
-					this.SendPropertyChanging();
-					this._UserId = value;
-					this.SendPropertyChanged("UserId");
-					this.OnUserIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserStatusId", DbType="TinyInt NOT NULL")]
-		public byte UserStatusId
-		{
-			get
-			{
-				return this._UserStatusId;
-			}
-			set
-			{
-				if ((this._UserStatusId != value))
-				{
-					this.OnUserStatusIdChanging(value);
-					this.SendPropertyChanging();
-					this._UserStatusId = value;
-					this.SendPropertyChanged("UserStatusId");
-					this.OnUserStatusIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserName", DbType="NVarChar(56) NOT NULL", CanBeNull=false)]
-		public string UserName
-		{
-			get
-			{
-				return this._UserName;
-			}
-			set
-			{
-				if ((this._UserName != value))
-				{
-					this.OnUserNameChanging(value);
-					this.SendPropertyChanging();
-					this._UserName = value;
-					this.SendPropertyChanged("UserName");
-					this.OnUserNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmailId", DbType="VarChar(70)")]
-		public string EmailId
-		{
-			get
-			{
-				return this._EmailId;
-			}
-			set
-			{
-				if ((this._EmailId != value))
-				{
-					this.OnEmailIdChanging(value);
-					this.SendPropertyChanging();
-					this._EmailId = value;
-					this.SendPropertyChanged("EmailId");
-					this.OnEmailIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="VarChar(35)")]
-		public string FirstName
-		{
-			get
-			{
-				return this._FirstName;
-			}
-			set
-			{
-				if ((this._FirstName != value))
-				{
-					this.OnFirstNameChanging(value);
-					this.SendPropertyChanging();
-					this._FirstName = value;
-					this.SendPropertyChanged("FirstName");
-					this.OnFirstNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastName", DbType="VarChar(35)")]
-		public string LastName
-		{
-			get
-			{
-				return this._LastName;
-			}
-			set
-			{
-				if ((this._LastName != value))
-				{
-					this.OnLastNameChanging(value);
-					this.SendPropertyChanging();
-					this._LastName = value;
-					this.SendPropertyChanged("LastName");
-					this.OnLastNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Photo", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary Photo
-		{
-			get
-			{
-				return this._Photo;
-			}
-			set
-			{
-				if ((this._Photo != value))
-				{
-					this.OnPhotoChanging(value);
-					this.SendPropertyChanging();
-					this._Photo = value;
-					this.SendPropertyChanged("Photo");
-					this.OnPhotoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="VarChar(20)")]
-		public string Phone
-		{
-			get
-			{
-				return this._Phone;
-			}
-			set
-			{
-				if ((this._Phone != value))
-				{
-					this.OnPhoneChanging(value);
-					this.SendPropertyChanging();
-					this._Phone = value;
-					this.SendPropertyChanged("Phone");
-					this.OnPhoneChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LdapAccount", DbType="VarChar(300)")]
-		public string LdapAccount
-		{
-			get
-			{
-				return this._LdapAccount;
-			}
-			set
-			{
-				if ((this._LdapAccount != value))
-				{
-					this.OnLdapAccountChanging(value);
-					this.SendPropertyChanging();
-					this._LdapAccount = value;
-					this.SendPropertyChanged("LdapAccount");
-					this.OnLdapAccountChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserProfile_UserProfileVsLocation", Storage="_UserProfileVsLocations", ThisKey="UserId", OtherKey="UserId")]
-		public EntitySet<UserProfileVsLocation> UserProfileVsLocations
-		{
-			get
-			{
-				return this._UserProfileVsLocations;
-			}
-			set
-			{
-				this._UserProfileVsLocations.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserProfile_Owner", Storage="_Owners", ThisKey="UserId", OtherKey="OwnerUserId")]
-		public EntitySet<Owner> Owners
-		{
-			get
-			{
-				return this._Owners;
-			}
-			set
-			{
-				this._Owners.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserProfile_UserProfileAudit", Storage="_UserProfileAudits", ThisKey="UserId", OtherKey="ModifiedBy")]
-		public EntitySet<UserProfileAudit> UserProfileAudits
-		{
-			get
-			{
-				return this._UserProfileAudits;
-			}
-			set
-			{
-				this._UserProfileAudits.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserProfile_UserProfileAudit1", Storage="_UserProfileAudits1", ThisKey="UserId", OtherKey="UserId")]
-		public EntitySet<UserProfileAudit> UserProfileAudits1
-		{
-			get
-			{
-				return this._UserProfileAudits1;
-			}
-			set
-			{
-				this._UserProfileAudits1.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserProfile_webpages_UsersInRole", Storage="_webpages_UsersInRoles", ThisKey="UserId", OtherKey="UserId")]
-		public EntitySet<webpages_UsersInRole> webpages_UsersInRoles
-		{
-			get
-			{
-				return this._webpages_UsersInRoles;
-			}
-			set
-			{
-				this._webpages_UsersInRoles.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserProfile_ProfileCredit", Storage="_ProfileCredits", ThisKey="UserId", OtherKey="UserId")]
-		public EntitySet<ProfileCredit> ProfileCredits
-		{
-			get
-			{
-				return this._ProfileCredits;
-			}
-			set
-			{
-				this._ProfileCredits.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserProfile_CreditTransaction", Storage="_CreditTransactions", ThisKey="UserId", OtherKey="UserId")]
-		public EntitySet<CreditTransaction> CreditTransactions
-		{
-			get
-			{
-				return this._CreditTransactions;
-			}
-			set
-			{
-				this._CreditTransactions.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_UserProfileVsLocations(UserProfileVsLocation entity)
-		{
-			this.SendPropertyChanging();
-			entity.UserProfile = this;
-		}
-		
-		private void detach_UserProfileVsLocations(UserProfileVsLocation entity)
-		{
-			this.SendPropertyChanging();
-			entity.UserProfile = null;
-		}
-		
-		private void attach_Owners(Owner entity)
-		{
-			this.SendPropertyChanging();
-			entity.UserProfile = this;
-		}
-		
-		private void detach_Owners(Owner entity)
-		{
-			this.SendPropertyChanging();
-			entity.UserProfile = null;
-		}
-		
-		private void attach_UserProfileAudits(UserProfileAudit entity)
-		{
-			this.SendPropertyChanging();
-			entity.UserProfile = this;
-		}
-		
-		private void detach_UserProfileAudits(UserProfileAudit entity)
-		{
-			this.SendPropertyChanging();
-			entity.UserProfile = null;
-		}
-		
-		private void attach_UserProfileAudits1(UserProfileAudit entity)
-		{
-			this.SendPropertyChanging();
-			entity.UserProfile1 = this;
-		}
-		
-		private void detach_UserProfileAudits1(UserProfileAudit entity)
-		{
-			this.SendPropertyChanging();
-			entity.UserProfile1 = null;
-		}
-		
-		private void attach_webpages_UsersInRoles(webpages_UsersInRole entity)
-		{
-			this.SendPropertyChanging();
-			entity.UserProfile = this;
-		}
-		
-		private void detach_webpages_UsersInRoles(webpages_UsersInRole entity)
-		{
-			this.SendPropertyChanging();
-			entity.UserProfile = null;
-		}
-		
-		private void attach_ProfileCredits(ProfileCredit entity)
-		{
-			this.SendPropertyChanging();
-			entity.UserProfile = this;
-		}
-		
-		private void detach_ProfileCredits(ProfileCredit entity)
-		{
-			this.SendPropertyChanging();
-			entity.UserProfile = null;
-		}
-		
-		private void attach_CreditTransactions(CreditTransaction entity)
-		{
-			this.SendPropertyChanging();
-			entity.UserProfile = this;
-		}
-		
-		private void detach_CreditTransactions(CreditTransaction entity)
-		{
-			this.SendPropertyChanging();
-			entity.UserProfile = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ProductVsLocation")]
 	public partial class ProductVsLocation : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1690,9 +1240,9 @@ namespace MembershipCashierDL.DB
 		
 		private int _RoleId;
 		
-		private EntityRef<UserProfile> _UserProfile;
-		
 		private EntityRef<webpages_Role> _webpages_Role;
+		
+		private EntityRef<UserProfile> _UserProfile;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1706,8 +1256,8 @@ namespace MembershipCashierDL.DB
 		
 		public webpages_UsersInRole()
 		{
-			this._UserProfile = default(EntityRef<UserProfile>);
 			this._webpages_Role = default(EntityRef<webpages_Role>);
+			this._UserProfile = default(EntityRef<UserProfile>);
 			OnCreated();
 		}
 		
@@ -1759,40 +1309,6 @@ namespace MembershipCashierDL.DB
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserProfile_webpages_UsersInRole", Storage="_UserProfile", ThisKey="UserId", OtherKey="UserId", IsForeignKey=true)]
-		public UserProfile UserProfile
-		{
-			get
-			{
-				return this._UserProfile.Entity;
-			}
-			set
-			{
-				UserProfile previousValue = this._UserProfile.Entity;
-				if (((previousValue != value) 
-							|| (this._UserProfile.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._UserProfile.Entity = null;
-						previousValue.webpages_UsersInRoles.Remove(this);
-					}
-					this._UserProfile.Entity = value;
-					if ((value != null))
-					{
-						value.webpages_UsersInRoles.Add(this);
-						this._UserId = value.UserId;
-					}
-					else
-					{
-						this._UserId = default(int);
-					}
-					this.SendPropertyChanged("UserProfile");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="webpages_Role_webpages_UsersInRole", Storage="_webpages_Role", ThisKey="RoleId", OtherKey="RoleId", IsForeignKey=true)]
 		public webpages_Role webpages_Role
 		{
@@ -1823,6 +1339,40 @@ namespace MembershipCashierDL.DB
 						this._RoleId = default(int);
 					}
 					this.SendPropertyChanged("webpages_Role");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserProfile_webpages_UsersInRole", Storage="_UserProfile", ThisKey="UserId", OtherKey="UserId", IsForeignKey=true)]
+		public UserProfile UserProfile
+		{
+			get
+			{
+				return this._UserProfile.Entity;
+			}
+			set
+			{
+				UserProfile previousValue = this._UserProfile.Entity;
+				if (((previousValue != value) 
+							|| (this._UserProfile.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._UserProfile.Entity = null;
+						previousValue.webpages_UsersInRoles.Remove(this);
+					}
+					this._UserProfile.Entity = value;
+					if ((value != null))
+					{
+						value.webpages_UsersInRoles.Add(this);
+						this._UserId = value.UserId;
+					}
+					else
+					{
+						this._UserId = default(int);
+					}
+					this.SendPropertyChanged("UserProfile");
 				}
 			}
 		}
@@ -2480,11 +2030,11 @@ namespace MembershipCashierDL.DB
 		
 		private System.Nullable<bool> _HasBallance;
 		
-		private EntityRef<UserProfile> _UserProfile;
-		
 		private EntityRef<Location> _Location;
 		
 		private EntityRef<Product> _Product;
+		
+		private EntityRef<UserProfile> _UserProfile;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -2508,9 +2058,9 @@ namespace MembershipCashierDL.DB
 		
 		public ProfileCredit()
 		{
-			this._UserProfile = default(EntityRef<UserProfile>);
 			this._Location = default(EntityRef<Location>);
 			this._Product = default(EntityRef<Product>);
+			this._UserProfile = default(EntityRef<UserProfile>);
 			OnCreated();
 		}
 		
@@ -2666,40 +2216,6 @@ namespace MembershipCashierDL.DB
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserProfile_ProfileCredit", Storage="_UserProfile", ThisKey="UserId", OtherKey="UserId", IsForeignKey=true)]
-		public UserProfile UserProfile
-		{
-			get
-			{
-				return this._UserProfile.Entity;
-			}
-			set
-			{
-				UserProfile previousValue = this._UserProfile.Entity;
-				if (((previousValue != value) 
-							|| (this._UserProfile.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._UserProfile.Entity = null;
-						previousValue.ProfileCredits.Remove(this);
-					}
-					this._UserProfile.Entity = value;
-					if ((value != null))
-					{
-						value.ProfileCredits.Add(this);
-						this._UserId = value.UserId;
-					}
-					else
-					{
-						this._UserId = default(int);
-					}
-					this.SendPropertyChanged("UserProfile");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Location_ProfileCredit", Storage="_Location", ThisKey="LocationId", OtherKey="LocationId", IsForeignKey=true)]
 		public Location Location
 		{
@@ -2768,6 +2284,40 @@ namespace MembershipCashierDL.DB
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserProfile_ProfileCredit", Storage="_UserProfile", ThisKey="UserId", OtherKey="UserId", IsForeignKey=true)]
+		public UserProfile UserProfile
+		{
+			get
+			{
+				return this._UserProfile.Entity;
+			}
+			set
+			{
+				UserProfile previousValue = this._UserProfile.Entity;
+				if (((previousValue != value) 
+							|| (this._UserProfile.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._UserProfile.Entity = null;
+						previousValue.ProfileCredits.Remove(this);
+					}
+					this._UserProfile.Entity = value;
+					if ((value != null))
+					{
+						value.ProfileCredits.Add(this);
+						this._UserId = value.UserId;
+					}
+					else
+					{
+						this._UserId = default(int);
+					}
+					this.SendPropertyChanged("UserProfile");
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -2811,11 +2361,11 @@ namespace MembershipCashierDL.DB
 		
 		private EntitySet<Payment> _Payments;
 		
-		private EntityRef<UserProfile> _UserProfile;
-		
 		private EntityRef<Location> _Location;
 		
 		private EntityRef<Product> _Product;
+		
+		private EntityRef<UserProfile> _UserProfile;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -2840,9 +2390,9 @@ namespace MembershipCashierDL.DB
 		public CreditTransaction()
 		{
 			this._Payments = new EntitySet<Payment>(new Action<Payment>(this.attach_Payments), new Action<Payment>(this.detach_Payments));
-			this._UserProfile = default(EntityRef<UserProfile>);
 			this._Location = default(EntityRef<Location>);
 			this._Product = default(EntityRef<Product>);
+			this._UserProfile = default(EntityRef<UserProfile>);
 			OnCreated();
 		}
 		
@@ -3011,40 +2561,6 @@ namespace MembershipCashierDL.DB
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserProfile_CreditTransaction", Storage="_UserProfile", ThisKey="UserId", OtherKey="UserId", IsForeignKey=true)]
-		public UserProfile UserProfile
-		{
-			get
-			{
-				return this._UserProfile.Entity;
-			}
-			set
-			{
-				UserProfile previousValue = this._UserProfile.Entity;
-				if (((previousValue != value) 
-							|| (this._UserProfile.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._UserProfile.Entity = null;
-						previousValue.CreditTransactions.Remove(this);
-					}
-					this._UserProfile.Entity = value;
-					if ((value != null))
-					{
-						value.CreditTransactions.Add(this);
-						this._UserId = value.UserId;
-					}
-					else
-					{
-						this._UserId = default(int);
-					}
-					this.SendPropertyChanged("UserProfile");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Location_CreditTransaction", Storage="_Location", ThisKey="LocationId", OtherKey="LocationId", IsForeignKey=true)]
 		public Location Location
 		{
@@ -3109,6 +2625,40 @@ namespace MembershipCashierDL.DB
 						this._ProductId = default(int);
 					}
 					this.SendPropertyChanged("Product");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserProfile_CreditTransaction", Storage="_UserProfile", ThisKey="UserId", OtherKey="UserId", IsForeignKey=true)]
+		public UserProfile UserProfile
+		{
+			get
+			{
+				return this._UserProfile.Entity;
+			}
+			set
+			{
+				UserProfile previousValue = this._UserProfile.Entity;
+				if (((previousValue != value) 
+							|| (this._UserProfile.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._UserProfile.Entity = null;
+						previousValue.CreditTransactions.Remove(this);
+					}
+					this._UserProfile.Entity = value;
+					if ((value != null))
+					{
+						value.CreditTransactions.Add(this);
+						this._UserId = value.UserId;
+					}
+					else
+					{
+						this._UserId = default(int);
+					}
+					this.SendPropertyChanged("UserProfile");
 				}
 			}
 		}
@@ -3903,6 +3453,480 @@ namespace MembershipCashierDL.DB
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UserProfile")]
+	public partial class UserProfile : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _UserId;
+		
+		private byte _UserStatusId;
+		
+		private string _UserName;
+		
+		private string _EmailId;
+		
+		private string _FirstName;
+		
+		private string _LastName;
+		
+		private string _Photo;
+		
+		private string _Phone;
+		
+		private string _LdapAccount;
+		
+		private string _PersonalId;
+		
+		private EntitySet<UserProfileVsLocation> _UserProfileVsLocations;
+		
+		private EntitySet<Owner> _Owners;
+		
+		private EntitySet<UserProfileAudit> _UserProfileAudits;
+		
+		private EntitySet<UserProfileAudit> _UserProfileAudits1;
+		
+		private EntitySet<webpages_UsersInRole> _webpages_UsersInRoles;
+		
+		private EntitySet<ProfileCredit> _ProfileCredits;
+		
+		private EntitySet<CreditTransaction> _CreditTransactions;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnUserIdChanging(int value);
+    partial void OnUserIdChanged();
+    partial void OnUserStatusIdChanging(byte value);
+    partial void OnUserStatusIdChanged();
+    partial void OnUserNameChanging(string value);
+    partial void OnUserNameChanged();
+    partial void OnEmailIdChanging(string value);
+    partial void OnEmailIdChanged();
+    partial void OnFirstNameChanging(string value);
+    partial void OnFirstNameChanged();
+    partial void OnLastNameChanging(string value);
+    partial void OnLastNameChanged();
+    partial void OnPhotoChanging(string value);
+    partial void OnPhotoChanged();
+    partial void OnPhoneChanging(string value);
+    partial void OnPhoneChanged();
+    partial void OnLdapAccountChanging(string value);
+    partial void OnLdapAccountChanged();
+    partial void OnPersonalIdChanging(string value);
+    partial void OnPersonalIdChanged();
+    #endregion
+		
+		public UserProfile()
+		{
+			this._UserProfileVsLocations = new EntitySet<UserProfileVsLocation>(new Action<UserProfileVsLocation>(this.attach_UserProfileVsLocations), new Action<UserProfileVsLocation>(this.detach_UserProfileVsLocations));
+			this._Owners = new EntitySet<Owner>(new Action<Owner>(this.attach_Owners), new Action<Owner>(this.detach_Owners));
+			this._UserProfileAudits = new EntitySet<UserProfileAudit>(new Action<UserProfileAudit>(this.attach_UserProfileAudits), new Action<UserProfileAudit>(this.detach_UserProfileAudits));
+			this._UserProfileAudits1 = new EntitySet<UserProfileAudit>(new Action<UserProfileAudit>(this.attach_UserProfileAudits1), new Action<UserProfileAudit>(this.detach_UserProfileAudits1));
+			this._webpages_UsersInRoles = new EntitySet<webpages_UsersInRole>(new Action<webpages_UsersInRole>(this.attach_webpages_UsersInRoles), new Action<webpages_UsersInRole>(this.detach_webpages_UsersInRoles));
+			this._ProfileCredits = new EntitySet<ProfileCredit>(new Action<ProfileCredit>(this.attach_ProfileCredits), new Action<ProfileCredit>(this.detach_ProfileCredits));
+			this._CreditTransactions = new EntitySet<CreditTransaction>(new Action<CreditTransaction>(this.attach_CreditTransactions), new Action<CreditTransaction>(this.detach_CreditTransactions));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					this.OnUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._UserId = value;
+					this.SendPropertyChanged("UserId");
+					this.OnUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserStatusId", DbType="TinyInt NOT NULL")]
+		public byte UserStatusId
+		{
+			get
+			{
+				return this._UserStatusId;
+			}
+			set
+			{
+				if ((this._UserStatusId != value))
+				{
+					this.OnUserStatusIdChanging(value);
+					this.SendPropertyChanging();
+					this._UserStatusId = value;
+					this.SendPropertyChanged("UserStatusId");
+					this.OnUserStatusIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserName", DbType="NVarChar(56) NOT NULL", CanBeNull=false)]
+		public string UserName
+		{
+			get
+			{
+				return this._UserName;
+			}
+			set
+			{
+				if ((this._UserName != value))
+				{
+					this.OnUserNameChanging(value);
+					this.SendPropertyChanging();
+					this._UserName = value;
+					this.SendPropertyChanged("UserName");
+					this.OnUserNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmailId", DbType="VarChar(70)")]
+		public string EmailId
+		{
+			get
+			{
+				return this._EmailId;
+			}
+			set
+			{
+				if ((this._EmailId != value))
+				{
+					this.OnEmailIdChanging(value);
+					this.SendPropertyChanging();
+					this._EmailId = value;
+					this.SendPropertyChanged("EmailId");
+					this.OnEmailIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="VarChar(35)")]
+		public string FirstName
+		{
+			get
+			{
+				return this._FirstName;
+			}
+			set
+			{
+				if ((this._FirstName != value))
+				{
+					this.OnFirstNameChanging(value);
+					this.SendPropertyChanging();
+					this._FirstName = value;
+					this.SendPropertyChanged("FirstName");
+					this.OnFirstNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastName", DbType="VarChar(35)")]
+		public string LastName
+		{
+			get
+			{
+				return this._LastName;
+			}
+			set
+			{
+				if ((this._LastName != value))
+				{
+					this.OnLastNameChanging(value);
+					this.SendPropertyChanging();
+					this._LastName = value;
+					this.SendPropertyChanged("LastName");
+					this.OnLastNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Photo", DbType="VarChar(MAX)")]
+		public string Photo
+		{
+			get
+			{
+				return this._Photo;
+			}
+			set
+			{
+				if ((this._Photo != value))
+				{
+					this.OnPhotoChanging(value);
+					this.SendPropertyChanging();
+					this._Photo = value;
+					this.SendPropertyChanged("Photo");
+					this.OnPhotoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="VarChar(20)")]
+		public string Phone
+		{
+			get
+			{
+				return this._Phone;
+			}
+			set
+			{
+				if ((this._Phone != value))
+				{
+					this.OnPhoneChanging(value);
+					this.SendPropertyChanging();
+					this._Phone = value;
+					this.SendPropertyChanged("Phone");
+					this.OnPhoneChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LdapAccount", DbType="VarChar(300)")]
+		public string LdapAccount
+		{
+			get
+			{
+				return this._LdapAccount;
+			}
+			set
+			{
+				if ((this._LdapAccount != value))
+				{
+					this.OnLdapAccountChanging(value);
+					this.SendPropertyChanging();
+					this._LdapAccount = value;
+					this.SendPropertyChanged("LdapAccount");
+					this.OnLdapAccountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PersonalId", DbType="VarChar(50)")]
+		public string PersonalId
+		{
+			get
+			{
+				return this._PersonalId;
+			}
+			set
+			{
+				if ((this._PersonalId != value))
+				{
+					this.OnPersonalIdChanging(value);
+					this.SendPropertyChanging();
+					this._PersonalId = value;
+					this.SendPropertyChanged("PersonalId");
+					this.OnPersonalIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserProfile_UserProfileVsLocation", Storage="_UserProfileVsLocations", ThisKey="UserId", OtherKey="UserId")]
+		public EntitySet<UserProfileVsLocation> UserProfileVsLocations
+		{
+			get
+			{
+				return this._UserProfileVsLocations;
+			}
+			set
+			{
+				this._UserProfileVsLocations.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserProfile_Owner", Storage="_Owners", ThisKey="UserId", OtherKey="OwnerUserId")]
+		public EntitySet<Owner> Owners
+		{
+			get
+			{
+				return this._Owners;
+			}
+			set
+			{
+				this._Owners.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserProfile_UserProfileAudit", Storage="_UserProfileAudits", ThisKey="UserId", OtherKey="ModifiedBy")]
+		public EntitySet<UserProfileAudit> UserProfileAudits
+		{
+			get
+			{
+				return this._UserProfileAudits;
+			}
+			set
+			{
+				this._UserProfileAudits.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserProfile_UserProfileAudit1", Storage="_UserProfileAudits1", ThisKey="UserId", OtherKey="UserId")]
+		public EntitySet<UserProfileAudit> UserProfileAudits1
+		{
+			get
+			{
+				return this._UserProfileAudits1;
+			}
+			set
+			{
+				this._UserProfileAudits1.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserProfile_webpages_UsersInRole", Storage="_webpages_UsersInRoles", ThisKey="UserId", OtherKey="UserId")]
+		public EntitySet<webpages_UsersInRole> webpages_UsersInRoles
+		{
+			get
+			{
+				return this._webpages_UsersInRoles;
+			}
+			set
+			{
+				this._webpages_UsersInRoles.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserProfile_ProfileCredit", Storage="_ProfileCredits", ThisKey="UserId", OtherKey="UserId")]
+		public EntitySet<ProfileCredit> ProfileCredits
+		{
+			get
+			{
+				return this._ProfileCredits;
+			}
+			set
+			{
+				this._ProfileCredits.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserProfile_CreditTransaction", Storage="_CreditTransactions", ThisKey="UserId", OtherKey="UserId")]
+		public EntitySet<CreditTransaction> CreditTransactions
+		{
+			get
+			{
+				return this._CreditTransactions;
+			}
+			set
+			{
+				this._CreditTransactions.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_UserProfileVsLocations(UserProfileVsLocation entity)
+		{
+			this.SendPropertyChanging();
+			entity.UserProfile = this;
+		}
+		
+		private void detach_UserProfileVsLocations(UserProfileVsLocation entity)
+		{
+			this.SendPropertyChanging();
+			entity.UserProfile = null;
+		}
+		
+		private void attach_Owners(Owner entity)
+		{
+			this.SendPropertyChanging();
+			entity.UserProfile = this;
+		}
+		
+		private void detach_Owners(Owner entity)
+		{
+			this.SendPropertyChanging();
+			entity.UserProfile = null;
+		}
+		
+		private void attach_UserProfileAudits(UserProfileAudit entity)
+		{
+			this.SendPropertyChanging();
+			entity.UserProfile = this;
+		}
+		
+		private void detach_UserProfileAudits(UserProfileAudit entity)
+		{
+			this.SendPropertyChanging();
+			entity.UserProfile = null;
+		}
+		
+		private void attach_UserProfileAudits1(UserProfileAudit entity)
+		{
+			this.SendPropertyChanging();
+			entity.UserProfile1 = this;
+		}
+		
+		private void detach_UserProfileAudits1(UserProfileAudit entity)
+		{
+			this.SendPropertyChanging();
+			entity.UserProfile1 = null;
+		}
+		
+		private void attach_webpages_UsersInRoles(webpages_UsersInRole entity)
+		{
+			this.SendPropertyChanging();
+			entity.UserProfile = this;
+		}
+		
+		private void detach_webpages_UsersInRoles(webpages_UsersInRole entity)
+		{
+			this.SendPropertyChanging();
+			entity.UserProfile = null;
+		}
+		
+		private void attach_ProfileCredits(ProfileCredit entity)
+		{
+			this.SendPropertyChanging();
+			entity.UserProfile = this;
+		}
+		
+		private void detach_ProfileCredits(ProfileCredit entity)
+		{
+			this.SendPropertyChanging();
+			entity.UserProfile = null;
+		}
+		
+		private void attach_CreditTransactions(CreditTransaction entity)
+		{
+			this.SendPropertyChanging();
+			entity.UserProfile = this;
+		}
+		
+		private void detach_CreditTransactions(CreditTransaction entity)
+		{
+			this.SendPropertyChanging();
+			entity.UserProfile = null;
 		}
 	}
 }
