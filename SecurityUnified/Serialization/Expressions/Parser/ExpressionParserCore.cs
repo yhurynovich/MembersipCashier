@@ -334,6 +334,15 @@ namespace SecurityUnified.Serialization.Expressions.Parser
                     //    currentExpression = Expression.Constant(typeof(System.Void));
                     //    break;
 
+                    #region case "binaryof":
+                    case "binaryof":
+                        {
+                            string str = GetBracketString(false);
+                            currentExpression = Expression.Constant(new BinAr(str).Value);
+                        }
+                        break;
+                    #endregion
+
                     #region case "sizeof":
                     case "sizeof":
                         {
@@ -1432,7 +1441,6 @@ namespace SecurityUnified.Serialization.Expressions.Parser
                 case "string":
                     type = typeof(string);
                     break;
-
                 default:
                     {
                         // 先当typeName是类的全名
