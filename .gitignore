@@ -32,3 +32,5 @@
 *.bak
 *.orig
 MembershipCashierW/Web.config.orig
+/htm.paymentProcessing.core.TEST/bin/
+/htm.paymentProcessing.core.TEST/obj/

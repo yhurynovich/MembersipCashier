@@ -19,6 +19,9 @@ namespace htm.paymentProcessing.core.Square.DataContracts.Transactions
         public string CardNonce { get; set; }
 
         [DataMember]
+        public string EmailAddress { get; set; }
+
+        [DataMember]
         public string LocationId { get; set; }
 
         [DataMember]

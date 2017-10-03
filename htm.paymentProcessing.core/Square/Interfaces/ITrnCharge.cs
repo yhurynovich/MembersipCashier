@@ -6,7 +6,14 @@ using System.Text;
 
 namespace htm.paymentProcessing.core.Square.Interfaces
 {
-    public interface ITrnCharge : ITrnRequest, IHasAccessToken, IHasCardNonce, IHasMoney, IHasTransactionId, IHasLocationId
+    public interface ITrnCharge : 
+        ITrnRequest, 
+        IHasAccessToken, 
+        IHasCardNonce, 
+        IHasMoney, 
+        IHasTransactionId, 
+        IHasLocationId,
+        IHasEmailAddress
     {
     }
 }

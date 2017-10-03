@@ -9,6 +9,7 @@ namespace htm.paymentProcessing.core.Square.ServiceCalls
     {
         public override ListLocationsResponse Execute<T>(T transaction)
         {
+            base.Execute(transaction); //Needed to inject Authorization headers
             ITrnGetLocations data = (ITrnGetLocations)transaction;
             var response = locationsApi.ListLocations();
             return response;

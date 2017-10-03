@@ -47,6 +47,8 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "MembershipCashierDB", "Memb
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "htm.paymentProcessing.core", "htm.paymentProcessing.core\htm.paymentProcessing.core.csproj", "{2B143287-C621-45AF-921C-D07FE33E4B86}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "htm.paymentProcessing.core.TEST", "htm.paymentProcessing.core.TEST\htm.paymentProcessing.core.TEST.csproj", "{2DE628D3-E8CD-4A36-A67A-6AFBD69A161A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,10 @@ Global
 		{2B143287-C621-45AF-921C-D07FE33E4B86}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B143287-C621-45AF-921C-D07FE33E4B86}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B143287-C621-45AF-921C-D07FE33E4B86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DE628D3-E8CD-4A36-A67A-6AFBD69A161A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DE628D3-E8CD-4A36-A67A-6AFBD69A161A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DE628D3-E8CD-4A36-A67A-6AFBD69A161A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DE628D3-E8CD-4A36-A67A-6AFBD69A161A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

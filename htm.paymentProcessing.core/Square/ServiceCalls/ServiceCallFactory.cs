@@ -6,10 +6,15 @@ using System;
 
 namespace htm.paymentProcessing.core.Square.ServiceCalls
 {
+#if DEBUG
+    public class ServiceCallFactory
+#else
     internal class ServiceCallFactory
+#endif
     {
         static TransactionsApi transactionsApi = new TransactionsApi();
         static LocationsApi locationsApi = new LocationsApi();
+        //static CustomersApi customersApi = new CustomersApi();
 
         public ListLocationsResponse ListLocations(ITrnGetLocations data)
         {
