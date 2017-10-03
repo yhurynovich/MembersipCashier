@@ -34,3 +34,5 @@
 MembershipCashierW/Web.config.orig
 /htm.paymentProcessing.core.TEST/bin/
 /htm.paymentProcessing.core.TEST/obj/
+/htm.paymentProcessing.core/obj/
+/htm.paymentProcessing.core/bin/
