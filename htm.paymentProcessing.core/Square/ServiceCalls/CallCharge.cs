@@ -12,7 +12,7 @@ namespace htm.paymentProcessing.core.Square.ServiceCalls
             base.Execute(transaction); //Needed to inject Authorization headers
             ITrnCharge data = (ITrnCharge)transaction;
             ChargeRequest body = new ChargeRequest(
-                AmountMoney: data.Money.ToSquareMoney(),
+                AmountMoney: data.Money.ToNativeSquareMoney(),
                 IdempotencyKey: data.TransactionId,
                 //ReferenceId: data.TransactionId,
                 //Note: "",

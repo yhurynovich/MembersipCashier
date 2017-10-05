@@ -13,7 +13,12 @@ namespace htm.paymentProcessing.core.Square.ServiceCalls
             ITrnCreateCustomer data = (ITrnCreateCustomer)transaction;
             var body = new CreateCustomerRequest
             {
-                 //Address = data.Address.ToSquareAddress()
+                Address = data.Address.ToNativeSquareAddress(),
+                CompanyName = data.CompanyName,
+                EmailAddress = data.Party.EmailAddress,
+                FamilyName = data.Party.LastName,
+                GivenName = data.Party.FirstName,
+                PhoneNumber = data.Party.PhoneNumber
             };
             var response = customersApi.CreateCustomer(body);
             return response;

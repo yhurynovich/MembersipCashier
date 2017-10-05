@@ -46,6 +46,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
@@ -55,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enumerations\CurrencyOptions.cs" />
+    <Compile Include="Extentions_CopyTo.cs" />
     <Compile Include="Interfaces\IAddress.cs" />
     <Compile Include="Interfaces\IHasAddress.cs" />
     <Compile Include="Interfaces\IHasEmailAddress.cs" />
