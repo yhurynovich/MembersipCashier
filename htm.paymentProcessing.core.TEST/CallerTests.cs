@@ -30,5 +30,13 @@ namespace htm.paymentProcessing.core.TEST
             };
             var ret = factory.Charge(trn);
         }
+
+        [TestMethod]
+        public void TestListCustomers()
+        {
+            var factory = new ServiceCallFactory();
+            var trn = new TrnListCustomers() { AccessToken = "sandbox-sq0atb-M8S-5tUs0Is0Bo3Nnf3r0A" };
+            var ret = factory.ListCustomers(trn);
+        }
     }
 }

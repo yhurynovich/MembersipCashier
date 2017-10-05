@@ -14,7 +14,7 @@ namespace htm.paymentProcessing.core.Square.ServiceCalls
     {
         static TransactionsApi transactionsApi = new TransactionsApi();
         static LocationsApi locationsApi = new LocationsApi();
-        //static CustomersApi customersApi = new CustomersApi();
+        static CustomersApi customersApi = new CustomersApi();
 
         public ListLocationsResponse ListLocations(ITrnGetLocations data)
         {
@@ -24,6 +24,11 @@ namespace htm.paymentProcessing.core.Square.ServiceCalls
         public ChargeResponse Charge(ITrnCharge data)
         {
             return new CallCharge(transactionsApi).Execute(data);
+        }
+
+        public ListCustomersResponse ListCustomers(ITrnListCustomers data)
+        {
+            return new CallListCustomers(customersApi).Execute(data);
         }
     }
 }
