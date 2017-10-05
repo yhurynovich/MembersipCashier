@@ -14,14 +14,13 @@ namespace htm.paymentProcessing.core.Square.ServiceCalls
             ChargeRequest body = new ChargeRequest(
                 AmountMoney: data.Money.ToSquareMoney(),
                 IdempotencyKey: data.TransactionId,
-                ReferenceId: data.TransactionId,
-                Note: "",
-                DelayCapture: false,
-                BillingAddress: new DataContracts.SquareAddress() { Address1 = "3232 Lednier terr.", Province = "On", City = "Mississauga", PostalCode = "L4Y3Z8", Country = Address.CountryEnum.CA },
-                ShippingAddress: new DataContracts.SquareAddress() { Address1 = "3232 Lednier terr.", Province = "On", City="Mississauga", PostalCode="L4Y3Z8", Country= Address.CountryEnum.CA },
+                //ReferenceId: data.TransactionId,
+                //Note: "",
+                //DelayCapture: false,
+                //BillingAddress: new DataContracts.SquareAddress() { Address1 = "3232 Lednier terr.", Province = "On", City = "Mississauga", PostalCode = "L4Y3Z8", Country = Address.CountryEnum.CA },
+                //ShippingAddress: new DataContracts.SquareAddress() { Address1 = "3232 Lednier terr.", Province = "On", City="Mississauga", PostalCode="L4Y3Z8", Country= Address.CountryEnum.CA },
                 BuyerEmailAddress: data.EmailAddress,
                 CardNonce: data.CardNonce);
-            //var x = transactionsApi.ListTransactions(data.LocationId);
             var response = transactionsApi.Charge(data.LocationId, body);
             return response;
         }

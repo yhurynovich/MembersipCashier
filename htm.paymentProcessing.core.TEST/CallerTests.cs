@@ -24,7 +24,7 @@ namespace htm.paymentProcessing.core.TEST
             var trn = new TrnCharge() {
                 AccessToken = "sandbox-sq0atb-M8S-5tUs0Is0Bo3Nnf3r0A",
                 LocationId = "CBASED7U-n6EUiCOp_yGN-b1slUgAQ",
-                Money = new Square.DataContracts.SquareMoney() { Amount = 33, Currency= square.Model.Money.CurrencyEnum.CAD },
+                Money = new Square.DataContracts.SquareMoney() { Amount = 200, Currency= square.Model.Money.CurrencyEnum.CAD },
                 CardNonce = "fake-card-nonce-ok",
                 EmailAddress = "test@lala.com"
             };

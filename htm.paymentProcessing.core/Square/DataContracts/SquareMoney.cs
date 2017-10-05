@@ -8,16 +8,19 @@ namespace htm.paymentProcessing.core.Square.DataContracts
 {
     public class SquareMoney : square.Money, IMoney
     {
+        /// <summary>
+        /// Square money are expressed in cents therefore we need to apply coefficient
+        /// </summary>
         [JsonIgnore]
         decimal IMoney.Amount
         {
             get
             {
-                return Convert.ToDecimal( base.Amount );
+                return Convert.ToDecimal( base.Amount / 100 );
             }
             set
             {
-                base.Amount = Convert.ToInt64(value);
+                base.Amount = Convert.ToInt64(value * 100);
             }
         }
 
