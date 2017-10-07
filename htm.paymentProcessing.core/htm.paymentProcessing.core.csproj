@@ -81,6 +81,7 @@
     <Compile Include="Square\DataContracts\Transactions\TrnDeleteCustomer.cs" />
     <Compile Include="Square\DataContracts\Transactions\TrnGetLocations.cs" />
     <Compile Include="Square\DataContracts\Transactions\TrnListCustomers.cs" />
+    <Compile Include="Square\DataContracts\Transactions\TrnRetrieveCustomer.cs" />
     <Compile Include="Square\Extentions.cs" />
     <Compile Include="Square\Interfaces\IHasAccessToken.cs" />
     <Compile Include="Square\Interfaces\IHasCardNonce.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="Square\Interfaces\ITrnCharge.cs" />
     <Compile Include="Square\Interfaces\ITrnListCustomers.cs" />
     <Compile Include="Square\Interfaces\ITrnRequest.cs" />
+    <Compile Include="Square\Interfaces\ITrnRetrieveCustomer.cs" />
     <Compile Include="Square\ServiceCalls\Base\CustomerCallerBase.cs" />
     <Compile Include="Square\ServiceCalls\Base\LocationCallerBase.cs" />
     <Compile Include="Square\ServiceCalls\Base\TransactionCallerbase.cs" />

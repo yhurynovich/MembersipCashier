@@ -59,9 +59,20 @@ namespace htm.paymentProcessing.core.TEST
             var factory = new ServiceCallFactory();
             var trn = new TrnDeleteCustomer() {
                 AccessToken = "sandbox-sq0atb-M8S-5tUs0Is0Bo3Nnf3r0A",
-                CustomerId = "CBASEN9UKCP2cJrcTPBIsf0Ig-ogAQ"
+                CustomerId = "CBASEBAHrQzWIxqUgI4gpMm6hRQgAQ"
             };
             var ret = factory.DeleteCustomer(trn);
+        }
+
+        public void TestRetrieveCustomer()
+        {
+            var factory = new ServiceCallFactory();
+            var trn = new TrnRetrieveCustomer()
+            {
+                AccessToken = "sandbox-sq0atb-M8S-5tUs0Is0Bo3Nnf3r0A",
+                CustomerId = "CBASEBAHrQzWIxqUgI4gpMm6hRQgAQ"
+            };
+            var ret = factory.RetrieveCustomer(trn);
         }
     }
 }
