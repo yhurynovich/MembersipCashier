@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using htm.paymentProcessing.core.Square.ServiceCalls;
 using htm.paymentProcessing.core.Square.DataContracts.Transactions;
 using square = Square.Connect;
+using htm.paymentProcessing.core.DataContracts;
 
 namespace htm.paymentProcessing.core.TEST
 {
@@ -37,6 +38,30 @@ namespace htm.paymentProcessing.core.TEST
             var factory = new ServiceCallFactory();
             var trn = new TrnListCustomers() { AccessToken = "sandbox-sq0atb-M8S-5tUs0Is0Bo3Nnf3r0A" };
             var ret = factory.ListCustomers(trn);
+        }
+
+        [TestMethod]
+        public void TestCreateCustomer()
+        {
+            var factory = new ServiceCallFactory();
+            var trn = new TrnCreateCustomer()
+            {
+                AccessToken = "sandbox-sq0atb-M8S-5tUs0Is0Bo3Nnf3r0A",
+                Address = new Square.DataContracts.SquareAddress() { Address1 = "3232 Lednier terr.", Province = "On", City = "Mississauga", PostalCode = "L4Y3Z8", Country = square.Model.Address.CountryEnum.CA },
+                Party = new Party { EmailAddress = "lala@test.com", FirstName = "Joe", LastName = "Doe", PhoneNumber = "1111111111" }
+            };
+            var ret = factory.CreateCustomer(trn);
+        }
+
+        [TestMethod]
+        public void TestDeleteCustomer()
+        {
+            var factory = new ServiceCallFactory();
+            var trn = new TrnDeleteCustomer() {
+                AccessToken = "sandbox-sq0atb-M8S-5tUs0Is0Bo3Nnf3r0A",
+                CustomerId = "CBASEN9UKCP2cJrcTPBIsf0Ig-ogAQ"
+            };
+            var ret = factory.DeleteCustomer(trn);
         }
     }
 }

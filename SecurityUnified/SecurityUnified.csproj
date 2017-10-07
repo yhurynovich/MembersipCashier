@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BinAr.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Contracts\DataDiscriminator.cs" />
     <Compile Include="Contracts\ExtendedUserProfileContract.cs" />

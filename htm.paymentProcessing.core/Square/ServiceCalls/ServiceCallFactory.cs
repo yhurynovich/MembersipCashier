@@ -35,5 +35,10 @@ namespace htm.paymentProcessing.core.Square.ServiceCalls
         {
             return new CallCreateCustomer(customersApi).Execute(data);
         }
+
+        public DeleteCustomerResponse DeleteCustomer(ITrnDeleteCustomer data)
+        {
+            return new CallDeleteCustomer(customersApi).Execute(data);
+        }
     }
 }
