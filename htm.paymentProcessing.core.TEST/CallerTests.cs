@@ -64,6 +64,7 @@ namespace htm.paymentProcessing.core.TEST
             var ret = factory.DeleteCustomer(trn);
         }
 
+        [TestMethod]
         public void TestRetrieveCustomer()
         {
             var factory = new ServiceCallFactory();
