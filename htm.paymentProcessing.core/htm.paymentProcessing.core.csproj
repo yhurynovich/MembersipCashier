@@ -78,7 +78,9 @@
     <Compile Include="Square\DataContracts\Transactions\TransactionBase.cs" />
     <Compile Include="Square\DataContracts\Transactions\TrnCharge.cs" />
     <Compile Include="Square\DataContracts\Transactions\TrnCreateCustomer.cs" />
+    <Compile Include="Square\DataContracts\Transactions\TrnCreateCustomerCard.cs" />
     <Compile Include="Square\DataContracts\Transactions\TrnDeleteCustomer.cs" />
+    <Compile Include="Square\DataContracts\Transactions\TrnDeleteCustomerCard.cs" />
     <Compile Include="Square\DataContracts\Transactions\TrnGetLocations.cs" />
     <Compile Include="Square\DataContracts\Transactions\TrnListCustomers.cs" />
     <Compile Include="Square\DataContracts\Transactions\TrnRetrieveCustomer.cs" />
@@ -89,7 +91,9 @@
     <Compile Include="Square\Interfaces\IHasLocationId.cs" />
     <Compile Include="Square\Interfaces\IHasPaginationCursor.cs" />
     <Compile Include="Square\Interfaces\ITrnCreateCustomer.cs" />
+    <Compile Include="Square\Interfaces\ITrnCreateCustomerCard.cs" />
     <Compile Include="Square\Interfaces\ITrnDeleteCustomer.cs" />
+    <Compile Include="Square\Interfaces\ITrnDeleteCustomerCard.cs" />
     <Compile Include="Square\Interfaces\ITrnGetLocations.cs" />
     <Compile Include="Square\Interfaces\ITrnCharge.cs" />
     <Compile Include="Square\Interfaces\ITrnListCustomers.cs" />
@@ -101,6 +105,7 @@
     <Compile Include="Square\ServiceCalls\CallCharge.cs" />
     <Compile Include="Square\ServiceCalls\Base\CallerBase.cs" />
     <Compile Include="Square\ServiceCalls\CallCreateCustomer.cs" />
+    <Compile Include="Square\ServiceCalls\CallCreateCustomerCard.cs" />
     <Compile Include="Square\ServiceCalls\CallDeleteCustomer.cs" />
     <Compile Include="Square\ServiceCalls\CallGetLocations.cs" />
     <Compile Include="Square\ServiceCalls\CallListCustomers.cs" />

@@ -75,5 +75,33 @@ namespace htm.paymentProcessing.core.TEST
             };
             var ret = factory.RetrieveCustomer(trn);
         }
+
+        [TestMethod]
+        public void TestCreateCustomerCard()
+        {
+            var factory = new ServiceCallFactory();
+            var trn = new TrnCreateCustomerCard()
+            {
+                AccessToken = "sandbox-sq0atb-M8S-5tUs0Is0Bo3Nnf3r0A",
+                CustomerId = "CBASEBAHrQzWIxqUgI4gpMm6hRQgAQ",
+                Address = new Square.DataContracts.SquareAddress() { Address1 = "3232 Lednier terr.", Province = "On", City = "Mississauga", PostalCode = "L4Y3Z8", Country = square.Model.Address.CountryEnum.CA },
+                CardholderName = "Joe Doe",
+                CardNonce = "fake-card-nonce-ok"
+            };
+            var ret = factory.CreateCustomerCard(trn);
+        }
+
+        [TestMethod]
+        public void TestDeleteCustomerCard()
+        {
+            var factory = new ServiceCallFactory();
+            var trn = new TrnDeleteCustomerCard()
+            {
+                AccessToken = "sandbox-sq0atb-M8S-5tUs0Is0Bo3Nnf3r0A",
+                CustomerId = "CBASEBAHrQzWIxqUgI4gpMm6hRQgAQ",
+                CardNonce = "fake-card-nonce-ok"
+            };
+            var ret = factory.DeleteCustomer(trn);
+        }
     }
 }
