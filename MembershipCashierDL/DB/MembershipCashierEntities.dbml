@@ -76,6 +76,7 @@
       <Column Name="ValidityLevel" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
       <Column Name="ValidatedTime" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
       <Association Name="Address_Location" Member="Locations" ThisKey="AddressId" OtherKey="AddressId" Type="Location" />
+      <Association Name="Address_UserProfile" Member="UserProfiles" ThisKey="AddressId" OtherKey="AddressId" Type="UserProfile" />
     </Type>
   </Table>
   <Table Name="dbo.OwnerVsLocation" Member="OwnerVsLocations">
@@ -164,6 +165,7 @@
       <Column Name="Phone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="LdapAccount" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
       <Column Name="PersonalId" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AddressId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
       <Association Name="UserProfile_UserProfileVsLocation" Member="UserProfileVsLocations" ThisKey="UserId" OtherKey="UserId" Type="UserProfileVsLocation" />
       <Association Name="UserProfile_Owner" Member="Owners" ThisKey="UserId" OtherKey="OwnerUserId" Type="Owner" />
       <Association Name="UserProfile_UserProfileAudit" Member="UserProfileAudits" ThisKey="UserId" OtherKey="ModifiedBy" Type="UserProfileAudit" />
@@ -171,6 +173,25 @@
       <Association Name="UserProfile_webpages_UsersInRole" Member="webpages_UsersInRoles" ThisKey="UserId" OtherKey="UserId" Type="webpages_UsersInRole" />
       <Association Name="UserProfile_ProfileCredit" Member="ProfileCredits" ThisKey="UserId" OtherKey="UserId" Type="ProfileCredit" />
       <Association Name="UserProfile_CreditTransaction" Member="CreditTransactions" ThisKey="UserId" OtherKey="UserId" Type="CreditTransaction" />
+      <Association Name="UserProfile_SquareCard" Member="SquareCards" ThisKey="UserId" OtherKey="UserId" Type="SquareCard" />
+      <Association Name="UserProfile_SquareUserProfile" Member="SquareUserProfiles" ThisKey="UserId" OtherKey="UserId" Type="SquareUserProfile" />
+      <Association Name="Address_UserProfile" Member="Address" ThisKey="AddressId" OtherKey="AddressId" Type="Address" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SquareCard" Member="SquareCards">
+    <Type Name="SquareCard">
+      <Column Name="CardNonce" Type="System.Data.Linq.Binary" DbType="VarBinary(60) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedTime" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="IsCurrent" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="UserProfile_SquareCard" Member="UserProfile" ThisKey="UserId" OtherKey="UserId" Type="UserProfile" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SquareUserProfile" Member="SquareUserProfiles">
+    <Type Name="SquareUserProfile">
+      <Column Name="SquareUserId" Type="System.String" DbType="VarChar(60) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="UserProfile_SquareUserProfile" Member="UserProfile" ThisKey="UserId" OtherKey="UserId" Type="UserProfile" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

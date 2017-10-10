@@ -9,9 +9,13 @@
     [Phone]        VARCHAR (20)  NULL,
     [LdapAccount]  VARCHAR (300) NULL,
     [PersonalId]   VARCHAR (50)  NULL,
+    [AddressId]    BIGINT        NULL,
     CONSTRAINT [PK__UserProf__1788CC4C7F60ED59] PRIMARY KEY CLUSTERED ([UserId] ASC),
+    CONSTRAINT [FK_UserProfile_Address] FOREIGN KEY ([AddressId]) REFERENCES [dbo].[Address] ([AddressId]),
     CONSTRAINT [UQ__UserProf__C9F28456023D5A04] UNIQUE NONCLUSTERED ([UserName] ASC)
 );
+
+
 
 
 

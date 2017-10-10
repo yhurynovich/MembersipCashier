@@ -75,6 +75,12 @@ namespace MembershipCashierDL.DB
     partial void InsertUserProfile(UserProfile instance);
     partial void UpdateUserProfile(UserProfile instance);
     partial void DeleteUserProfile(UserProfile instance);
+    partial void InsertSquareCard(SquareCard instance);
+    partial void UpdateSquareCard(SquareCard instance);
+    partial void DeleteSquareCard(SquareCard instance);
+    partial void InsertSquareUserProfile(SquareUserProfile instance);
+    partial void UpdateSquareUserProfile(SquareUserProfile instance);
+    partial void DeleteSquareUserProfile(SquareUserProfile instance);
     #endregion
 		
 		public MembershipCashierEntitiesDataContext() : 
@@ -224,6 +230,22 @@ namespace MembershipCashierDL.DB
 			get
 			{
 				return this.GetTable<UserProfile>();
+			}
+		}
+		
+		public System.Data.Linq.Table<SquareCard> SquareCards
+		{
+			get
+			{
+				return this.GetTable<SquareCard>();
+			}
+		}
+		
+		public System.Data.Linq.Table<SquareUserProfile> SquareUserProfiles
+		{
+			get
+			{
+				return this.GetTable<SquareUserProfile>();
 			}
 		}
 	}
@@ -1540,6 +1562,8 @@ namespace MembershipCashierDL.DB
 		
 		private EntitySet<Location> _Locations;
 		
+		private EntitySet<UserProfile> _UserProfiles;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1569,6 +1593,7 @@ namespace MembershipCashierDL.DB
 		public Address()
 		{
 			this._Locations = new EntitySet<Location>(new Action<Location>(this.attach_Locations), new Action<Location>(this.detach_Locations));
+			this._UserProfiles = new EntitySet<UserProfile>(new Action<UserProfile>(this.attach_UserProfiles), new Action<UserProfile>(this.detach_UserProfiles));
 			OnCreated();
 		}
 		
@@ -1785,6 +1810,19 @@ namespace MembershipCashierDL.DB
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Address_UserProfile", Storage="_UserProfiles", ThisKey="AddressId", OtherKey="AddressId")]
+		public EntitySet<UserProfile> UserProfiles
+		{
+			get
+			{
+				return this._UserProfiles;
+			}
+			set
+			{
+				this._UserProfiles.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1812,6 +1850,18 @@ namespace MembershipCashierDL.DB
 		}
 		
 		private void detach_Locations(Location entity)
+		{
+			this.SendPropertyChanging();
+			entity.Address = null;
+		}
+		
+		private void attach_UserProfiles(UserProfile entity)
+		{
+			this.SendPropertyChanging();
+			entity.Address = this;
+		}
+		
+		private void detach_UserProfiles(UserProfile entity)
 		{
 			this.SendPropertyChanging();
 			entity.Address = null;
@@ -3482,6 +3532,8 @@ namespace MembershipCashierDL.DB
 		
 		private string _PersonalId;
 		
+		private System.Nullable<long> _AddressId;
+		
 		private EntitySet<UserProfileVsLocation> _UserProfileVsLocations;
 		
 		private EntitySet<Owner> _Owners;
@@ -3495,6 +3547,12 @@ namespace MembershipCashierDL.DB
 		private EntitySet<ProfileCredit> _ProfileCredits;
 		
 		private EntitySet<CreditTransaction> _CreditTransactions;
+		
+		private EntitySet<SquareCard> _SquareCards;
+		
+		private EntitySet<SquareUserProfile> _SquareUserProfiles;
+		
+		private EntityRef<Address> _Address;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -3520,6 +3578,8 @@ namespace MembershipCashierDL.DB
     partial void OnLdapAccountChanged();
     partial void OnPersonalIdChanging(string value);
     partial void OnPersonalIdChanged();
+    partial void OnAddressIdChanging(System.Nullable<long> value);
+    partial void OnAddressIdChanged();
     #endregion
 		
 		public UserProfile()
@@ -3531,6 +3591,9 @@ namespace MembershipCashierDL.DB
 			this._webpages_UsersInRoles = new EntitySet<webpages_UsersInRole>(new Action<webpages_UsersInRole>(this.attach_webpages_UsersInRoles), new Action<webpages_UsersInRole>(this.detach_webpages_UsersInRoles));
 			this._ProfileCredits = new EntitySet<ProfileCredit>(new Action<ProfileCredit>(this.attach_ProfileCredits), new Action<ProfileCredit>(this.detach_ProfileCredits));
 			this._CreditTransactions = new EntitySet<CreditTransaction>(new Action<CreditTransaction>(this.attach_CreditTransactions), new Action<CreditTransaction>(this.detach_CreditTransactions));
+			this._SquareCards = new EntitySet<SquareCard>(new Action<SquareCard>(this.attach_SquareCards), new Action<SquareCard>(this.detach_SquareCards));
+			this._SquareUserProfiles = new EntitySet<SquareUserProfile>(new Action<SquareUserProfile>(this.attach_SquareUserProfiles), new Action<SquareUserProfile>(this.detach_SquareUserProfiles));
+			this._Address = default(EntityRef<Address>);
 			OnCreated();
 		}
 		
@@ -3734,6 +3797,30 @@ namespace MembershipCashierDL.DB
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AddressId", DbType="BigInt")]
+		public System.Nullable<long> AddressId
+		{
+			get
+			{
+				return this._AddressId;
+			}
+			set
+			{
+				if ((this._AddressId != value))
+				{
+					if (this._Address.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnAddressIdChanging(value);
+					this.SendPropertyChanging();
+					this._AddressId = value;
+					this.SendPropertyChanged("AddressId");
+					this.OnAddressIdChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserProfile_UserProfileVsLocation", Storage="_UserProfileVsLocations", ThisKey="UserId", OtherKey="UserId")]
 		public EntitySet<UserProfileVsLocation> UserProfileVsLocations
 		{
@@ -3822,6 +3909,66 @@ namespace MembershipCashierDL.DB
 			set
 			{
 				this._CreditTransactions.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserProfile_SquareCard", Storage="_SquareCards", ThisKey="UserId", OtherKey="UserId")]
+		public EntitySet<SquareCard> SquareCards
+		{
+			get
+			{
+				return this._SquareCards;
+			}
+			set
+			{
+				this._SquareCards.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserProfile_SquareUserProfile", Storage="_SquareUserProfiles", ThisKey="UserId", OtherKey="UserId")]
+		public EntitySet<SquareUserProfile> SquareUserProfiles
+		{
+			get
+			{
+				return this._SquareUserProfiles;
+			}
+			set
+			{
+				this._SquareUserProfiles.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Address_UserProfile", Storage="_Address", ThisKey="AddressId", OtherKey="AddressId", IsForeignKey=true)]
+		public Address Address
+		{
+			get
+			{
+				return this._Address.Entity;
+			}
+			set
+			{
+				Address previousValue = this._Address.Entity;
+				if (((previousValue != value) 
+							|| (this._Address.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Address.Entity = null;
+						previousValue.UserProfiles.Remove(this);
+					}
+					this._Address.Entity = value;
+					if ((value != null))
+					{
+						value.UserProfiles.Add(this);
+						this._AddressId = value.AddressId;
+					}
+					else
+					{
+						this._AddressId = default(Nullable<long>);
+					}
+					this.SendPropertyChanged("Address");
+				}
 			}
 		}
 		
@@ -3927,6 +4074,332 @@ namespace MembershipCashierDL.DB
 		{
 			this.SendPropertyChanging();
 			entity.UserProfile = null;
+		}
+		
+		private void attach_SquareCards(SquareCard entity)
+		{
+			this.SendPropertyChanging();
+			entity.UserProfile = this;
+		}
+		
+		private void detach_SquareCards(SquareCard entity)
+		{
+			this.SendPropertyChanging();
+			entity.UserProfile = null;
+		}
+		
+		private void attach_SquareUserProfiles(SquareUserProfile entity)
+		{
+			this.SendPropertyChanging();
+			entity.UserProfile = this;
+		}
+		
+		private void detach_SquareUserProfiles(SquareUserProfile entity)
+		{
+			this.SendPropertyChanging();
+			entity.UserProfile = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SquareCard")]
+	public partial class SquareCard : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Data.Linq.Binary _CardNonce;
+		
+		private int _UserId;
+		
+		private System.DateTime _CreatedTime;
+		
+		private bool _IsCurrent;
+		
+		private EntityRef<UserProfile> _UserProfile;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnCardNonceChanging(System.Data.Linq.Binary value);
+    partial void OnCardNonceChanged();
+    partial void OnUserIdChanging(int value);
+    partial void OnUserIdChanged();
+    partial void OnCreatedTimeChanging(System.DateTime value);
+    partial void OnCreatedTimeChanged();
+    partial void OnIsCurrentChanging(bool value);
+    partial void OnIsCurrentChanged();
+    #endregion
+		
+		public SquareCard()
+		{
+			this._UserProfile = default(EntityRef<UserProfile>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CardNonce", DbType="VarBinary(60) NOT NULL", CanBeNull=false, IsPrimaryKey=true, UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary CardNonce
+		{
+			get
+			{
+				return this._CardNonce;
+			}
+			set
+			{
+				if ((this._CardNonce != value))
+				{
+					this.OnCardNonceChanging(value);
+					this.SendPropertyChanging();
+					this._CardNonce = value;
+					this.SendPropertyChanged("CardNonce");
+					this.OnCardNonceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int NOT NULL")]
+		public int UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					if (this._UserProfile.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._UserId = value;
+					this.SendPropertyChanged("UserId");
+					this.OnUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedTime", DbType="DateTime2 NOT NULL")]
+		public System.DateTime CreatedTime
+		{
+			get
+			{
+				return this._CreatedTime;
+			}
+			set
+			{
+				if ((this._CreatedTime != value))
+				{
+					this.OnCreatedTimeChanging(value);
+					this.SendPropertyChanging();
+					this._CreatedTime = value;
+					this.SendPropertyChanged("CreatedTime");
+					this.OnCreatedTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsCurrent", DbType="Bit NOT NULL")]
+		public bool IsCurrent
+		{
+			get
+			{
+				return this._IsCurrent;
+			}
+			set
+			{
+				if ((this._IsCurrent != value))
+				{
+					this.OnIsCurrentChanging(value);
+					this.SendPropertyChanging();
+					this._IsCurrent = value;
+					this.SendPropertyChanged("IsCurrent");
+					this.OnIsCurrentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserProfile_SquareCard", Storage="_UserProfile", ThisKey="UserId", OtherKey="UserId", IsForeignKey=true)]
+		public UserProfile UserProfile
+		{
+			get
+			{
+				return this._UserProfile.Entity;
+			}
+			set
+			{
+				UserProfile previousValue = this._UserProfile.Entity;
+				if (((previousValue != value) 
+							|| (this._UserProfile.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._UserProfile.Entity = null;
+						previousValue.SquareCards.Remove(this);
+					}
+					this._UserProfile.Entity = value;
+					if ((value != null))
+					{
+						value.SquareCards.Add(this);
+						this._UserId = value.UserId;
+					}
+					else
+					{
+						this._UserId = default(int);
+					}
+					this.SendPropertyChanged("UserProfile");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SquareUserProfile")]
+	public partial class SquareUserProfile : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _SquareUserId;
+		
+		private int _UserId;
+		
+		private EntityRef<UserProfile> _UserProfile;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnSquareUserIdChanging(string value);
+    partial void OnSquareUserIdChanged();
+    partial void OnUserIdChanging(int value);
+    partial void OnUserIdChanged();
+    #endregion
+		
+		public SquareUserProfile()
+		{
+			this._UserProfile = default(EntityRef<UserProfile>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SquareUserId", DbType="VarChar(60) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string SquareUserId
+		{
+			get
+			{
+				return this._SquareUserId;
+			}
+			set
+			{
+				if ((this._SquareUserId != value))
+				{
+					this.OnSquareUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._SquareUserId = value;
+					this.SendPropertyChanged("SquareUserId");
+					this.OnSquareUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int NOT NULL")]
+		public int UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					if (this._UserProfile.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._UserId = value;
+					this.SendPropertyChanged("UserId");
+					this.OnUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserProfile_SquareUserProfile", Storage="_UserProfile", ThisKey="UserId", OtherKey="UserId", IsForeignKey=true)]
+		public UserProfile UserProfile
+		{
+			get
+			{
+				return this._UserProfile.Entity;
+			}
+			set
+			{
+				UserProfile previousValue = this._UserProfile.Entity;
+				if (((previousValue != value) 
+							|| (this._UserProfile.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._UserProfile.Entity = null;
+						previousValue.SquareUserProfiles.Remove(this);
+					}
+					this._UserProfile.Entity = value;
+					if ((value != null))
+					{
+						value.SquareUserProfiles.Add(this);
+						this._UserId = value.UserId;
+					}
+					else
+					{
+						this._UserId = default(int);
+					}
+					this.SendPropertyChanged("UserProfile");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }
