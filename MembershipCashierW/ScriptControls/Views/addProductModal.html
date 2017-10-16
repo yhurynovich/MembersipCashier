@@ -25,8 +25,7 @@
                 <ul class="list-group">
                     <li class="list-group-item justify-content-between" ng-repeat="product in products">
                         {{product.Description}}
-                        <button type="button" class="btn btn-warning btn-sm pull-right">Add</button>
-
+                        <button type="button" ng-click="addProduct(product.ProductId, product.ProfileCredit.LocationId)" class="btn btn-warning btn-sm pull-right">Add</button>
                     </li>
                 </ul>
             </form>

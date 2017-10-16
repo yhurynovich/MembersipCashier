@@ -44,4 +44,25 @@ htm.app.controller('AddProductCtrl',
                 $scope.loading = false;
             });
         };
+
+        $scope.addProduct = function (productId, locationId) {
+            let product =   {
+                UserId: user.UserProfile.UserId,
+                ProductId: productId,
+                LocationId: locationId,
+                CalculatedTime: new Date(),
+                Ballance: 0,
+                BallanceUnits: 0
+            }                 
+            $http({
+                method: 'POST',
+                url: appRoot + 'api/ProfileCredit',
+                data: [product]
+            }).then(function successCallback(response) {
+                //let client = ctrl.clients.filter(x => x.UserId === userId)[0];
+                //client.Products = response.data[0].Products;
+                $scope.loadProducts();
+            }, function errorCallback(response) {
+            });
+        };
     }]);
