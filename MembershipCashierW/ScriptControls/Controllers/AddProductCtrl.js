@@ -45,11 +45,11 @@ htm.app.controller('AddProductCtrl',
             });
         };
 
-        $scope.addProduct = function (productId, locationId) {
-            let product =   {
+        $scope.addProduct = function (product) {
+            let profileCredit = {
                 UserId: user.UserProfile.UserId,
-                ProductId: productId,
-                LocationId: locationId,
+                ProductId: product.ProductId,
+                LocationId: (user.Products.length > 0)? user.Products[0].ProfileCredit.LocationId: 1,
                 CalculatedTime: new Date(),
                 Ballance: 0,
                 BallanceUnits: 0
@@ -57,11 +57,14 @@ htm.app.controller('AddProductCtrl',
             $http({
                 method: 'POST',
                 url: appRoot + 'api/ProfileCredit',
-                data: [product]
+                data: [profileCredit]
             }).then(function successCallback(response) {
                 //let client = ctrl.clients.filter(x => x.UserId === userId)[0];
                 //client.Products = response.data[0].Products;
-                $scope.loadProducts();
+                //$scope.loadProducts();
+                if ($scope.products.indexOf(product) >= 0) {
+                    $scope.products.splice($scope.products.indexOf(product), 1);
+                }
             }, function errorCallback(response) {
             });
         };
