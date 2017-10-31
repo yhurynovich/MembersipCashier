@@ -85,7 +85,8 @@ htm.app.controller('ProductsCtrl',
                     url: appRoot + 'api/CreditTransaction',
                     data: [transaction]
                 }).then(function successCallback(response) {
-                    $scope.BallanseResponse = response.data;
+                    var ballanseResponse = response.data[0];
+                    product.ProfileCredit.Ballance = ballanseResponse.Ballance;
                     $scope.loading = false;
                 }, function errorCallback(response) {
                     $scope.errorResponse = response.data;
