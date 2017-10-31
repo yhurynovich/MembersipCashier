@@ -294,6 +294,7 @@
     <Compile Include="Controllers\ClientLastUsedProductsController.cs" />
     <Compile Include="Controllers\ComponentController.cs" />
     <Compile Include="Controllers\ControllerBase\BlobSearchUserProfileControllerBase.cs" />
+    <Compile Include="Controllers\ControllerBase\CreditTransactionControllerBase.cs" />
     <Compile Include="Controllers\ControllerBase\MVCControllersBase.cs" />
     <Compile Include="Controllers\ControllerBase\UserProfileControllerBase.cs" />
     <Compile Include="Controllers\CreditTransactionController.cs" />
