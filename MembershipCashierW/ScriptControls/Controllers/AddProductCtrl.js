@@ -59,9 +59,21 @@ htm.app.controller('AddProductCtrl',
                 url: appRoot + 'api/ProfileCredit',
                 data: [profileCredit]
             }).then(function successCallback(response) {
-                //let client = ctrl.clients.filter(x => x.UserId === userId)[0];
-                //client.Products = response.data[0].Products;
-                //$scope.loadProducts();
+                var newProduct = {
+                    ProfileCredit: {
+                        UserId: user.UserProfile.UserId,
+                        ProductId: product.ProductId,
+                        LocationId: profileCredit.LocationId,
+                        CalculatedTime: profileCredit.CalculatedTime,
+                        Ballance: 0,
+                        BallanceUnits: 0
+                    },
+                    Product: {
+                        Description: product.Description,
+                        ProductId: product.ProductId
+                    }
+                };               
+                user.Products.push(newProduct);
                 if ($scope.products.indexOf(product) >= 0) {
                     $scope.products.splice($scope.products.indexOf(product), 1);
                 }

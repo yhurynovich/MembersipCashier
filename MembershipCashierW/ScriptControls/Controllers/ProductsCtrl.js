@@ -124,7 +124,6 @@ htm.app.controller('ProductsCtrl',
                     }
                 }
             }).result.then(function ($scope) {
-                //clearSearch();
             }, function () {
             });
         };
