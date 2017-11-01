@@ -278,6 +278,34 @@ namespace MembershipCashierDL.Access
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="d"></param>
+        /// <param name="l"></param>
+        /// <param name="c"></param>
+        /// <param name="trnCntByProduct">Max count of transactions to select by each product</param>
+        /// <returns></returns>
+        public ProductAndTransactionsContract[] FindProductLastTransactions(ProductDiscriminator d, LocationDiscriminator l, ProfileCreditDiscriminator c, int trnCntByProduct)
+        {
+            try
+            {
+                using (var records = RepositoryFactory.GetProduct())
+                {
+                    records.Discriminator = d;
+                    records.LocationFilter = l;
+                    records.ProfileCreditFilter = c;
+                    
+                    return records.Select(r => new ProductAndTransactionsContract() { Product = r, CreditTransactions=(r as DB.Product).CreditTransactions.OrderByDescending(x=>x.TransactionTime).Take(trnCntByProduct) }).ToArray();
+                }
+            }
+            catch (Exception ex)
+            {
+                HandleMyException(ex);
+                return null;
+            }
+        }
+
         public ProductPriceHistoryContract[] FindProductPriceHistory(ProductDiscriminator p, bool latestPriceOnly = true)
         {
             try

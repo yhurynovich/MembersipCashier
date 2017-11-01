@@ -302,6 +302,7 @@
     <Compile Include="Controllers\LocalizationController.cs" />
     <Compile Include="Controllers\LocationDocumentController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ProductLastTransactionsController.cs" />
     <Compile Include="Controllers\ProductPriceHistoryController.cs" />
     <Compile Include="Controllers\ProfileCreditController.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />

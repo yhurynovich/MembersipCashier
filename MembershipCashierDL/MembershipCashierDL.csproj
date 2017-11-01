@@ -84,6 +84,7 @@
     <Compile Include="DB\Repository\CustomRepository\ProfileCreditRepositoryEntitySet.cs" />
     <Compile Include="DB\Repository\CustomRepository\UserProfileRepositoryEntitySet.cs" />
     <Compile Include="DB\Repository\RepositoryFactory.cs" />
+    <Compile Include="MixedContracts\ProductAndTransactionsContract.cs" />
     <Compile Include="MixedContracts\Product_Location_Price_Contract.cs" />
     <Compile Include="MixedContracts\ProductCreditContract.cs" />
     <Compile Include="MixedContracts\UserAndProductsContarct.cs" />

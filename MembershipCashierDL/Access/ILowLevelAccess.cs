@@ -35,6 +35,8 @@ namespace MembershipCashierDL.Access
         [OperationContract]
         ProductContract[] FindProduct(ProductDiscriminator d, LocationDiscriminator l, ProfileCreditDiscriminator c, int userId);
         [OperationContract]
+        ProductAndTransactionsContract[] FindProductLastTransactions(ProductDiscriminator d, LocationDiscriminator l, ProfileCreditDiscriminator c, int trnCntByProduct);
+        [OperationContract]
         ProductPriceHistoryContract[] FindProductPriceHistory(ProductDiscriminator p, bool latestPriceOnly);
         [OperationContract]
         UserAndProductsContarct[] FindLastUsedProducts(UserProfile2Discriminator u, UserProfileVsLocationDiscriminator pvl);
