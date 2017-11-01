@@ -181,5 +181,44 @@ namespace MembershipCashierW
             return ToLocationLocalTime(dt).ToString("MMMM d, yyyy h:mm tt");
         }
         #endregion
+
+        public static System.Reflection.PropertyInfo[] GetPublicProperties(this Type type)
+        {
+            if (type.IsInterface)
+            {
+                var propertyInfos = new List<System.Reflection.PropertyInfo>();
+
+                var considered = new List<Type>();
+                var queue = new Queue<Type>();
+                considered.Add(type);
+                queue.Enqueue(type);
+                while (queue.Count > 0)
+                {
+                    var subType = queue.Dequeue();
+                    foreach (var subInterface in subType.GetInterfaces())
+                    {
+                        if (considered.Contains(subInterface)) continue;
+
+                        considered.Add(subInterface);
+                        queue.Enqueue(subInterface);
+                    }
+
+                    var typeProperties = subType.GetProperties(
+                        System.Reflection.BindingFlags.FlattenHierarchy
+                        | System.Reflection.BindingFlags.Public
+                        | System.Reflection.BindingFlags.Instance);
+
+                    var newPropertyInfos = typeProperties
+                        .Where(x => !propertyInfos.Contains(x));
+
+                    propertyInfos.InsertRange(0, newPropertyInfos);
+                }
+
+                return propertyInfos.ToArray();
+            }
+
+            return type.GetProperties(System.Reflection.BindingFlags.FlattenHierarchy
+                | System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
+        }
     }
 }

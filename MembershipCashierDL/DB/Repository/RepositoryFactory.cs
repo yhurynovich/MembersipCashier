@@ -11,9 +11,9 @@ namespace MembershipCashierDL.DB.Repository
             return new AddressRepositoryEntitySet();
         }
 
-        public static RepositoryEntitySet<CreditTransaction, ICreditTransaction> GetCreditTransaction()
+        public static CreditTransactionEntitySet GetCreditTransaction()
         {
-            return new RepositoryEntitySet<CreditTransaction, ICreditTransaction>();
+            return new CreditTransactionEntitySet();
         }
 
         public static LocationRepositoryEntitySet GetLocation()

@@ -75,6 +75,7 @@
     <Compile Include="DB\Partial\UserProfileVsLocation.cs" />
     <Compile Include="DB\Partial\webpages_Role.cs" />
     <Compile Include="DB\Repository\CustomRepository\AddressRepositoryEntitySet.cs" />
+    <Compile Include="DB\Repository\CustomRepository\CreditTransactionEntitySet.cs" />
     <Compile Include="DB\Repository\CustomRepository\LocationRepositoryEntitySet.cs" />
     <Compile Include="DB\Repository\CustomRepository\OwnerRepositoryEntitySet.cs" />
     <Compile Include="DB\Repository\CustomRepository\OwnerVsLocationRepositoryEntitySet.cs" />

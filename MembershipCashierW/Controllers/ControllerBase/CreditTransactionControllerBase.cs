@@ -8,6 +8,7 @@ using System.Data.Entity.SqlServer;
 using System.Data.Linq.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Web;
 
 namespace MembershipCashierW.Controllers.ControllerBase
@@ -62,9 +63,12 @@ namespace MembershipCashierW.Controllers.ControllerBase
                     var param = filterToEnhance.Parameters[0];
                     BinaryExpression locOrPart;
                     Expression locAndPart = Expression.Constant(true);
+
+                    var locationIdProperty = typeof(ICreditTransaction).GetPublicProperties().First(x => x.Name == "LocationId");
+                    var field = Expression.Property(param, locationIdProperty);
                     foreach (int locId in authorizedLocationIds)
                     {
-                        locOrPart = Expression.Equal(Expression.PropertyOrField(Expression.TypeAs(param, typeof(IHasLocationId)), "LocationId"), Expression.Constant(locId));
+                        locOrPart = Expression.Equal(field, Expression.Constant(locId));
                         locAndPart = Expression.AndAlso(locOrPart, locAndPart);
                     }
 
