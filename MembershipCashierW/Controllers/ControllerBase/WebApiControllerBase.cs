@@ -1,12 +1,9 @@
 ﻿using MembershipCashierDL.Access;
 using MembershipCashierW.Code;
-using MembershipCashierW.Properties;
 using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Web;
-using System.Web.Helpers;
-//using MembershipCashierW.Code.Attributes;
 using System.Web.Http;
 
 namespace MembershipCashierW.Controllers.ControllerBase
@@ -85,13 +82,6 @@ namespace MembershipCashierW.Controllers.ControllerBase
 
         public override System.Threading.Tasks.Task<System.Net.Http.HttpResponseMessage> ExecuteAsync(System.Web.Http.Controllers.HttpControllerContext controllerContext, System.Threading.CancellationToken cancellationToken)
         {
-            //var context = System.Web.HttpContext.Current;
-            //context.Response.Cache.SetExpires(DateTime.UtcNow.AddDays(-1));
-            //context.Response.Cache.SetValidUntilExpires(false);
-            //context.Response.Cache.SetRevalidation(HttpCacheRevalidation.AllCaches);
-            //context.Response.Cache.SetCacheability(HttpCacheability.NoCache);
-            //context.Response.Cache.SetNoStore();
-
             return base.ExecuteAsync(controllerContext, cancellationToken).ContinueWith(t =>
             {
                 // the controller action has finished executing, 
@@ -103,46 +93,67 @@ namespace MembershipCashierW.Controllers.ControllerBase
                 {
                     ret = t.Result;
 
-                    ret.Headers.CacheControl = new CacheControlHeaderValue
+                    if (ret != null && ret.Headers != null)
                     {
-                        Public = false,
-                        MaxAge = TimeSpan.FromMilliseconds(100),
-                        MustRevalidate = true,
-                        NoCache = true
-                    };
+                        ret.Headers.CacheControl = new CacheControlHeaderValue
+                        {
+                            Public = false,
+                            MaxAge = TimeSpan.FromMilliseconds(100),
+                            MustRevalidate = true,
+                            NoCache = true
+                        };
+                    }
                 }
-                catch (Exception ex )
+                catch (AggregateException aex) //Ignore task TaskCanceledException
                 {
-                    this.HandleError(ex);
+                    if (!(aex.InnerException != null && typeof(System.Threading.Tasks.TaskCanceledException).IsInstanceOfType(aex.InnerException)))
+                    {
+                        var cnt = aex.InnerExceptions.Count;
+                        if (cnt > 1)
+                        {
+                            for (int i = 0; i < cnt - 1; i++)
+                            {
+                                Utils.WriteToEventLog(aex.InnerExceptions[i]);
+                            }
+                        }
+                        return GenericErrorRedirect(aex.InnerExceptions[cnt - 1]);
+                    }
+                }
+                catch (System.Threading.Tasks.TaskCanceledException)
+                {
+                    //Ignore task TaskCanceledException
+                }
+                catch (Exception ex)
+                {
+                    return GenericErrorRedirect(ex);
                 }
 
                 return ret;
             });
         }
 
-        //protected override System.Web.Http.Results.OkResult Ok()
-        //{
-        //    var ret = base.Ok();
+        private System.Net.Http.HttpResponseMessage GenericErrorRedirect(Exception ex)
+        {
+#if DEBUG
+            this.HandleError(ex);
+            return Request.CreateErrorResponse(System.Net.HttpStatusCode.InternalServerError, "");
+#else
+            if (Request.Headers.Contains("detailedErrors"))
+            {
+                this.HandleError(ex);
+                return Request.CreateErrorResponse(System.Net.HttpStatusCode.InternalServerError, "");
+            }
+            else
+            {
+                Utils.WriteToEventLog(ex);
 
-        //    string cookieToken, formToken;
-        //    AntiForgery.GetTokens(null, out cookieToken, out formToken);
+                var response = Request.CreateResponse(System.Net.HttpStatusCode.RedirectKeepVerb);
+                response.Headers.Location = new Uri(Request.RequestUri, "/Shared/Error");
 
-        //    HttpContext.Current.Response.Headers.Remove(ANTIFORGERY_TOKEN_HEADER_NAME);
-        //    HttpContext.Current.Response.Headers.Add(ANTIFORGERY_TOKEN_HEADER_NAME, string.Concat(cookieToken, ":", formToken));
-        //    return ret;
-        //}
-
-        //protected override System.Web.Http.Results.OkNegotiatedContentResult<T> Ok<T>(T content)
-        //{
-        //    var ret = base.Ok<T>(content);
-
-        //    string cookieToken, formToken;
-        //    AntiForgery.GetTokens(null, out cookieToken, out formToken);
-
-        //    HttpContext.Current.Response.Headers.Remove(ANTIFORGERY_TOKEN_HEADER_NAME);
-        //    HttpContext.Current.Response.Headers.Add(ANTIFORGERY_TOKEN_HEADER_NAME, string.Concat(cookieToken, ":", formToken));
-        //    return ret;
-        //}
+                return response;
+            }
+#endif
+        }
 
         public SecurityDL.Access.LowLevelAccess SecurityDb
         {
