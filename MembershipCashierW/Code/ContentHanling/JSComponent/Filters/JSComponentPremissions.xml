@@ -146,4 +146,16 @@
       <scenario>dashboard</scenario>
     </allow>
   </c>
+  <c file="TransHistoryCtrl.js" type="controller" folder="">
+    <allow>
+      <role>system</role>
+      <role>super_admin</role>
+      <role>admin</role>
+      <role>marketing</role>
+      <role>owner</role>
+      <role>system</role>
+      <role>teller</role>
+      <scenario>dashboard</scenario>
+    </allow>
+  </c>
 </x>

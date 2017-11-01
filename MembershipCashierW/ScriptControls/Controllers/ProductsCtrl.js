@@ -128,4 +128,18 @@ htm.app.controller('ProductsCtrl',
             }, function () {
             });
         };
+
+        $scope.openTransHistoryDialog = function (selectedUser) {
+            $uibModal.open({
+                templateUrl: '/ScriptControls/Views/transHistoryModal.html',
+                controller: 'TransHistoryCtrl',
+                resolve: {
+                    user: function () {
+                        return selectedUser;
+                    }
+                }
+            }).result.then(function ($scope) {
+            }, function () {
+            });
+        };
     }]);
