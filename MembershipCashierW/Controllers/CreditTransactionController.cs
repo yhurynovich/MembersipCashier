@@ -32,7 +32,19 @@ namespace MembershipCashierW.Controllers
             });
         }
 
-        
+        [HttpPost]
+        public IHttpActionResult Post([FromBody] CreditTransactionImplementor[] data)
+        {
+            return Execute<IHttpActionResult>(delegate
+            {
+                var newBallance = Db.UpdateCreditTransaction(data.Select(d => new CreditTransactionContract()
+                {
+                    CreditTransaction = d
+                }).ToArray());
+
+                return base.Ok(newBallance.Select(x => x.ProfileCredit));
+            });
+        }
 
         /// <summary>
         /// Inserts new Credit transaction and recalculates ballance

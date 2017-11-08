@@ -759,7 +759,6 @@ namespace MembershipCashierDL.Access
             }
         }
 
-
         public void UpdateLocation(LocationContract[] d, bool allowDefaultValues = true)
         {
             lock (MDB)
@@ -780,6 +779,39 @@ namespace MembershipCashierDL.Access
                 catch (Exception ex)
                 {
                     HandleMyException(ex);
+                }
+            }
+        }
+
+        public ProfileCreditContract[] UpdateCreditTransaction(CreditTransactionContract[] d, bool allowDefaultValues = true)
+        {
+            lock (MDB)
+            {
+                try
+                {
+                    if (d.Any(l => l.CreditTransaction.CreditTransactionId == default(long)))
+                        throw new Xxception("CreditTransactionId expected");
+
+                    List<DB.ProfileCredit> recalculatedProfileCredits = new List<DB.ProfileCredit>();
+                    foreach (var x in d)
+                    {
+                        var xx = MDB.CreditTransactions.First(p => p.LocationId == x.CreditTransaction.CreditTransactionId);
+                        
+                        //Recalculate balance
+                        var recalculatedProfileCredit = new Code.BallanceManager().ReplaceCreditTransaction(MDB, xx, x.CreditTransaction);
+                        recalculatedProfileCredits.Add(recalculatedProfileCredit);
+
+                        //Finish update
+                        x.CreditTransaction.CopyTo(xx, allowDefaultValues);
+                    }
+
+                    MDB.SubmitChanges();
+                    return recalculatedProfileCredits.Select(x => new ProfileCreditContract() { ProfileCredit = x }).ToArray();
+                }
+                catch (Exception ex)
+                {
+                    HandleMyException(ex);
+                    return null;
                 }
             }
         }

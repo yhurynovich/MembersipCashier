@@ -56,6 +56,9 @@ namespace MembershipCashierDL.Access
         [OperationContract]
         void UpdateLocation(LocationContract[] d, bool allowDefaultValues = true);
 
+        [OperationContract]
+        ProfileCreditContract[] UpdateCreditTransaction(CreditTransactionContract[] d, bool allowDefaultValues = true);
+
         #endregion
 
         #region Insert
